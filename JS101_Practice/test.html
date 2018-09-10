@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Page Title</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+
+
+
+<script>
+debugger
+
+function reverse (str) {
+  var reverseStr = ''
+  for (var i = str.length - 1; i >= 0; i--) {
+    reverseStr += str[i]
+  }
+  console.log(reverseStr)
+}
+reverse('nike')
+
+function forloop () {
+  for (var i = 1; i <= 9; i++) {
+    console.log(i)
+  }
+}
+forloop()
+// console.log(forloop()) 
+
+
+
+// <!-- 
+// function star(n) {
+// 	result = ''
+// 	for (var i = 0; i < n; i++) {
+// 		result += '*'
+// 		console.log(result)
+// 	}
+// }
+// star(5)
+
+
+
+
+
+// function transform(arr, transformFunction) {
+// 	var result = []
+// 	for(var i = 0; i < arr.length; i++) {
+// 		result.push(transformFunction(arr[i]))
+// 	}
+// 	return result
+// }
+
+// function double(x) {
+// 	return x * 2
+// }
+
+// //也可以多加一個 function
+// // function triple(x) {
+// // 	return x * 3
+// // }
+
+
+// console.log(
+// 	transform([1, 2, 3], double)
+// )
+// //transform([1, 2, 3], double) => [ 2, 4, 6 ]
+
+
+// // console.log(
+// // 	transform([1, 2, 3], triple)
+// //transform([1, 2, 3], triple) => [ 3, 6, 9 ]
+
+// 	 -->
+	
+
+
+</script>
+
+
+</head>
+<body>
+	
+	debugger 是 Chrome 提供用來偵錯工具 
+
+	Dev tools 開著，然後重新整理網頁
+
+	會跳去 Sources 的地方，按右邊區塊的 Step(或按fn+F9)
+
+	在 Watch 按 + 號，可以新增你想看的變化項目
+	譬如輸入 i ，可以看 i 值的變化
+
+	Dev Tools 按下左邊的排序，可以設成中斷點，也可以設多個中斷點
+
+</body>
+</html>
