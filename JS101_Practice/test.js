@@ -6,3 +6,11 @@ function forloop () {
 }
 // forloop()
 console.log(forloop())
+
+var score = [30, 20, 50, 70, 70]
+var sum = 0
+for (var i = 0; i < score.length; i++) {
+  console.log(score[i])
+  sum = sum + score[i]
+}
+console.log(sum)
