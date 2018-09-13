@@ -11,14 +11,14 @@ stars(3) 預期輸出：
  */
 
 // 這樣寫不確定對不對，但結果是對的
-// function stars (n) {
-//   var result = ''
-//   for (var i = 1; i <= n; i++) {
-//     result += '*'
-//     console.log(result)
-//   }
-// }
-// stars(5)
+function stars (n) {
+  var result = ''
+  for (var i = 1; i <= n; i++) {
+    result += '*'
+    console.log(result)
+  }
+}
+stars(5)
 
 // console.log(star(5))
 // 以上結果的最後會出現 undefined ？？
