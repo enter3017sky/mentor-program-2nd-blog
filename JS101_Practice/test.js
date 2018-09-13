@@ -45,12 +45,54 @@
 //   number = number + 2
 // }
 
+//   let result = 1
+//   let counter = 0
+//   while (counter < 10) {
+//     result = result * 2
+//     counter = counter + 1
+//     console.log(result)
+//   }
+// }
+// console.log(String.fromCharCode('a'.charCodeAt(0) - 32))
 
-  let result = 1
-  let counter = 0
-  while (counter < 10) {
-    result = result * 2
-    counter = counter + 1
-    console.log(result)
+// console.log(String.fromCharCode('A'.charCodeAt(0) + 32))
+
+// var lowerWord = 'JAVA SCRIPT!'
+// console.log(lowerWord.toLowerCase())
+// // result => java script!
+
+// 使用Object 儲存資料
+// var _class = {
+//   name: '一年一班',
+//   students: [{
+//     name: '學生１',
+//     seatNo: 1
+//   }, {
+//     name: '學生2',
+//     seatNo: 2
+//   }, {
+//     name: '學生3',
+//     seatNo: 3
+//   }, {
+//     name: '學生4',
+//     seatNo: 4
+//   }]
+// }
+
+// for (var i = 0; i < _class.students.length; i++) {
+//   var student = _class.students[i]
+//   console.log(student.name)
+//   console.log(student.seatNo)
+// }
+
+function capitalize (input) {
+  var output = ''
+  for (var i = 0; i < input.length; i++) {
+    output += input[0].toUpperCase() + input.slice(1)
+    return input
+    console.log(input)
   }
+  console.log(output)
 }
+
+capitalize('nike')

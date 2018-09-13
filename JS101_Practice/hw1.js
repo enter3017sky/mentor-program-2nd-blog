@@ -1,9 +1,9 @@
 
-function printStars(n) {
-	var result = '*'
-	for (i = 1; i <= n; i++) {
-		console.log(result)
-	}
+function printStars (n) {
+  var result = '*'
+  for (var i = 1; i <= n; i++) {
+    console.log(result)
+  }
 }
 printStars(5)
 
@@ -29,9 +29,6 @@ printStars(5)
 // printStars(3)
 
 // printStars(6)
-
-
-
 
 // function printStars(n) {
 //    if(i < n){

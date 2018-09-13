@@ -13,31 +13,30 @@ star(10) 預期輸出：
 */
 
 // forloop 正解
-function star(n) {
-	var result = ''
-	for(var i = 1; i <= n; i++) {
-		result += '*'
-	}
-	console.log(result)
-}
-star(3)
+// function star (n) {
+//   var result = ''
+//   for (var i = 1; i <= n; i++) {
+//     result += '*'
+//   }
+//   // return result
+//   console.log(result)
+// }
+// console.log(star(3))
 // star(5)
 
-
-
-//while loop
-function star(n) {
-	var result = ''
-	var i = 0
-	while (i < n){
-		result += '*'
-		i++
-	}
-	console.log(result)
+// while loop
+function star (n) {
+  var result = ''
+  var i = 0
+  while (i < n) {
+    result += '*'
+    i++
+  }
+  // console.log(result)
+  return result
 }
-star(10)
-
-
+// star(10)
+console.log(star(5))
 
 // *號 單顆 一排
 // function star1(n){
@@ -48,14 +47,12 @@ star(10)
 // }
 // star1(3)
 /*
-
-result = 
+result =>
 *
 *
 *
 
 */
-
 
 // function star(n){
 // 	var result = ''
@@ -70,26 +67,24 @@ result =
 
 /*
 
-result = 
+result =
 *
 **
 ***
 
 */
 
+// output = ''
+// 產生一個星星
+// output 加上一個星星
+// if (還沒五個星星)
+// 	goto line 51
+// }
 
-
-	// output = ''
-	// 產生一個星星
-	// output 加上一個星星
-	// if (還沒五個星星)
-	// 	goto line 51
-	// }
-
-	// function star(n){
-	// 	var result = ''
-	// 	for (i = 1; i <= n; i++){
-	// 		result += '*'
-	// 	}
-	// }
-	// console.log(star(3))
+// function star(n){
+// 	var result = ''
+// 	for (i = 1; i <= n; i++){
+// 		result += '*'
+// 	}
+// }
+// console.log(star(3))

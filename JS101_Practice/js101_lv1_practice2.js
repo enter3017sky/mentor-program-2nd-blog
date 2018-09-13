@@ -13,7 +13,7 @@ print(3) 預期輸出：
 
 // answer
 function oneton (n) {
-  for (i = 1; i <= n; i++) {
+  for (var i = 1; i <= n; i++) {
     console.log(i)
   }
 }

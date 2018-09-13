@@ -40,11 +40,12 @@ function dowhile () {
 
 dowhile()
 
-// function whileloop2(){
-// 	var i = 9
-// 	while(i >= 1){
-// 		console.log(i)
-// 		i--
-// 	}
+// // whileloop 9-1
+// function whileloop2 () {
+//   var i = 9
+//   while (i >= 1) {
+//     console.log(i)
+//     i--
+//   }
 // }
 // whileloop2()

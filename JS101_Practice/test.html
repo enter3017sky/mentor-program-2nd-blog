@@ -11,70 +11,45 @@
 
 <script>
 debugger
+// function stars (n) {
+//   var result = ''
+//   for (var i = 1; i <= n; i++) {
+//     result += '*'
+//     console.log(result)
+//   }
+// }
+// stars(5)
 
-function reverse (str) {
-  var reverseStr = ''
-  for (var i = str.length - 1; i >= 0; i--) {
-    reverseStr += str[i]
+function star(i){
+  var result = ''
+  for(var j = 1; j <= i; i++){
+    result += '*'
   }
-  console.log(reverseStr)
+  return result
 }
-reverse('nike')
-
-function forloop () {
-  for (var i = 1; i <= 9; i++) {
-    console.log(i)
+function makeStars(n){
+  var arr = []
+  for (var i = 1; i <= n; i++){
+    arr.push(star(i))
   }
+  return arr.join('\n')
 }
-forloop()
-// console.log(forloop()) 
+console.log(makeStars(5))
 
 
-
-// <!-- 
-// function star(n) {
-// 	result = ''
-// 	for (var i = 0; i < n; i++) {
-// 		result += '*'
-// 		console.log(result)
-// 	}
+// function star(i){
+//   var result = ''
+//   for(var j = 1; j <= i; i++){
+//     result += '*'
+//   }
+//   return result
 // }
-// star(5)
-
-
-
-
-
-// function transform(arr, transformFunction) {
-// 	var result = []
-// 	for(var i = 0; i < arr.length; i++) {
-// 		result.push(transformFunction(arr[i]))
-// 	}
-// 	return result
+// function makeStarsArr(n){
+//   return Array(n).fill(0).map(function(value, index) {
+//     return star(index + 1)
+//   })
 // }
-
-// function double(x) {
-// 	return x * 2
-// }
-
-// //也可以多加一個 function
-// // function triple(x) {
-// // 	return x * 3
-// // }
-
-
-// console.log(
-// 	transform([1, 2, 3], double)
-// )
-// //transform([1, 2, 3], double) => [ 2, 4, 6 ]
-
-
-// // console.log(
-// // 	transform([1, 2, 3], triple)
-// //transform([1, 2, 3], triple) => [ 3, 6, 9 ]
-
-// 	 -->
-	
+// console.log(makeStarsArr(5))
 
 
 </script>
