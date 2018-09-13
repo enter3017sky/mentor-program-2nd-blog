@@ -1,11 +1,12 @@
 /*
+js101_lv2_練習五
 請寫一個叫做 isUpperCase 的 functuon，並且接收一個字串，回傳這個字串的第一個字母是否為大寫。
 isUpperCase("abcd") 正確回傳值：false
 isUpperCase("Abcd") 正確回傳值：true
 isUpperCase("ABCD") 正確回傳值：true
 isUpperCase("aBCD") 正確回傳值：false
 */
-// answer
+answer
 function isUpperCase (str) {
   var char = str[0] // 尋找 index = 0 的字
   if (char >= 'a' && char <= 'z') return false
@@ -16,7 +17,17 @@ console.log(isUpperCase('abcd'))
 console.log(isUpperCase('Abcd'))
 console.log(isUpperCase('aBCD'))
 
-// // 變化版
+answer
+function isUpperCase (str) {
+  var char = str[0] // 尋找 index = 0 的字
+  return char >= 'A' && char <= 'Z' //本身就是比較大小寫
+}
+console.log(isUpperCase('ABCD'))
+console.log(isUpperCase('abcd'))
+console.log(isUpperCase('Abcd'))
+console.log(isUpperCase('aBCD'))
+
+// 變化版
 // function isUpperCase (str) {
 //   var char = str[0] // 尋找 index = 0 的字
 //   if (char >= 'a' && char <= 'z') console.log('Result is ' + false + ',' + ' str[0]= ' + str[0])
@@ -37,7 +48,7 @@ console.log(isUpperCase('aBCD'))
 // ternaryisUpperCase('ABcd')
 // ternaryisUpperCase('abcd')
 
-// // 三元運算版 ternary2
+// 三元運算版 ternary2
 // function ternaryisUpperCase (str) {
 //   console.log((str[0] >= 'A' && str[0] <= 'Z') ? 'true' : 'false')
 // }
@@ -46,7 +57,7 @@ console.log(isUpperCase('aBCD'))
 // ternaryisUpperCase('ABcd')
 // ternaryisUpperCase('abcd')
 
-// // 三元運算版 ternary3
+// // 三元運算版 ternary3 回傳
 // function ternaryisUpperCase2 (str2) {
 //   var charStr = str2.charAt(0)
 //   return (charStr >= 'A' && charStr <= 'Z') ? 'true' : 'false'

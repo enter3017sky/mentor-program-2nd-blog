@@ -11,14 +11,23 @@ print(3) 預期輸出：
 
 */
 
-// answer
-function oneton (n) {
-  for (var i = 1; i <= n; i++) {
+// // answer
+// function oneToN (n) {
+//   for (var i = 1; i <= n; i++) {
+//     console.log(i)
+//   }
+// }
+// oneToN(9)
+// oneToN(3)
+// oneToN(1)
+
+
+function oneToN2(n){
+  var i = 1
+  while(i <= n){
     console.log(i)
+    i++
   }
 }
-oneton(9)
-
-oneton(3)
-
-oneton(1)
+oneToN2(9)
+oneToN2(3)
