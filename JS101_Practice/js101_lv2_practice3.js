@@ -10,6 +10,26 @@
 // testI(5)
 
 
+function testI(n){
+  for(let i = 1; i <= n; i++) {
+    result = ''
+    for(let j = 1; j = i; j++){
+      result += '*'
+    }
+    return result
+  }
+  for(let i = n-1; i > 0; i--){
+    result = ''
+    for(let j = 1; j = i; j++){
+      result +='*'
+    }
+    return result
+  }
+}
+// testI(5)
+console.log(testI(5))
+
+
 
 // function stars(n){
 //   result = ''
@@ -30,11 +50,11 @@
 
 
 // 老師的解法
-function star(i){
-  var result = ''
-  for(var j = 1; j <=i; j++){
-    result += '*'
-  }
-  return result
-}
-console.log(star(5))
+// function star(i){
+//   var result = ''
+//   for(var j = 1; j <=i; j++){
+//     result += '*'
+//   }
+//   return result
+// }
+// console.log(star(5))
