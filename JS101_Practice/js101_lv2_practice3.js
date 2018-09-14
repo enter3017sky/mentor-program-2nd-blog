@@ -11,29 +11,30 @@
 
 
 
-function stars(n){
-  result = ''
-  for(let i = 1; i <= n; i++) {
-    // result += '*'
-    console.log(result)
-    // return result
-  } 
-  for(let i = n-1; i > 0; i--){
-    console.log(result)
-    // return result
-  } 
-}
-console.log(stars(5))
-// stars(5)
+// function stars(n){
+//   result = ''
+//   for(let i = 1; i <= n; i++) {
+//     // result += '*'
+//     console.log(result)
+//     // return result
+//   } 
+//   for(let i = n-1; i > 0; i--){
+//     console.log(result)
+//     // return result
+//   } 
+// }
+// console.log(stars(5))
+// // stars(5)
 
 
 
 
 // 老師的解法
-// function star(i){
-//   var result = ''
-//   for(var j = 1; j <=i; j++){
-//     result += '*'
-//   }
-//   return result
-// }
+function star(i){
+  var result = ''
+  for(var j = 1; j <=i; j++){
+    result += '*'
+  }
+  return result
+}
+console.log(star(5))
