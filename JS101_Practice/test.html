@@ -11,46 +11,24 @@
 
 <script>
 debugger
-// function stars (n) {
-//   var result = ''
-//   for (var i = 1; i <= n; i++) {
-//     result += '*'
-//     console.log(result)
-//   }
-// }
-// stars(5)
 
-function star(i){
-  var result = ''
-  for(var j = 1; j <= i; i++){
-    result += '*'
+function testI(n){
+  for(let i = 1; i <= n; i++) {
+    var result = ''
+    for(var j = 1; j <=i; j++){
+      result += '*'
+    }
+    console.log(result)
   }
-  return result
-}
-function makeStars(n){
-  var arr = []
-  for (var i = 1; i <= n; i++){
-    arr.push(star(i))
+  for(let i = n-1; i > 0; i--){
+    var result = ''
+    for(var j = 1; j <=i; j++){
+      result += '*'
+    }
+    console.log(result)
   }
-  return arr.join('\n')
 }
-console.log(makeStars(5))
-
-
-// function star(i){
-//   var result = ''
-//   for(var j = 1; j <= i; i++){
-//     result += '*'
-//   }
-//   return result
-// }
-// function makeStarsArr(n){
-//   return Array(n).fill(0).map(function(value, index) {
-//     return star(index + 1)
-//   })
-// }
-// console.log(makeStarsArr(5))
-
+testI(5)
 
 </script>
 

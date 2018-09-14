@@ -10,24 +10,36 @@
 // testI(5)
 
 
+
+
+
+
+
+// 老師的解法 把大問題拆成小問題去解決
+function star(i){
+  var result = ''
+  for(var j = 1; j <=i; j++){
+    result += '*'
+  }
+  return result
+}
+
+function star(i){
+  var result = ''
+  for(var j = 1; j <=i; j++){
+    result += '*'
+  }
+  return result
+}
 function testI(n){
   for(let i = 1; i <= n; i++) {
-    result = ''
-    for(let j = 1; j = i; j++){
-      result += '*'
-    }
-    return result
+    console.log(star(i))
   }
   for(let i = n-1; i > 0; i--){
-    result = ''
-    for(let j = 1; j = i; j++){
-      result +='*'
-    }
-    return result
+    console.log(star(i))
   }
 }
-// testI(5)
-console.log(testI(5))
+testI(5)
 
 
 
@@ -49,12 +61,20 @@ console.log(testI(5))
 
 
 
-// 老師的解法
-// function star(i){
-//   var result = ''
-//   for(var j = 1; j <=i; j++){
-//     result += '*'
+// function testI(n){
+//   for(let i = 1; i <= n; i++) {
+//     var result = ''
+//     for(var j = 1; j <=i; j++){
+//       result += '*'
+//     }
+//     console.log(result)
 //   }
-//   return result
+//   for(let i = n-1; i > 0; i--){
+//     var result = ''
+//     for(var j = 1; j <=i; j++){
+//       result += '*'
+//     }
+//     console.log(result)
+//   }
 // }
-// console.log(star(5))
+// testI(10)
