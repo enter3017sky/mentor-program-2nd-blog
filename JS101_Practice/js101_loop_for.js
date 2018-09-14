@@ -13,7 +13,7 @@ for loop 比較常用，當你知道終止條件的話，for loop 很適合
 // 範例說明
 var i = 1	// 初始值
 while (i <= 10) { // 終止條件
-  console.log(i)
+  console.log(i) //打印 i
   // ......很多我們想做的事情
   i += 2 // i 每一圈要做的事情
 }
