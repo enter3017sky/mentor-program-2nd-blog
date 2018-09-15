@@ -85,14 +85,40 @@
 //   console.log(student.seatNo)
 // }
 
-function capitalize (input) {
-  var output = ''
-  for (var i = 0; i < input.length; i++) {
-    output += input[0].toUpperCase() + input.slice(1)
-    return input
-    console.log(input)
-  }
-  console.log(output)
-}
+// function capitalize (input) {
+//   var output = ''
+//   for (var i = 0; i < input.length; i++) {
+//     output += input[0].toUpperCase() + input.slice(1)
+//     return input
+//     console.log(input)
+//   }
+//   console.log(output)
+// }
 
-capitalize('nike')
+// capitalize('nike')
+
+
+
+
+// var result = []
+// result.push(0)
+// return result
+// console.log(result)
+
+// var arr = [1, 2, 3]
+// console.log(arr[0])
+
+// var result = []
+// var arr = [1, 2, 3]
+// result.push(arr[0])
+// console.log(result)
+// return result
+
+function double(x) {
+  return x*2
+}
+var arr = [1, 2, 3]
+var result = []
+result.push(double(arr[0]))
+console.log(result)
+return result

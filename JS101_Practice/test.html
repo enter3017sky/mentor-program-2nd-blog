@@ -12,6 +12,29 @@
 <script>
 debugger
 
+function transform(arr,transformFunction){
+	var result = []
+	for(var i =0; i < arr.length; i++) {
+	  result.push(transformFunction(arr[i]))
+	}
+    return result
+}
+function double(x) {
+	return x*2
+}
+console.log(transform([1,2,3],double))
+
+
+
+function star(i){
+  var result = ''
+  for(var j = 1; j <=i; j++){
+    result += '*'
+  }
+  return result
+}
+console.log(star(5))
+
 function testI(n){
   for(let i = 1; i <= n; i++) {
     var result = ''
