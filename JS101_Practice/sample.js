@@ -34,11 +34,11 @@ var alternateCase = function( input){
 }
 
 
-/*
+/**** 
   function: buildTower
   floor: 樓層高度 
   output: 輸出內容
-  */
+****/
 
 var buildTower = function( floor){
   var output = [];                                // 初始化輸出內容為空白陣列
@@ -53,7 +53,7 @@ var buildTower = function( floor){
     }
     output[i] = space + star + space;
   }
-  console.log(output);        // 直接打印陣列，輸出內容的空白會被精簡，看不出效果！
+  console.log(output);               // 直接打印陣列，輸出內容的空白會被精簡，看不出效果！
 }
 buildTower(3)
 
@@ -67,7 +67,7 @@ buildTower(3)
 
 function test(n) {
   output = ''
-  for( var i = 0; i < n; i++){
+  for( var i = 0; i < n; i ++){
     output += '*'
   }
   return output
