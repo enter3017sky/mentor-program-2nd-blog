@@ -13,32 +13,31 @@ star(10) 預期輸出：
 */
 
 // forloop 正解
-function star(n) {
-	var result = ''
-	for(var i = 1; i <= n; i++) {
-		result += '*'
-	}
-	console.log(result)
+function star (n) {
+  var result = ''
+  for (var i = 1; i <= n; i++) {
+    result += '*'
+  }
+  console.log(result)
+  // return result
 }
 star(3)
+star(5)
+star(7)
+
+// // while loop
+// function star (n) {
+//   var result = ''
+//   var i = 0
+//   while (i < n) {
+//     result += '*'
+//     i++
+//   }
+//   // console.log(result)
+//   return result
+// }
+// console.log(star(5))
 // star(5)
-
-
-
-//while loop
-function star(n) {
-	var result = ''
-	var i = 0
-	while (i < n){
-		result += '*'
-		i++
-	}
-	console.log(result)
-}
-star(10)
-
-
-
 // *號 單顆 一排
 // function star1(n){
 // 	result = '*'
@@ -48,14 +47,12 @@ star(10)
 // }
 // star1(3)
 /*
-
-result = 
+result =>
 *
 *
 *
 
 */
-
 
 // function star(n){
 // 	var result = ''
@@ -69,27 +66,30 @@ result =
 // star(10)
 
 /*
-
-result = 
+result =
 *
 **
 ***
 
 */
 
+// output = ''
+// 產生一個星星
+// output 加上一個星星
+// if (還沒到五個星星)
+// 	goto line 3
+// }
+// return output
 
 
-	// output = ''
-	// 產生一個星星
-	// output 加上一個星星
-	// if (還沒五個星星)
-	// 	goto line 51
-	// }
+// //改變一下內容，就變成repeat函式了
+// function repeat(str, n){
+// 	var result = ''
+// 	for (i = 1; i <= n; i++){
+// 		result += str //執行n次
+//   }
+//   console.log(result)
+// }
+// repeat('!', 7)
 
-	// function star(n){
-	// 	var result = ''
-	// 	for (i = 1; i <= n; i++){
-	// 		result += '*'
-	// 	}
-	// }
-	// console.log(star(3))
+

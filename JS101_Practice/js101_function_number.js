@@ -12,7 +12,7 @@ console.log(c.toString())
 // 字串變數字
 
 var a = 10
-var b = '20'
+var b = '20.123'
 
 // 兩個方法 Number() 或 parseInt(參數,幾進位)
 console.log(a + Number(b))

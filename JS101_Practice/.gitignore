@@ -1,3 +1,11 @@
 node_modules
 .vscode/
+<<<<<<< HEAD
+/mtr02_blog.code-workspace
 mtr02_blog.code-workspace
+.code-workspace
+../mtr02_blog.code-workspace
+.swp
+=======
+mtr02_blog.code-workspace
+>>>>>>> 5b3dd28705e7d49099235463b5dec2bcc3ec8da8

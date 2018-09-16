@@ -19,9 +19,9 @@ table(7) 預期輸出：
  */
 
 function table (n) {
-  result = n
+  // var result = n 多餘的
   for (var i = 1; i <= 9; i++) {
-    console.log(n + '*' + i + '=' + n * i)
+    console.log(n + '*' + i + ' = ' + n * i)
   }
   console.log(' ')
 }

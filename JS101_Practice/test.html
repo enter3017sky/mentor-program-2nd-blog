@@ -12,70 +12,46 @@
 <script>
 debugger
 
-function reverse (str) {
-  var reverseStr = ''
-  for (var i = str.length - 1; i >= 0; i--) {
-    reverseStr += str[i]
-  }
-  console.log(reverseStr)
+function transform(arr,transformFunction){
+	var result = []
+	for(var i =0; i < arr.length; i++) {
+	  result.push(transformFunction(arr[i]))
+	}
+    return result
 }
-reverse('nike')
+function double(x) {
+	return x*2
+}
+console.log(transform([1,2,3],double))
 
-function forloop () {
-  for (var i = 1; i <= 9; i++) {
-    console.log(i)
+
+
+function star(i){
+  var result = ''
+  for(var j = 1; j <=i; j++){
+    result += '*'
+  }
+  return result
+}
+console.log(star(5))
+
+function testI(n){
+  for(let i = 1; i <= n; i++) {
+    var result = ''
+    for(var j = 1; j <=i; j++){
+      result += '*'
+    }
+    console.log(result)
+  }
+  for(let i = n-1; i > 0; i--){
+    var result = ''
+    for(var j = 1; j <=i; j++){
+      result += '*'
+    }
+    console.log(result)
   }
 }
-forloop()
-// console.log(forloop()) 
-
-
-
-// <!-- 
-// function star(n) {
-// 	result = ''
-// 	for (var i = 0; i < n; i++) {
-// 		result += '*'
-// 		console.log(result)
-// 	}
-// }
-// star(5)
-
-
-
-
-
-// function transform(arr, transformFunction) {
-// 	var result = []
-// 	for(var i = 0; i < arr.length; i++) {
-// 		result.push(transformFunction(arr[i]))
-// 	}
-// 	return result
-// }
-
-// function double(x) {
-// 	return x * 2
-// }
-
-// //也可以多加一個 function
-// // function triple(x) {
-// // 	return x * 3
-// // }
-
-
-// console.log(
-// 	transform([1, 2, 3], double)
-// )
-// //transform([1, 2, 3], double) => [ 2, 4, 6 ]
-
-
-// // console.log(
-// // 	transform([1, 2, 3], triple)
-// //transform([1, 2, 3], triple) => [ 3, 6, 9 ]
-
-// 	 -->
-	
-
+testI(5)
 
 </script>
 
