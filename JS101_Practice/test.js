@@ -7,7 +7,6 @@
 // // forloop()
 // console.log(forloop())
 
-<<<<<<< HEAD
 // var score = [30, 20, 50, 70, 70]
 // var sum = 0
 // for (var i = 0; i < score.length; i++) {
@@ -117,13 +116,6 @@
 
 function double(x) {
   return x*2
-=======
-var score = [30, 20, 50, 70, 70]
-var sum = 0
-for (var i = 0; i < score.length; i++) {
-  console.log(score[i])
-  sum = sum + score[i]
->>>>>>> 5b3dd28705e7d49099235463b5dec2bcc3ec8da8
 }
 var arr = [1, 2, 3]
 var result = []
