@@ -12,3 +12,7 @@ function star(n) {
   }
 }
 star(5)
+
+
+check 1
+
