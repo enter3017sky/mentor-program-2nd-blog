@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+
+
+    body{
+      margin:0;
+    }
+    /* div {
+      /* margin-top:8px;
+      margin-left:8px; 
+      color:rgb(57, 55, 194);
+      background:rgb(199, 199, 199);
+      width:180px;
+      height:50px;
+      text-align: center;
+      display:inline-block;
+      border:1px solid rgb(169, 169, 169);
+      border-radius:5px;
+    }
+    .btn:focus {
+      color:rgb(245, 121, 220);
+      background:rgb(250, 6, 6);
+    }
+    .btn:hover {
+      cursor: pointer;
+      color:rgb(26, 24, 107);
+      background:gray;
+    }
+    .btn:avtive {
+      color:red;
+      background: yellow;
+    }
+
+    .btn {
+      font-size: 30pt;
+    } */
+    /* .btn:focus {
+      background:gray;
+    } */
+
+    /* @media screen and (max-width:700px){
+      body {
+        background:rgb(74, 74, 74);
+      }
+      #box1 {
+        display:none;
+      }  
+    } 
+    @media screen and (min-width:600px){
+      body {
+        background:gray;
+      }
+    }
+    input.submit:hover{
+      cursor: pointer;
+    }
+    input.submit:active{
+      color: orange;
+    }
+    .box:first-child{
+      background: green;
+    }
+    .box:nth-child(1){
+      margin-left:0px;
+    } */
+    .box {
+      width:100px;
+      height:100px;
+      display:inline-block;
+      background:rgb(18, 81, 176);
+      /* margin-left: 20px; */
+      position: relative;
+      transition: all 0.3s ease-in;
+      /* all：對所有屬性有變化、時間、變化 */
+    }
+    .box:hover {
+      background: orange;
+    }
+    
+    /* .box:nth-child(2n+1){
+      background:rgb(149, 244, 149);
+    } */
+    /*
+
+
+    ### CSS Selector 
+    > 排版很好用 
+    1. div + ul
+    2. div ~ ul
+    同一個階層的情況下
+    .first + .box：選取 first 後面第一個.box的元素
+    .first + .box{
+      background: green;
+      margin-left: 10px;
+    }
+    .first ~ .box：選取 first 後面所有的 .box 
+    .first ~ .box{
+      background: green;
+      margin-left: 10px;
+    }
+    .box + .box：選取第一個以外的所有 box
+    > 排版用。設定 box 之間的 margin，這個方法是第一個以外的 box 加上 margin。
+    trans
+    .box + .box{
+      background: green;
+      margin-left: 10px;
+    }
+    */
+    .first{
+      background:black;
+    }
+    .box + .box{
+      background: green;
+      margin-left: 10px;
+    }
+    .box:hover {
+      background: orange;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <div class='first'>first</div>
+    <div class='box'>box</div>
+    <div class='box'>box</div>
+    <div class='box'>box</div>
+    <div class='box'>box</div>
+    <div class='box'>box</div>
+  </div>
+        
+
+
+  <!-- <div class='box'>box</div>
+  <div class='box'>box</div>
+  <div class='box'>box</div>
+  <div class='box'>box</div>
+  <div class='box'>box</div>
+  <div class='box'>box</div> -->
+
+
+  <!-- <div class='box'>box</div> -->
+  <!-- <div class='btn'>Click Me!</div>
+  <button class='btn'>Click Me!</button>
+  <input type='text' name='email' />
+  <input class='submit' type='submit' name='Submit' /> -->
+</body>
+</html>
+
+

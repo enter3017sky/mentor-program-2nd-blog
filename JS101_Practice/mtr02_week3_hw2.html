@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang='zh-tw'>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>hw2：仿 Medium</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            margin:0px;
+            font-family: medium-content-sans-serif-font,"Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Arial,sans-serif;
+        }
+        .clap {
+            position: fixed;
+            margin: 0 auto;
+            top: 150px;
+            left: 50px;
+            border:1px solid gray;
+            width: 60px;
+            height: 60px;
+            border-radius: 30px;
+        }
+        .clap__num {
+            position: absolute;
+            top: 12px;
+            right: 10px;
+        }
+        .clap__hand {
+            position: relative;
+            top: 29px;
+            left: 21px;
+        }
+        .wrapper {
+            max-width: 840px;
+            display: block;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .content__title > h1 {
+            font-size: 38px;
+        }
+        .article {
+            font-size: 20px;
+        }
+        .content__title__img {
+            display: flex;
+            padding: none;
+        }
+        .title__img {
+            width: 100%;
+            max-width: 600px;
+            max-height: 300px;
+            height: auto;
+            display: block;
+            margin: auto;
+        }
+        h2 {
+            margin-top: 60px;
+        }
+        .h2_imgae {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: auto;
+        }
+        @media screen and (max-width: 1100px){
+            .clap {
+                display:none;
+            }
+            .content__title__img {
+                margin: none;
+                padding: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class='clap'>
+            <div class='clap__num'>1209</div>
+            <div class='clap__hand'>👏</div>
+        </div>
+        <div class='wrapper'>
+            <div class='content__title'>
+                <h1>Why Learning to Code Is Soooo Hard?</h1>
+                <h4>… and what you can do to make it easier</h4>
+            </div>
+        </div>
+        <div class='content__title__img'>
+            <img class='title__img' src='https://cdn-images-1.medium.com/max/2000/1*-Dwut8j70FpWTMt1aNT2kw.png'>
+        </div>
+        <div class='wrapper'>
+            <div class='article'>
+                <p>When we read stories about children learning to code it’s tempting to assume that coding is easy, but it’s not — it’s hard. You might be ten minutes or ten hours into your coding adventure, but eventually, it’ll come: the first seemingly insurmountable problem. We’ve all been there, and unfortunately for some, the frustration is too much, and they give up — never to code again.</p>
+                <p>How you learn to deal with these frustrations will define your coding career, because, at its most basic, coding is problem-solving. After that first problem, there’ll be another, and another after that. You never finish learning to code; there’s always another, harder, problem to solve somewhere in the distance.</p>
+                <p>So how can we overcome our frustration and keep moving forward? Here are three steps anyone can take to help overcome their coding frustration:</p>
+                <h2>Step 1: Accept Frustration as Part of Learning</h2>
+                <p>As adults, we are rarely tested with difficult problems. The frustration you feel when you hit a coding brick wall is unusual, and that makes it uncomfortable. To succeed, you must accept that these uncomfortable moments are part of the learning process.</p>
+                <p>Coding requires a certain way of thinking, and these frustrating scenarios force your brain to change how it thinks, helping you improve in the long-run. The process of struggling and then finding a solution is as important to your growth as learning the answer to the problem.</p>
+                <img class='h2_imgae' src='https://cdn-images-1.medium.com/max/1600/1*c5iqv6U2kJuz0BhPJJidBw.gif' style='max-width: 430px;
+                max-height: 272px;'>
+                <p>The ability to deal with and overcome this frustration, even to find enjoyment in it, is what separates successful programmers from those who fail to learn.</p>
+                <a href='https://medium.com/sololearn/why-learning-to-code-is-soooo-hard-3c2372e9d12c' target='_blank'>Read More...</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

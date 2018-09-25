@@ -8,14 +8,14 @@
 
 // computerscience
 
-function findStr(str, find){
-  let str = ''
-  for (let i = 1; i <= str.length; i++) {
-    if (i > str.length){
-      console.log(str.index)
-    }
-  }
-}
+// function findStr(str, find){
+//   let str = ''
+//   for (let i = 1; i <= str.length; i++) {
+//     if (i > str.length){
+//       console.log(str.index)
+//     }
+//   }
+// }
 
 
 
@@ -107,6 +107,23 @@ VPN = Virtual Private Network
 
 
 
+/* CS101 class  9-1
+post 端口;連接阜
 
+我的電腦的位址
+127.0.0.1
+localhost
+
+*/
+
+function test(d) {
+  var d = 20
+  function test2 (c) {
+    console.log(d)
+    var
+  }
+  test2(10)
+}
+test(15)
 
 
