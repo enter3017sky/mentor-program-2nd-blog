@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 // function star(n) {
 //   result = '';
@@ -52,3 +53,8 @@ primes.length                   // => 4：陣列中有多少元素。
 primes[primes.length - 1]       // => 7：陣列中最後一個元素
 
 console.log(primes[primes.length - 1])
+=======
+console.log('hello world')
+console.log('hello world')
+console.log('hello world')
+>>>>>>> c5f3374dd82fc55ee638fda939f55c613f6e1709
