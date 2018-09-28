@@ -40,3 +40,9 @@ HTTP Method (Request)
 5. DELETE: DELETE 方法會刪除指定資源.
 6. OPTIONS: OPTIONS 方法描述指定資源的溝通方法（communication option）。
 7. HEAD: HEAD 方法請求與 GET 方法相同的回應，但它沒有回應主體（response body）。
+
+
+
+
+
+

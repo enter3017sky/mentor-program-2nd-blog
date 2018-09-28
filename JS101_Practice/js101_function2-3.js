@@ -16,7 +16,7 @@
 
 
 
-// print裡面打什麼就傳什麼出來
+// // print裡面打什麼就傳什麼出來
 // function print(anything) {
 //   console.log(anything)
 // }
@@ -35,14 +35,15 @@
 
 
 
-
-function print(anything) {
-  anything() 
-}
-function hello() {
-  console.log('hello')
-}
-print(hello)
+// // 把 hello 這個 function 傳進去
+// // anything 其實就是 hello
+// function print(anything) {
+//   anything() 
+// }
+// function hello() {
+//   console.log('hello')
+// }
+// print(hello)
 
 
 
@@ -79,7 +80,6 @@ function transform(x, transformFunction) {
 function test(x) {
   return x * 2
 }
-
 console.log(
   transform(10, test)
 )
@@ -91,7 +91,7 @@ transformFunction = function(x) {
   }
 
 */
-function transform (arr, transformFunction) {
+function transform(arr, transformFunction) {
   var result = []
   for (var i = 0; i < arr.length; i++) {
     result.push(transformFunction(arr[i]))
@@ -99,9 +99,9 @@ function transform (arr, transformFunction) {
   return result
 }
 
-// function double(x) {
-//  return x * 2
-// }
+function double(x) {
+ return x * 2
+}
 
 // 也可以多加一個 function
 // function triple(x) {

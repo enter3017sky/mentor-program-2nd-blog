@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript">
+document.addEventListener('DOMContenLoaded', loaded)
+function loaded(){
+    var test = document.getElementById('test')
+    test.innerHTML = '<ul><li>1</li><li>2</li></ul>';
+    test.style.background = 'red';
+    test.style.margin = '20px';
+}
+
+</script>
+</head>
+
+<body>
+    <div id="test">
+    <div style="color:yellow">hello</div>
+    </div>
+</body>
+</html>
