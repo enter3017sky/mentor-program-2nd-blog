@@ -2,14 +2,11 @@
 
 ```javascript
 
-
-
 // 雙斜線(double slashes) 之後的是中文註解。
 // 請仔細閱讀中文註解：它們解釋 JavaScript 的程式碼。
 // 變數是值的符號名稱（symbolic name）。
 
 var x ;    // 宣告名為 x 的變數。
-
 
 // 值可用 = 號指定給變數。
 x = 0;     // 現在變數 x 有值 0
