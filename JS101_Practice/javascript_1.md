@@ -1,5 +1,4 @@
 
-
 ```javascript
 
 // 雙斜線(double slashes) 之後的是中文註解。
@@ -130,13 +129,4 @@ a.reverse();                // 另外一個方法：反轉（reverse）元素順
 
 
 
-
-
-
-
 ```
-
-
-
-
-

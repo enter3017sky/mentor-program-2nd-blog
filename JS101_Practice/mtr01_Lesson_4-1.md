@@ -95,6 +95,7 @@ test.style.margin = '20px' // 改變 margin
 
 
 ## 真的很想放前面？添加 Event Listener
+
 > 延伸閱讀 [DOMContentLoaded 與 load 的區別](https://www.cnblogs.com/caizhenbo/p/6679478.html)
 
 - 假設網頁上面有一張圖片，如果你用 `DOMContenLoaded` 可能還沒載入好，用 `window 的 load` 的話，它保證你所有東西都加載完成，才會觸發。
@@ -150,6 +151,7 @@ document.getElementById('#btn').addEventListener('click',
 ```
 
 - 這個範例跟`EventListener`的範例，效果是一樣的。
+
 ```javascript
 document.addEventListener('DOMContenLoaded', loaded)
 function loaded(){
@@ -162,8 +164,10 @@ function loaded(){
 
 
 ## 匿名函式
+
 - 把 function 的名字去掉，直接貼到 document.addEventListener 的參數裡面。
 - 就變成匿名函式 好處是比較簡潔。
+
 ```javascript
 // 把 function 的名字去掉，直接貼到 document.addEventListener 的參數裡面。
 // 就變成匿名函式 好處是比較簡潔。
@@ -173,11 +177,9 @@ document.addEventListener('DOMContenLoaded', function (){
     test.style.background = 'red';
     test.style.margin = '20px';
 })
-
 ```
+
 >其實前端的JS基礎就是這兩個東西，基本上我們想要的操縱，可以透過把這兩個東西組合而成，而達成。而前端的互動，按按鈕、發表單，這些東西都是事件，所以既然你有 EventListener 的話，你就可以新增一個事件，去聽這些東西，做出反應。第二個重點 DOM 可以操縱任何物件，它用 JS 改 HTML 的任何東西，我們可以用 callback function 改一些東西，這兩個東西組合而成，幾乎可以做我們想要做的任何事。
-
-
 
 27:15
 
