@@ -5,51 +5,93 @@
  */
 
 // function hello() {
-// 	console.log('hello')
+//   console.log('hello')
 // }
+
 
 // var hello = function() {
-// 	console.log('hello')
+//   console.log('hello')
 // }
-
 // hello()
 
+
+
+// // print裡面打什麼就傳什麼出來
 // function print(anything) {
-// 	console.log(anything)
+//   console.log(anything)
+// }
+// print('testtttttt12333333')
+
+
+// // 假設現在另外有一個function hello()
+// function print(anything) {
+//   console.log(anything)
 // }
 // function hello() {
-// 	console.log('hello')
+//   console.log('hello') // 不會執行
+// }
+// // 把 function 當作一個參數傳進去
+// print(hello)
+
+
+
+// // 把 hello 這個 function 傳進去
+// // anything 其實就是 hello
+// function print(anything) {
+//   anything() 
+// }
+// function hello() {
+//   console.log('hello')
 // }
 // print(hello)
 
+
+
+
 // function print(anything) {
-// 	anything()
+//   console.log(anything)
 // }
 // function hello() {
-// 	console.log('hello')
+//   console.log('hello')
 // }
 // print(hello)
 
-// //脫褲子放屁的範例
-// function transform(x, transformFunction) {
-// 	return transformFunction(x)
-// }
-// function test(x) {
-// 	return x * 2
-// }
 
-// console.log(
-// 	transform(10, test)
-// )
+
+
+
+// function print(anything) {
+//   anything()
+// }
+// function hello() {
+//   console.log('hello')
+// }
+// print(hello)
+
+
+
+
+
+
+//脫褲子放屁的範例
+function transform(x, transformFunction) {
+  return transformFunction(x)
+}
+function test(x) {
+  return x * 2
+}
+console.log(
+  transform(10, test)
+)
 
 /*
 
 transformFunction = function(x) {
-		return x * 4
-	}
+  return x * 4
+  }
 
 */
-function transform (arr, transformFunction) {
+function transform(arr, transformFunction) {
   var result = []
   for (var i = 0; i < arr.length; i++) {
     result.push(transformFunction(arr[i]))
@@ -57,22 +99,22 @@ function transform (arr, transformFunction) {
   return result
 }
 
-// function double(x) {
-// 	return x * 2
-// }
+function double(x) {
+ return x * 2
+}
 
 // 也可以多加一個 function
 // function triple(x) {
-// 	return x * 3
+//  return x * 3
 // }
 
 // console.log(
-// 	transform([1, 2, 3], double)
+//  transform([1, 2, 3], double)
 // )
 // transform([1, 2, 3], double) => [ 2, 4, 6 ]
 
 // console.log(
-// 	transform([1, 2, 3], triple)
+//  transform([1, 2, 3], triple)
 // )
 // transform([1, 2, 3], triple) => [ 3, 6, 9 ]
 
@@ -94,7 +136,7 @@ https://www.lidemy.com/courses/387030/lectures/5903131
 */
 
 /*
-	引數（Argument）與參數（Parameter）
+  引數（Argument）與參數（Parameter）
 
 引數 argument，在用的時候，call function的時候叫引數，JavaScript特有的，知道就好了
 參數 parameter，他在function裡面長什麼樣子
@@ -126,7 +168,7 @@ var a = {
   0: 456
 }
 
-a.b	// or
+a.b // or
 a['b']
 
 a[0] // Object

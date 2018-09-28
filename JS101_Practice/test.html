@@ -12,6 +12,25 @@
 <script>
 debugger
 
+function star(n) {
+  result = '';
+  for(let i = 1; i <= n; i++){
+    console.log(i)
+    for(let j = 1; j <= i; j++){
+    }
+  }
+  // for (var i = 1; i > n; i--) {
+  //   console.log(i)
+  //   // for(let j = 1; j <= i; j++){
+  //   //   result += '*'
+  //   //   console.log(result)
+  //   // }
+  // }
+}
+star(5)
+
+
+
 function transform(arr,transformFunction){
 	var result = []
 	for(var i =0; i < arr.length; i++) {
@@ -58,17 +77,51 @@ testI(5)
 
 </head>
 <body>
-	
-	debugger 是 Chrome 提供用來偵錯工具 
-
-	Dev tools 開著，然後重新整理網頁
-
-	會跳去 Sources 的地方，按右邊區塊的 Step(或按fn+F9)
-
-	在 Watch 按 + 號，可以新增你想看的變化項目
-	譬如輸入 i ，可以看 i 值的變化
-
-	Dev Tools 按下左邊的排序，可以設成中斷點，也可以設多個中斷點
-
+    <form>
+      <div>
+        姓名：<input type="text" />
+      </div>
+      <div>
+        密碼：<input type="password" />
+      </div>
+      <div>
+          <input type="submit" value="送出表單"" />
+      </div>
+      <div>
+          生理性別：<input type="radio" name="gender" id="male" /><label for="male">男性</label>
+          <input type="radio" name="gender" id="female" /><label for="female">女性</label>
+          <input type="radio" name="gender" id="other" /><label for="other">其他</label>
+      </div>
+      <div>
+        興趣：<input type="checkbox" id="sports" /><label for="sports">運動</label>
+        <input type="checkbox" id="readind" /><label for="readind">閱讀</label>
+        <input type="checkbox" id="print" /><label for="print">畫畫</label>
+      </div>
+    </form>
+    <table>
+        <tr>
+            <th>姓名</th>
+            <th>國文分數</th>
+            <th>英文分數</th>
+        </tr>
+        <tr>
+            <td>小明</td>
+            <td>70</td>
+            <td>80</td>
+        </tr>
+        <tr>
+            <td>小花</td>
+            <td>89</td>
+            <td>65</td>
+        </tr>
+    </table>
+    <div>
+    debugger 是 Chrome 提供用來偵錯工具 
+    Dev tools 開著，然後重新整理網頁
+    會跳去 Sources 的地方，按右邊區塊的 Step(或按fn+F9)
+    在 Watch 按 + 號，可以新增你想看的變化項目
+    譬如輸入 i ，可以看 i 值的變化
+    Dev Tools 按下左邊的排序，可以設成中斷點，也可以設多個中斷點
+    </div>
 </body>
 </html>

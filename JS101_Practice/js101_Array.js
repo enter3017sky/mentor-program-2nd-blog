@@ -22,7 +22,7 @@ score.push(1000)
 console.log(score)
 // result => [ 1, 3, 5, 10, 100, 300, 500, 1000 ]
 
-// console 取得陣列長度 .length
+// 取得陣列長度 .length
 console.log(score.length)
 // result => 8
 
@@ -56,7 +56,7 @@ console.log(score[score.length - 1])
 
 
 var testArray = []
-testArray[10] = 100 //增加 10 個空陣列 
+testArray[10] = 10 //增加 10 個空陣列
 testArray.push(1000)
 testArray.push(0.7)
 console.log(testArray, testArray.length)

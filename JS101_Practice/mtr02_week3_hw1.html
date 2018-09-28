@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>  
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    body {
+        margin:0px; /* 消除遊覽器預設的margin */
+    }
+    .nav__bar {
+        background: #1F2835;
+        position: fixed; /* 這可以讓頁面捲動的時候，導航欄保持不動 */
+        width: 100%; /* 讓導航欄寬度跟頁網頁一樣 100% */
+    }
+    /* 
+    利用 Child combinator（子選取器）
+    選取 `.nav__bar > ul > li` or  `.nav__bar li` 目前看來效果一樣
+    設定 `display: inline;` 會從本來的無序清單，變成導航欄的樣式 
+    */
+    .nav__bar li { 
+        display: inline;
+    }
+    .nav__title { /* 設定導航欄title的字體及顏色 */
+        color: white;
+        font-size: 22px;
+    }
+    .nav__menu { /* 設定導航欄的菜單選項 */
+        color: #A3A5A7;
+        margin-left: 20px;
+        transition: color 0.7 ease-in;
+    }
+    .nav__menu:hover{ /* 設定滑鼠移到 menu 時呈現的效果 */
+        color: white;
+        /* font-size: 19px; */
+    }
+    .nav__menu:active{ /* 設定滑鼠點按 menu 時呈現的效果 */
+        color: rgb(100, 100, 242);
+    }
+    .head {
+        background: #E9EAEE;
+        margin: 0 auto;
+        width: 100%;
+    }
+    .wrapper {  /* 包住整個區塊的設定 */
+        max-width: 960px; /* 使用 max-width 替代 width 可以更完美的處理當瀏覽器視窗小於元素寬度的情況。內容才會縮放。 */
+        margin: 0 auto; /* 讓內容保持致中 */
+        padding: 42px 25px;
+        /* box-sizing: border-box; */
+        /* background: red; */
+    }
+    .head__title {
+        margin-top: 42px;
+        font-size: 72px;
+    }
+    .head__btn {
+        background: #1F7EF2;
+        border: none; /* 消除按鈕周圍的border */
+        border-radius: 5px; /* 設定按鈕的圓角 */
+        color: white;
+        font-size: 20px;
+        padding: 15px 30px;
+        transition: all 0.3s ease-in-out; /* 鼠標移到按鈕時顏色變化的效果 */
+    }
+    .head__btn:hover {
+        background: rgb(3, 93, 203); /* 鼠標移到按鈕的顏色變化 */
+    }
+    .pack {
+        display: inline-block;
+        max-width:32%; /* 設定寬度，才會分成三個等分 */
+    }
+    .pack + .pack { /* 三個區塊之間的 margin */
+        margin-left: 10px; 
+    }
+    .pack__title {
+        font-size: 36px;
+    }
+    .pack__btn {
+        width: 150px;
+        height: 42px;
+        background: #939393;
+        box-sizing: border-box;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        font-size: 16px;
+        transition: all 0.3s ease-in-out; 
+    }
+    .pack__btn:hover {
+        background: #838383;
+    }
+    footer {
+        border-top: 1px solid gray;
+        margin-top: 40px;
+        padding: 20px 0;
+    }
+    @media screen and (max-width:750px){
+        .pack {
+            display: block;
+            max-width: 100%;
+            /* margin-top: 30px; */
+        }
+        .pack + .pack {
+            margin-top: 20px;
+        }
+    }
+    </style>
+</head>
+<body>
+    <div class='main__page'>
+        <nav class='nav__bar'>
+            <ul>
+                <li class='nav__title'>NavBar</li>
+                <li class='nav__menu'><strong>Home</strong></li>
+                <li class='nav__menu'><strong>Link</strong></li>
+            </ul>
+        </nav>
+        <div class='head'>
+            <div class='wrapper'>
+                <div class='head__title'>Hello, World!</div>
+                    <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a startingpoint to careate something more unique.</p>
+                <button class="head__btn">Learn more >></button>
+            </div>
+        </div>
+        <div class='wrapper'>
+            <div class='pack'>
+                <div class='pack__title'>Heading</div>
+                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+                <button class="pack__btn">View details >></button>
+            </div>
+            <div class='pack'>
+                <div class='pack__title'>Heading</div>
+                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+                <button class="pack__btn">View details >></button>
+            </div>
+            <div class='pack'>
+                <div class='pack__title'>Heading</div>
+                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+                <button class="pack__btn">View details >></button>
+            </div>
+            <footer>
+                &#169; enter3017sky Homework v2.0
+                <!-- &#169 html 使用字元代碼的必要性。 -->
+            </footer>
+        </div>
+    </div>
+</body>
+</html>
+
