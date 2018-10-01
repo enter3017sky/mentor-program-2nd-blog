@@ -5,29 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<script type="text/javascript">
-document.addEventListener('DOMContenLoaded', loaded)
-function loaded(){
-    var test = document.getElementById('test')
-    test.innerHTML = '<ul><li>1</li><li>2</li></ul>';
-    test.style.background = 'red';
-    test.style.margin = '20px';
-}
-
-
-
-
-
-
-
-
-
-</script>
+    <style>
+    body {
+        margin:30px;
+    }
+    .addClass{
+        background: yellow;
+    }
+    </style>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded',function(){
+            document.querySelector('#minus').addEventListener('click', () => { // 第一件事情，要加1，所以要選到那個元素
+                var count = document.querySelector('.count h1').innerText; // 首先要知道裡面那個值是多少，「宣告變數 count 是文件選到的 .count 裡面的文字 (innerText)」
+                count = parseInt(count, 10) - 1 // 要把它轉成數字，不然數字跟字串相加會有奇怪的事情
+                document.querySelector('.count h1').innerText = count // 然後把結果寫回去 count 裡面
+            })
+            document.querySelector('#plus').addEventListener('click', () => { // 第一件事情，要加1，所以要選到那個元素
+                var count = document.querySelector('.count h1').innerText; // 首先要知道裡面那個值是多少，「宣告變數 count 是文件選到的 .count 裡面的文字 (innerText)」
+                count = parseInt(count, 10) + 1 // 要把它轉成數字，不然數字跟字串相加會有奇怪的事情
+                document.querySelector('.count h1').innerText = count // 然後把結果寫回去 count 裡面
+            })
+            
+        })
+    </script>
 </head>
-
 <body>
-    <div id="test">
-    <div style="color:yellow">hello</div>
+    <div class="count">
+        <h1>0</h1>
     </div>
+    <input type='button' id='minus' value='-1 !' />
+    <input type='button' id='plus' value="+1 !"/>
 </body>
 </html>
