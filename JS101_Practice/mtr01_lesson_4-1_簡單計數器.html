@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    body {
+        margin:30px;
+    }
+    .addClass{
+        background: yellow;
+    }
+    </style>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded',function(){
+
+            // 改成這樣也可以
+            document.querySelector('#minus').addEventListener('click', () => { 
+                var count = document.querySelector('.count').innerText; 
+                document.querySelector('.count').innerText = parseInt(count, 10) - 1 ;
+            })
+            document.querySelector('#plus').addEventListener('click', () => { 
+                var count = document.querySelector('.count').innerText; 
+                document.querySelector('.count').innerText = parseInt(count, 10) + 1 ;
+            })
+            // document.querySelector('#minus').addEventListener('click', () => { 
+            //     var count = document.querySelector('.count').innerText = parseInt(document.querySelector('.count').innerText, 10) - 1 ;
+            // })
+            // document.querySelector('#plus').addEventListener('click', () => { 
+            //     var count = document.querySelector('.count').innerText = parseInt(document.querySelector('.count').innerText, 10) + 1 ;
+            // })
+
+        })
+    </script>
+</head>
+<body>
+    <h1 class="count">
+        0
+    </h1>
+    <input type='button' id='minus' value='-1 !' />
+    <input type='button' id='plus' value="+1 !"/>
+</body>
+</html>

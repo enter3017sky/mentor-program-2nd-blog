@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded',function(){
+            var testClass = document.getElementsByClassName('test')
+            console.log(testClass)
+            testClass[0].innerHTML = '<ul><li>把 Hello 覆蓋掉的無序清單</li><li>用 innterHTML 產生的</li></ul>'
+            testClass[1].style.background = 'gray'
+            testClass[2].style.margin = '20px'
+            testClass.style.margin = '20px'
+        })
+        document.addEventListener('DOMContentLoaded',function(){
+            var testQueryAll = document.querySelectorAll('.test > p')
+            console.log(testQueryAll)
+            testQueryAll[1].style.color = 'blue'
+            testQueryAll[0].style.background = 'blue'
+            testQueryAll[1].style.background = 'green'
+            testQueryAll[2].style.background = 'red'
+        })
+    </script> varible
+</head>
+<body>
+    <div class="test">
+        <div>被覆蓋的 Hello</div>
+    </div>
+    <div class="test">
+        <div style="color:yellow">hello</div>
+        <p>123 querySelector 可以選到我</p>
+        <p>456 querySelector 沒辦法選到我</p>
+        <p>789 但 querySelectorAll 都可以選到</p>
+    </div>
+    <div class="test">
+        <div style="color:yellow">hello</div>
+    </div>
+</body>
+</html>

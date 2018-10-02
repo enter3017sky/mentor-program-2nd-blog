@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .close{
+            color: red;
+        }
+        .close:hover{
+            cursor: pointer;
+        }
+    </style>
+    <script>
+    var count = 1;
+    document.addEventListener('DOMContentLoaded', function (){
+        document.querySelector('#add').addEventListener('click', () => {
+            var text = document.querySelector('.text')
+            var item = document.createElement('li')
+            item.innerHTML = `
+                <div>
+                    ${text.value}
+                    <span class="close" data-text='${text.value}'>X</span>
+                </div>
+                `
+            document.querySelector('.list').appendChild(item)
+            text.value = '' // 優化：按完之後變空字串
+        })
+        // 我們對整個list 作監聽，
+        document.querySelector('.list').addEventListener('click', e => {
+            for(var i = 0; i < e.target.classList.length; i++) {
+                if(e.target.classList[i] === 'close') {
+                    // e.target.parentNode.parentNode.outerHTML = '' // span 父結點<div> 的父節點<li> 為 '' 空字串 
+                    // document.querySelector('.list').removeChild(e.target.parentNode.parentNode)
+                    e.target.parentNode.parentNode.parentNode.removeChild(e.target.parentNode.parentNode)
+
+                }
+            }
+        })
+    })
+    </script>
+</head>
+<body>
+    <ul class='list'>
+        <li>買早餐</li>
+        <li>買咖啡</li>
+    </ul>
+    <input type='text' class='text'placeholder='請輸入to-do' />
+    <input type='button' id='add' value='add' />
+</body>
+</html>
+
+
+
