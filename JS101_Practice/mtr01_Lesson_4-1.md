@@ -92,7 +92,6 @@ test.style.margin = '20px' // 改變 margin
 </body>
 ```
 
-
 ## 真的很想放前面？添加 Event Listener
 
 > 延伸閱讀 [DOMContentLoaded 與 load 的區別](https://www.cnblogs.com/caizhenbo/p/6679478.html)
@@ -180,9 +179,7 @@ document.addEventListener('DOMContenLoaded', function (){
 
 >其實前端的JS基礎就是這兩個東西，基本上我們想要的操縱，可以透過把這兩個東西組合而成，而達成。而前端的互動，按按鈕、發表單，這些東西都是事件，所以既然你有 EventListener 的話，你就可以新增一個事件，去聽這些東西，做出反應。第二個重點 DOM 可以操縱任何物件，它用 JS 改 HTML 的任何東西，我們可以用 callback function 改一些東西，這兩個東西組合而成，幾乎可以做我們想要做的任何事。
 
-27:15
-
-### 各式各樣的 DOM 操作
+# 各式各樣的 DOM 操作
 
 > __document.querySelector(‘.btn’)__
 > __document.querySelectorAll(‘.btn’)__
@@ -192,12 +189,12 @@ document.addEventListener('DOMContenLoaded', function (){
 > __newDiv.classList.add('foo')__
 > __newDiv.classList.toggle('foo')__
 
+## document.getElementsByClassName(‘btn’)
 
-#### document.getElementsByClassName(‘btn’)
-> 就像操縱陣列差不多，
+> 就像操縱陣列差不多，
 
 ```javascript
-// 在 DevTools 查看 console ，HTMLCollection 有三個東西。
+// 在 DevTools 查看 console ，HTMLCollection 有三個東西。
 HTMLCollection(3) [div.test, div.test, div.test]
 0: div.test
 1: div.test
@@ -228,37 +225,31 @@ length: 3
 </body>
 ```
 
-### 但如果要選取到 .test 底下的 <p> 呢?
+### 但如果要選取到 .test 底下的 \<p> 呢?
 
 > __document.querySelector(‘.btn’)__
 > __document.querySelectorAll(‘.btn’)__
 > 之前的範例是用在 CSS ，不過是一樣的。
 
-#### __document.querySelector(‘.btn’)__ 的範例。
+### __document.querySelector(‘.btn’)__ 的範例。
 
 ```javascript
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded',function(){
-            var testClass = document.getElementsByClassName('test')
-            console.log(testClass)
-            testClass[0].innerHTML = '<ul><li>我是測試用無序清單</li><li>用 innterHTML 產生</li></ul>'
-            testClass[1].style.background = 'red'
-            testClass[2].style.margin = '20px'
-            testClass.style.margin = '20px'
-        })
-        document.addEventListener('DOMContentLoaded',function(){
-            var testQuery = document.querySelector('.test > p')
-            console.log(testQuery)
-            testQuery.style.color = 'green'
-            testQuery.style.background = 'black'
-        })
-    </script>
-</head>
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded',function(){
+        var testClass = document.getElementsByClassName('test')
+        console.log(testClass)
+        testClass[0].innerHTML = '<ul><li>我是測試用無序清單</li><li>用 innterHTML 產生</li></ul>'
+        testClass[1].style.background = 'red'
+        testClass[2].style.margin = '20px'
+        testClass.style.margin = '20px'
+    })
+    document.addEventListener('DOMContentLoaded',function(){
+        var testQuery = document.querySelector('.test > p')
+        console.log(testQuery)
+        testQuery.style.color = 'green'
+        testQuery.style.background = 'black'
+    })
+</script>
 <body>
     <div class="test">
         <div>hello</div>
@@ -276,15 +267,14 @@ length: 3
 
 #### __document.querySelectorAll(‘.btn’)__ 的範例。
 
-- 在 DevTools 查看 console ，就會多了跟 HTMLCollection 一樣的東西。NodeList(3) [p, p, p]。
-- 跟陣列很像的東西。
-- 用一樣的方放選取：`variable[index]`
+- 在 DevTools 查看 console ，就會多了跟 HTMLCollection 一樣的東西。NodeList(3) [p, p, p]。
+- 跟陣列很像的東西。
+- 用一樣的方法選取：`variable[index]`
 
-> 寫作業用這個就可以了。
+> 寫作業用這個就可以了。
 
 ```javascript
 // 修改過的範例
-<head>
 <script type="text/javascript">
     document.addEventListener('DOMContentLoaded',function(){
         var testClass = document.getElementsByClassName('test')
@@ -303,7 +293,6 @@ length: 3
         testQueryAll[2].style.background = 'red'
     })
 </script>
-</head>
 <body>
     <div class="test">
         <div>被覆蓋的 Hello</div>
@@ -319,9 +308,11 @@ length: 3
     </div>
 </body>
 ```
-#### __document.body.appendChild()__、__document.createElement(‘p’)__
-
-- 下列的範例中如果是`querySelector.appendChild('span')`，會顯示錯誤`Uncaught TypeError: Failed to execute 'appendChild' on 'Node': parameter 1 is not of type 'Node'.`
+
+### __document.body.appendChild()__、__document.createElement(‘p’)__
+
+- 下列的範例中如果是`querySelector.appendChild('span')`
+- 會顯示錯誤`Uncaught TypeError: Failed to execute 'appendChild' on 'Node': parameter 1 is not of type 'Node'.`
 
 
 1. 搭配使用：在`appendChild`方法的參數放`document.createElement()`方法
@@ -331,7 +322,7 @@ length: 3
 <script type="text/javascript">
     document.addEventListener('DOMContentLoaded',function(){
         var querySelector = document.querySelector('.test > p')
-        querySelector.appendChild(document.createElement('span')) //
+        querySelector.appendChild(document.createElement('span'))
     })
 </script>
 <body>
@@ -342,27 +333,26 @@ length: 3
 </body>
 ```
 
-2. 直接宣告一個變數是 `document.createElement('span')` 方法。
+2. 直接宣告一個變數是 `document.createElement('span')`方法。
 
 ```javascript
 <script type="text/javascript">
     document.addEventListener('DOMContentLoaded',function(){
-        var querySelector = document.querySelector('.test > p')// 創建 span 的位置
-        var s = document.createElement('span') // 宣告 s 是 createElement 方法
-        s.innerText = 'helloSpan' // 在創建的 span 裡面放入文字
-        querySelector.appendChild(s) // 最後「附加（appendChild()）」span 在 <p>123</p> 之後
+        var querySelector = document.querySelector('.test > p')// 創建 span 的位置
+        var s = document.createElement('span') // 宣告 s 是 createElement 方法
+        s.innerText = 'helloSpan' // 在創建的 span 裡面放入文字
+        querySelector.appendChild(s) // 最後「附加（appendChild()）」span 在 <p>123</p> 之後
     })
 </script>
 ```
-#### __newDiv.classList.add('foo')__
+
+### __newDiv.classList.add('foo')__
 
 - 用幫`classList.add` 幫 span 添加 `class="yellow"`
 
-33.07
-
 ```javascript
 <style>
-    .addClass{
+    .addClass{
         background:yellow;
     }
 </style>
@@ -377,7 +367,7 @@ length: 3
     </script>
 ```
 
-> __newDiv.classList.toggle('foo')__
+### __newDiv.classList.toggle('foo')__
 
 - 如果有就變沒有，有沒就變成有
 - 範例：新增移除 `.addClass`
@@ -411,7 +401,11 @@ length: 3
 </body>
 ```
 
-#### 簡單計數器
+---
+
+# 使用範例
+
+## 簡單計數器
 
 - 範例中我們知道了
 1. 要怎麼樣找這個元素
@@ -443,13 +437,13 @@ document.addEventListener('DOMContentLoaded',function(){
 </body>
 ```
 
-#### 另外一種做法
+### 另外一種做法
 
 - 本來把 count 的狀態(state)存在 HTML 的物件裡面，拿出來使用。
 - 另外一種做法
-1. 宣告一個變數 count ，確定宣告的值與 HTML 預設的數字是一樣的
-2. 執行動作 count--
-3. 然後讓 innerText = count 
+  - 1. 宣告一個變數 count ，確定宣告的值與 HTML 預設的數字是一樣的
+  - 2. 執行動作 count--
+  - 3. 然後讓 innerText = count 
 
 這樣就是我們改用變數，來儲存我們的現在的總合是多少，所以只要我改變這個變數 innerText 的內容就能改變
 
@@ -470,7 +464,7 @@ document.addEventListener('DOMContentLoaded',function(){
 </script>
 ```
 
-#### 又或者，把內容獨立出來變成一個 function
+### 又或者，把內容獨立出來變成一個 function
 
 > 增加可讀性
 
@@ -495,7 +489,7 @@ document.addEventListener('DOMContentLoaded',function(){
 </script>
 ```
 
-#### 如果要縮減的話
+### 如果要縮減 code 的話
 
 > 去掉`count--`變成`changeCountText(--count)`
 
@@ -520,9 +514,7 @@ changeCountText(count)
 count = count - 1
 ```
 
-
-
-### 簡單的 to do list
+## 簡單的 to do list
 
 - to do list 方法一
 
@@ -543,7 +535,6 @@ document.addEventListener('DOMContentLoaded', function (){
 <input type='text' class='text'placeholder='請輸入to-do' /> // placeholder 輸入框提供的資訊
 <input type='button' id='add' value='add' />
 ```
-
 
 - to do list 方法二
 
@@ -568,7 +559,7 @@ document.querySelector('.list').addEventListener('click', e => {
     console.log(e.target)    // e = event 所有點擊相關的資訊 ,  e.target 可以看到點擊到的東西是什麼
 ```
 
-#### 刪除代辦事項的方法：
+### 刪除代辦事項的方法：
 
 ```javascript
 var count = 1;
@@ -601,11 +592,9 @@ document.addEventListener('DOMContentLoaded', function (){
 })
 ```
 
-
 ### 超簡單表單示範
 
-- 用 onsubmit 的分法寫
-
+#### 用 onsubmit 的分法寫
 
 ```javascript
 function test(){
@@ -624,7 +613,8 @@ function test(){
 </form>
 ```
 
-DOM 方法
+### DOM 方法
+
 ```javascript
 
 document.addEventListener('DOMContentLoaded', function (){
