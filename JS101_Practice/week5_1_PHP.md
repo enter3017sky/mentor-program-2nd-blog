@@ -15,12 +15,13 @@ ftp 主機
 
 
 
+​RESTful 是在一種讓網址具有識別意義的設計風格
 
-GET /posts
-POST /posts
-DELETE /posts/:id
-PUT/PATCH /posts/:id
-GET   /post/:id
+GET         /posts
+POST        /posts
+DELETE      /posts/:id
+PUT/PATCH   /posts/:id
+GET         /post/:id
 
 CRUD
 Create / Read / Update / Delete
@@ -30,3 +31,7 @@ POST /add_posts
 DELETE /delete_posts/:id
 PUT /update_posts/:id
 GET   /get_post/:id
+
+
+callback
+cb{(...)}

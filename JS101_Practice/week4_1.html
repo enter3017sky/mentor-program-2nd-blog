@@ -3,47 +3,53 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>Week4 hw1 簡易計算機</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=9,IE=10,IE=11,IE=EDGE" />
     <style>
         .body {
             margin: 0;
-        }
-        .container {
-            box-sizing: border-box;
-            background: rgb(162, 237, 162);
         }
         .wrap {
             width: 300px;
             height:400px;
             margin:0 auto;
             margin-top:50px;
-            padding: 3px;
+            /* padding: 1px; */
             display: flex;
             flex-direction:column;
             justify-content: space-between;
             background: rgb(79, 78, 78);
             border-radius: 12px ;
-            box-shadow: rgb(171, 171, 171) 10px 10px 8px 3px; /*盒子的陰影:x偏移量 y偏移量 模糊半徑 延伸半徑*/
+            box-shadow: rgb(171, 171, 171) 2px 10px 50px 10px; /*盒子的陰影:x偏移量 y偏移量 模糊半徑 延伸半徑*/
         }
-        .number__display {
+        .number__display { /*顯示計算的區塊*/
             box-sizing: border-box;
-            width: 300px;
-            height: 120px;
+            /* width: 300px; */
+            /* height: 120px; */
             background: rgb(147, 147, 147);
-            padding-right: 10px;
-            border:1px double gray;
-            border-radius: 10px;
-            text-align: right;
+            box-sizing: border-box;
+            /* padding: 20px 10px 0 0; */
+            /* border:1px double gray; */
+            border-radius: 10px 10px 0 0;
+            text-align:end;
             font-size: 65px;
+            /* line-height: 10px; */
+            color: white;
+            font-weight: 200;
             /* position: absolute; */
         }
-
-        .part__btn {
+        .result {
+            position: relative;
+            top: 10px;
+            right: 14px;
+        }
+        .part__btn { /* 整個按鈕的區塊 */
             width: 100%;
             height:100%;
-            background: rgb(100, 100, 100);
-            box-sizing: border-box;
+            /* background: rgb(100, 100, 100); */
+            /* background: white; */
+            /* box-sizing: border-box; */
             border-radius: 10px;
             display: flex;
             flex-direction:column;
@@ -52,20 +58,21 @@
             width: 100%;
             height: 100%;
             display: flex;
-            padding:none;
-            /* flex-direction:row; */
-            justify-content: center;
-            align-content: center;
+            flex-direction:row;
+            justify-content: space-around; /* 按鈕平均 */
+            align-content: space-around;
         }
         .row > button {
-            width: 70px;
-            height: 58px;
+            /* width: 70px; */
+            width: 100%;
+            /* height: 58px; */
+            height: 100%;
             background: rgb(224, 224, 224);
-            border: 1px solid black;
-            margin: 2px;
-            border-radius: 10px;
-            display:flex;
-            align-items:center;
+            border: 1px solid rgb(142, 142, 142);
+            /* margin: 1px; */
+            /* border-radius: 10px; */
+            /* display:flex; */
+            /* align-items:center; */
             justify-content:center;
             font-size: 25px;
         }
@@ -76,68 +83,127 @@
             cursor: pointer;
             background: rgb(178, 178, 178);
         }
-
         div:nth-child(5) > button:nth-child(1) {
-            width:145px;
+            /* width:145px; */
+            padding: 0 54px; /* 按鍵 0 的大小 */
+            border-bottom-left-radius: 10px;
         }
+        div:nth-child(5) > button.btn.operator {
+            border-bottom-right-radius: 10px; /*等於的圓角*/
+        }
+        
         div:nth-child(1) > button:nth-child(4),
-        div:nth-child(2) > button.operator__btn,
-        div:nth-child(3) > button.operator__btn,
-        div:nth-child(4) > button.operator__btn,
-        div:nth-child(5) > button.operator__btn {
+        div:nth-child(2) > button.btn.operator,
+        div:nth-child(3) > button.btn.operator,
+        div:nth-child(4) > button.btn.operator,
+        div:nth-child(5) > button.btn.operator {
             background: rgb(245, 146, 62);
             color: white;
             font-size: 25px;
             /* background: rgb(194, 115, 47); */
         }
         div:nth-child(1) > button:nth-child(4):active,
-        div:nth-child(2) > button.operator__btn:active,
-        div:nth-child(3) > button.operator__btn:active,
-        div:nth-child(4) > button.operator__btn:active,
-        div:nth-child(5) > button.operator__btn:active {
+        div:nth-child(2) > button.btn.operator:active,
+        div:nth-child(3) > button.btn.operator:active,
+        div:nth-child(4) > button.btn.operator:active,
+        div:nth-child(5) > button.btn.operator:active {
             background: rgb(194, 115, 47);
             color: rgb(85, 85, 85);
         }
+        button {
+            outline: none;
+        }
     </style>
-    <script>
-        document.addEventListener('DOMContentLoaded')
-    </script>
 </head>
 <body>
-    <div class="container"></div>
-        <div class="wrap">
-            <div class="number__display">0</div>
-            <div class="part__btn">
-                <div class="row">
-                    <button class="operator__btn">AC</button>
-                    <button class="operator__btn">&#177;</button>
-                    <button class="operator__btn">&#37;</button>
-                    <button class="operator__btn">&#247;</button>
-                </div>
-                <div class="row">
-                    <button class="num__btn">7</button>
-                    <button class="num__btn">8</button>
-                    <button class="num__btn">9</button>
-                    <button class="operator__btn">&#215;</button>
-                </div>
-                <div class="row">
-                    <button class="num__btn">4</button>
-                    <button class="num__btn">5</button>
-                    <button class="num__btn">6</button>
-                    <button class="operator__btn">-</button>
-                </div>
-                <div class="row">
-                    <button class="num__btn">1</button>
-                    <button class="num__btn">2</button>
-                    <button class="num__btn">3</button>
-                    <button class="operator__btn">+</button>
-                </div>
-                <div class="row">
-                    <button class="num__btn">0</button>
-                    <button class="num__btn">.</button>
-                    <button class="operator__btn">=</button>
-                </div>
+    <div class="wrap">
+            <div class="number__display"><span class="result">0</span></div>
+        <div class="part__btn">
+            <div class="row">
+                <button class="btn operator">AC</button>
+                <button class="btn operator">&#177;</button>
+                <button class="btn operator">&#37;</button>
+                <button class="btn operator">&#247;</button>
+            </div>
+            <div class="row">
+                <button class="btn number number7">7</button>
+                <button class="btn number number8">8</button>
+                <button class="btn number number9">9</button>
+                <button class="btn operator">&#215;</button>
+            </div>
+            <div class="row">
+                <button class="btn number number4">4</button>
+                <button class="btn number number5">5</button>
+                <button class="btn number number6">6</button>
+                <button class="btn operator minus">-</button>
+            </div>
+            <div class="row">
+                <button class="btn number number1">1</button>
+                <button class="btn number number2">2</button>
+                <button class="btn number number3">3</button>
+                <button class="btn operator plus">+</button>
+            </div>
+            <div class="row">
+                <button class="btn number number0">0</button>
+                <button class="btn number">.</button>
+                <button class="btn operator equal">=</button>
             </div>
         </div>
+    </div>
 </body>
+<script>
+    let firstNumber = null;
+    let secondNumber = null;
+    let operator = null;
+
+        for (let i = 0; i <= 9; i++) {
+            document.querySelector('.number' + i).addEventListener('click', () => {
+                clickNumber(i)
+            })
+        }
+
+        document.querySelector('.operator.plus').addEventListener('click', () => {
+            handleOperator('+')
+        })
+        document.querySelector('.operator.minus').addEventListener('click', () => {
+            handleOperator('-')
+        })
+        document.querySelector('.operator.equal').addEventListener('click', () => {
+            handleOperator('=')
+        })
+    
+    function clickNumber(num) {
+        if (firstNumber === null) {
+            appendResult(num)
+        }
+    }
+
+    function handleOperator(op) {
+        if (op === '='){
+            secondNumber = Number(getResult());
+            if(operator === '+'){
+                getResult(firstNumber + secondNumber)
+            }else if(operator === '-') {
+                getResult(firstNumber - secondNumber)
+            }
+        } else {
+                firstNumber = Number(getResult());
+                setResult=('');
+                operator = op;
+            }
+    }
+
+    // 很多時候都會用到 result 這個東西，所以可以把它改成 function
+    function setResult(str) {
+        document.querySelector('.result').innerText = str;
+    }
+    function appendResult(str) {
+        // document.querySelector('.result').innerText = '';
+        document.querySelector('.result').innerText += str;
+    }
+    function getResult(str) { //可以把上面的數字給拿出來
+        return document.querySelector('.result').innerText
+    }
+
+</script>
 </html>

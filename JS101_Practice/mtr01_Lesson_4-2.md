@@ -18,7 +18,7 @@
 1. Method URL HTTP/version
 2. Host, Referer... 各種屬性
     - Host: 你要連到哪個網域
-    - Referer: 從哪邊連過來的(妳ㄕ))
+    - Referer: 從哪邊連過來的
     - Accept: 接受的形式是什麼
     - Accept-Language: 偏好的語言
 
@@ -76,12 +76,13 @@
   - 用 POST 指定到 GOOGLE 出現這個
   > 405 . That’s an error.
   > The request method POST is inappropriate for the URL /. That’s all we know.
-  - `<form method="GET"" action="http://google.com">`
-  - 連結到 Google 搜尋的畫面。
+  - `<form method="GET" action="http://google.com">`
+  > 連結到 Google 搜尋的畫面。
 
 #### \<form method="GET">
 
 - 資訊帶在網址後面，
+- GET 沒有 request body，所以會把資料帶到網址後面，例如：http://a.com?q=test&name=123
 - 帶更多的東西會用 & 隔開
 
 ```html
@@ -99,14 +100,13 @@
 
 ```html
 <form method="POST"> 
-<!-- POST: 資訊在DevTools的 Network 裡面 東西就可以帶到server 上面去，server 就可以對帳號密碼進行驗證。-->
+<!-- POST: 資訊在DevTools的 Network 裡面 東西就可以帶到server 上面去
+    ，server 就可以對帳號密碼進行驗證。-->
     username:<input type="text" name="name" />
     password:<input type="password" name="pwd" />
     <input type="submit" />
 </form>
 ```
-
-
 
 ### Form 溝通示範
 
@@ -115,28 +115,107 @@
 3. 後端接收到 q=test，回傳 Response
 4. 前端顯示 test 的搜尋結果頁面
 
-5. 前端點擊購買，利用 form 送出 POST http://a.com/buy
-  - item_id: 123
+5. 前端點擊購買，利用 form 送出 POST http://a.com/buy , item_id: 123
 6. 後端接收到 item_id 是 123，確認購買下單，傳回結果頁
 7. 前端顯示購買成功
 
-> 一共兩次來回，換了兩次頁面
-> a.com
-> a.com?q=test
-> a.com/buy
+    > 一共兩次來回，換了兩次頁面
+    > a.com
+    > a.com?q=test
+    > a.com/buy
 
 ### GET vs POST
 
+#### GET
+
 1. GET 就是在網址後面加上參數，?a=1&b=2&c=3
 2. 會自動做 URL encoded（這很重要）
- - JavaScript 可以用`encodeURIComponent`把`=`轉成`%3D`
- `decodeURIComponent`在把`%3D`變回`=`
+    - JavaScript 可以用 `encodeURIComponent` 把 `=` 轉成 `%3D`
+    - `decodeURIComponent` 在把 `%3D` 變回 `=`
 3. 因為是網址，所以有長度限制
 4. 因為是網址，所以不會放敏感資訊
 5. http://a.com/login?user=123&password=12345
 
+#### POST
 
-POST 把參數放在 request body 裡面
-適合拿來放敏感資訊，從網址什麼都看不出來
-POST http//a.com/login
-body: user=123 password=12345
+1. POST 把參數放在 request body 裡面
+2. 適合拿來放敏感資訊，從網址什麼都看不出來
+3. POST http//a.com/login
+4. body: user=123 password=12345
+
+---
+
+# Asynchronous JavaScript and XML
+
+## AJAX
+
+- 簡單來說就是透過瀏覽器提供的 API，可以不換頁就跟 Server 溝通
+- 應用：輸入帳號就能確認有沒有重複、留言之後不會換頁
+
+# Application Programming Interface
+
+- 重點：Interface，就是一個介接的東西
+- 舉例：
+
+    1. 你串接一下 Google 登入的 API
+    2. 我要用瀏覽器提供的 API 回到上一頁
+    3. 記得把 API 文件給我
+    4. 你 API 做好沒？
+    5. 這 API 有點問題，可能要修改一下
+- __你__ 要提供一個 API 給 __我__，__我__ 才可以用這個 API 去執行 __你__ 那邊的功能
+
+# 該怎麼使用 AJAX
+
+1. 找到你想要串接的 Web API
+2. 利用瀏覽器提供的 API 發送 Request 並且接收 Response
+3. API 文件很重要
+4. 資料格式是什麼？參數是什麼？網址是什麼？
+
+- 實際上透過瀏覽器提供的這兩個功能來達成這些事情：
+  - XMLHttpRequest
+    - 透過 XMLHttpRequest 建立的請求，其取得資料的方式可以為非同步（asynchronously）或同步（synchronously）兩種之一。
+    - 請求的種類是由 XMLHttpRequest.open() 方法的選擇性參數 async（第三個參數）決定。若 async 參數為 true 或是未指定，XMLHttpRequest 會被設定為非同步，相反的若為 false 則會被設定為同步。
+  - fetch
+
+  [使用 XMLHttpRequest - Web APIs | MDN](https://developer.mozilla.org/zh-TW/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest)
+
+```javascript
+<script type='text/javascript'>
+
+document.addEventListener('DOMContentLoaded', function(){
+
+  document.querySelector('button').addEventListener('click', () => {
+    var q = document.querySelector('input[name=id]').value
+    var request = new XMLHttpRequest();
+    request.open('GET', 'https://jsonplaceholder.typicode.com/posts/' + q, true);
+    // true 非同步, false 同步, 盡量用非同步。可省略。
+
+    request.onload = function() { // load好之後 後面接 什麼事件 (cb function )
+      if (request.status >= 200 && request.status < 400) {
+        var resp = request.responseText;
+        document.querySelector('.response').innerText = resp
+      } else {
+        document.querySelector('.response').innerText = 'error'
+      }
+    };
+  request.send();
+  })
+})
+</script>
+<body>
+    id: <input type="text" name="id" />
+    <button name='submit'>Search</button>
+    <div class='response'></div>
+</body>
+
+```
+
+### 可以看一些用法。
+
+[youmightnotneedjquery](http://youmightnotneedjquery.com/)
+
+### JSONP(JSON with padding)
+
+- 利用 <script> 可以跨域的特性拿到資料
+
+[輕鬆理解 Ajax 與跨來源請求](https://blog.techbridge.cc/2017/05/20/api-ajax-cors-and-jsonp/)
