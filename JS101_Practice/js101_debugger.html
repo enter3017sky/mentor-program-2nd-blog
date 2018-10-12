@@ -9,14 +9,18 @@
 	<script>
 	
 	debugger
-		var i = 1
-		do {
-		console.log(i)
-		i++
-		} while (i <= 100)
 
-		console.log('i=', i)
-	
+	function findSmallerTotal(arr, n) {
+    var total = 0;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] < n){
+        total += arr[i] ;
+        }
+    }
+	return total
+}
+
+console.log(findSmallerTotal([3, 2, 5, 8, 7], 999) )
 	</script>
 </head>
 <body>

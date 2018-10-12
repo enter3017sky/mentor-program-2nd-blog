@@ -1,9 +1,14 @@
-<?php
+## PHP
 
-echo 'hello world'
+- 後端程式語言，Apache 呼叫 php 處理 Request 並且回傳 Response
 
-?>
-
+```php
+<h1>
+    <?php
+        echo 'hello world'
+    ?>
+</h1>
+```
 
 
 

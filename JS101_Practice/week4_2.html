@@ -8,7 +8,7 @@
     <style>
         body {
             margin: 0;
-            font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+            font-family: 'Roboto,RobotoDraft,Helvetica,Arial,sans-serif';
         }
         .container__banner {
             width: 100%;
@@ -29,7 +29,7 @@
             max-width: 640px;
             margin: 0 auto;
             box-sizing: border-box;
-            /* background: rgb(250, 250, 250, 0.9); 透明的效果瀏覽器不同 */
+            /* background: rgb(250, 250, 250, 0.9); 透明的效果瀏覽器不同 */
             background: rgb(250, 250, 250);
             /* border: 2px dashed rgb(200, 200, 200); */
             box-shadow: rgb(171, 171, 171) 0 0 3px 3px;  /* 表單的陰影 */
@@ -44,9 +44,14 @@
         .remind {
             color: red;
         }
+        .hidden reminder {
+            color:  rgb(250, 250, 250);
+        }
         .form__part {
             padding: 15px 25px;
+            margin: 5px 20px;
         }
+
         [type="text"],[type="email"]{
             border: none;
             border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -81,6 +86,12 @@
             top: -100px;
             /* left: 40px; */
         }
+        .hidden {
+            color:rgb(255, 0, 0);
+            margin: 2px 0 0 20px;
+            visibility: hidden;
+        }
+
         /* .foo > small {
             max-width:600px; 
             margin: 0 auto;
@@ -118,26 +129,29 @@
                     </div>
                 </div>
                 <div class="form__main">
-                    <form>
+                    <form class='form__body' name='form__body'>
                         <div class="form__part form__email">
                             <div>電子郵件<span class="remind"> ＊</span></div>
-                        <input type="email" name="email" id="email" placeholder="您的電子郵件" />
+                            <input type="email" name="email" id="email" placeholder="您的電子郵件" />
+                            <div class='hidden warning1'>這是必填問題</div>
                         </div>
                         <div class="form__part form__name">
                             <div>暱稱<span class="remind"> ＊</span></div>
                             <small>該如何稱呼您</small><br>
                             <input type="text" name="name" id="name" placeholder="您的回答" />
+                            <div class='hidden warning2'>這是必填問題</div>
                         </div>
                         <div class="form__part form__type">
                             <div>報名類型<span class="remind"> ＊</span></div>
-                            <input type="radio" name="type" id="type1" /><small>從零到一基礎班（一個月後開始收保證金 3000，淘汰不退還，結業後兩個月內找到工作付一個月半薪水，沒工作不用付）</small><br>
-                            <input type="radio" name="type" id="type2" /><small>在職工程師加強班（一個月後開始收保證金 3000，兩個月時收學費 30000，被淘汰不退還）</small>
-                            <div></div>
+                            <input type="radio" name="type" id="type1" value='從零到一基礎班' /><small>從零到一基礎班（一個月後開始收保證金 3000，淘汰不退還，結業後兩個月內找到工作付一個月半薪水，沒工作不用付）</small><br>
+                            <input type="radio" name="type" id="type2" value='在職工程師加強班' /><small>在職工程師加強班（一個月後開始收保證金 3000，兩個月時收學費 30000，被淘汰不退還）</small>
+                            <div class='hidden warning3'>這是必填問題</div>
                         </div>
                         <div class="form__part form__coding">
                             <div>是否有程式相關背景？<span class="remind"> ＊</span></div>
                             <small>範例：無、高中時候學過C++、學過一點網頁前端、目前在資策會上課...</small><br>
                             <input type="text" name="coding" id="coding" placeholder="您的回答" />
+                            <div class='hidden warning4'>這是必填問題</div>
                         </div>
                         <div class="form__part form__other">
                             <div>其他</div>
@@ -157,4 +171,58 @@
         </div>
     </div>
 </body>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('.form__body').addEventListener('click', e => {
+        console.log(e.target)
+        // 取得答案的內容
+        let answer1 = document.querySelector('#email').value,
+            answer2 = document.querySelector('#name').value,
+            answer3 = '',
+            answer4 = document.querySelector('#coding').value;
+        
+        let warning1 = document.querySelector('.warning1'),
+            warning2 = document.querySelector('.warning2'),
+            warning3 = document.querySelector('.warning3'),
+            warning4 = document.querySelector('.warning4');
+
+        if( !answer1 || !answer2 || !answer3 || !answer4 ) {
+            if(!answer1) showWarning(warning1) ;
+            else hideWarning(warning1);
+
+            if(!answer2) showWarning(warning2) ;
+            else hideWarning(warning2);
+
+            if(!answer3) showWarning(warning3) ;
+            else hideWarning(warning3);
+
+            if(!answer4) showWarning(warning4) ;
+            else hideWarning(warning4);
+            
+            // return false
+            e.preventDefault;
+        } else {
+            hideWarning(warning1);
+            hideWarning(warning2);
+            hideWarning(warning3);
+            hideWarning(warning4);
+
+            console.log('text'+text)
+        }
+    })
+})
+
+    function showWarning(w) {
+        w.parentNode.style.background = '#ffdde3';
+        w.parentNode.parentNode.parentNode.style.color = '#FF0000';
+        w.classList.remove('hidden');
+    }
+
+    function hideWarning(w) {
+        w.parentNode.style.background = '#FAFAFA';
+        w.classList.add('hidden');
+    }
+
+
+</script>
 </html>

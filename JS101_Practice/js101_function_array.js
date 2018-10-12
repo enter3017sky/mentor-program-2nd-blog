@@ -108,3 +108,58 @@ sort() 方法會原地（in place）對一個陣列的所有元素進行排序�
 參考資料：https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
 
 */
+
+
+// accumulator 累加器：
+function sum(accumulator, currentValue) {
+  return currentValue + accumulator
+}
+[1, 2, 3].reduce(sum)
+
+//               null         +1
+// function sum(accumulator, currentValue) {
+//   return currentValue + accumulator  1
+// }
+// [1, 2, 3].reduce(sum)
+
+//                  1          +2
+// function sum(accumulator, currentValue) {
+//   return currentValue + accumulator  3
+// }
+// [1, 2, 3].reduce(sum)
+
+
+//                  3         +3
+// function sum(accumulator, currentValue) {
+//   return currentValue + accumulator   6
+// }
+// [1, 2, 3].reduce(sum)
+
+// => 6
+
+
+
+
+// < 10 的數字的加總
+console.log(
+  [1, 2, 3, 4, 5, 10, 20].reduce(
+      function(count, value) {
+          if(value < 10) {
+              return count + value
+          }
+          return count
+      }, 0 // 初始值
+  )
+)
+
+// < 10 的數字有幾個
+console.log(
+  [1, 2, 3, 4, 5, 10, 20].reduce(
+      function(count, value) {
+          if(value < 10) {
+              return count + 1
+          }
+          return count
+      }, 0 // 初始值
+  )
+)

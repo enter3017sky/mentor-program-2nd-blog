@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    .body__set {
+    margin: 0;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    }
+    .header,footer {
+    flex: 1;
+    }
+    .head__main {
+        display: flex;
+        height: 80px;
+        justify-content: center;
+        align-items: center;
+        background: gray;
+    }
+    .head__title {
+        display: flex;
+        font-size: 30px;
+    }
+    .login__mian {
+        display: flex;
+        flex: 1;
+        min-height: 80vh;
+        background: rgb(167, 165, 165);
+    }
+    .login__form {
+        display: flex;
+        flex-wrap:nowrap;
+        justify-content: center;
+        align-items: center;
+        direction: column;
+        position: relative;
+        top: 100px;
+        margin: 0 auto;
+        width: 500px;
+        height:200px;
+        background: rgb(100, 100, 100);
+        border-radius: 2%;
+    }
+    .login__form > input {
+        /* background: red; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* flex-direction: column; */
+    }
+    .btn {
+        width: 50px;
+        height: 20px;
+    }
+    .bottom__footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80px;
+        background: gray;
+    } 
+    </style>
+</head>
+<body>
+        <head>
+                <meta charset="utf-8" />
+                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <title>Page Title</title>
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <link rel="stylesheet" type="text/css" media="screen" href="week5.css" />
+            </head>
+            <body class='body__set'>
+                <header class='head__main'>
+                    <div class='head__title'>留言版</div>
+                </header>
+                <div class='login__mian'>
+                    <form class='login__form' action='/enter3017sky/login.php' method='POST'>
+                        username:<input name='username' />
+                        password:<input name='password' />
+                        <input class='btn' type='submit' />
+                    </form>
+                </div>
+                <footer>
+                    <div class='bottom__footer'>enter3017sky MTR02 Homework Week5</div>
+                </footer>
+            </body>
+</body>
+</html>

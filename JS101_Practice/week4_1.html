@@ -46,7 +46,7 @@
         }
         .part__btn { /* 整個按鈕的區塊 */
             width: 100%;
-            height:100%;
+            height: 100%;
             /* background: rgb(100, 100, 100); */
             /* background: white; */
             /* box-sizing: border-box; */
@@ -62,8 +62,8 @@
             justify-content: space-around; /* 按鈕平均 */
             align-content: space-around;
         }
-        .row > button {
-            /* width: 70px; */
+        .btn {
+            /* width: 75px; */
             width: 100%;
             /* height: 58px; */
             height: 100%;
@@ -76,6 +76,7 @@
             justify-content:center;
             font-size: 25px;
         }
+
         .row > button:hover {
             cursor: pointer;
         }
@@ -110,17 +111,17 @@
             background: rgb(194, 115, 47);
             color: rgb(85, 85, 85);
         }
-        button {
+        .btn {
             outline: none;
         }
-    </style>
+     </style>
 </head>
 <body>
     <div class="wrap">
             <div class="number__display"><span class="result">0</span></div>
         <div class="part__btn">
             <div class="row">
-                <button class="btn operator">AC</button>
+                <button id='ac' class="btn operator">AC</button>
                 <button class="btn operator">&#177;</button>
                 <button class="btn operator">&#37;</button>
                 <button class="btn operator">&#247;</button>
@@ -145,65 +146,107 @@
             </div>
             <div class="row">
                 <button class="btn number number0">0</button>
-                <button class="btn number">.</button>
-                <button class="btn operator equal">=</button>
+                <button class="btn number numberdot">.</button>
+                <button id='equal' class="btn operator equal">=</button>
             </div>
         </div>
     </div>
 </body>
 <script>
-    let firstNumber = null;
-    let secondNumber = null;
-    let operator = null;
-
-        for (let i = 0; i <= 9; i++) {
-            document.querySelector('.number' + i).addEventListener('click', () => {
-                clickNumber(i)
-            })
-        }
-
-        document.querySelector('.operator.plus').addEventListener('click', () => {
-            handleOperator('+')
-        })
-        document.querySelector('.operator.minus').addEventListener('click', () => {
-            handleOperator('-')
-        })
-        document.querySelector('.operator.equal').addEventListener('click', () => {
-            handleOperator('=')
-        })
     
-    function clickNumber(num) {
-        if (firstNumber === null) {
-            appendResult(num)
-        }
-    }
+    // let operator = '',
+    //     perand = '0',
+    //     hasOperator = false;
+    // document.addEventListener('DOMContentLoaded', function() {
+    //     document.querySelector('.part__btn').addEventListener('click', e => {
+    //         console.log(e.target)
+    //         let result = document.getElementsByClassName('result');
+    //         // console.log(result)
+    //         if(e.target.className == 'number' || e.target.className == 'operator') {
+    //             document.getElementsByClassName('.result').innerText += e.target.innerText;
+    //         }
+    //         if(e.target.id === 'equal') {
+    //             result.innerText = eval(result.innerText)
+    //         }
+    //         if(e.target.id ==='ac'){
+    //             result.innerText = '0';
+    //         }
+    //     })
+    // })
+    debugger
 
-    function handleOperator(op) {
-        if (op === '='){
-            secondNumber = Number(getResult());
-            if(operator === '+'){
-                getResult(firstNumber + secondNumber)
-            }else if(operator === '-') {
-                getResult(firstNumber - secondNumber)
+document.addEventListener('DOMContentLoaded',function(){
+    for (let i = 0; i <= 9; i++) {
+        var input = document.querySelector('.number' + i).addEventListener('click', () => {
+            var input = document.querySelector('.number' + i).innerText
+            input = parseInt(input, 10);
+            // console.log(input)
+            if (document.querySelector('.result').innerText === '0' ) {
+                // document.querySelector('.result').innerText = input;
+            } else {
+                // document.querySelector('.result').innerText = '';
+                document.querySelector('.result').innerText += input;
             }
-        } else {
-                firstNumber = Number(getResult());
-                setResult=('');
-                operator = op;
-            }
+        })
     }
+});
+
+
+// fumction setResult(){
+//     appendResult
+// }
+
+//     // 第一件事情，要加1，所以要選到那個元素
+// document.querySelector('#minus').addEventListener('click', () => { 
+// // 首先要知道裡面那個值是多少，「宣告變數 count 是文件選到的 .count 裡面的文字 (innerText)」
+//     var count = document.querySelector('.count h1').innerText; 
+//     // 要把它轉成數字，不然數字跟字串相加會有奇怪的事情
+//     count = parseInt(count, 10) - 1
+//     // 然後把結果寫回去 count 裡面
+//     document.querySelector('.count h1').innerText = count
+
+    //     document.querySelector('.operator.plus').addEventListener('click', () => {
+    //         handleOperator('+')
+    //     })
+    //     document.querySelector('.operator.minus').addEventListener('click', () => {
+    //         handleOperator('-')
+    //     })
+    //     document.querySelector('.operator.equal').addEventListener('click', () => {
+    //         handleOperator('=')
+    //     })
+    
+    // function clickNumber(num) {
+    //     if (firstNumber === null) {
+    //         appendResult(num)
+    //     }
+    // }
+
+
+//     function handleOperator(op) {
+//         if (op === '='){
+//             secondNumber = Number(getResult());
+//             if(operator === '+'){
+//                 getResult(firstNumber + secondNumber)
+//             }else if(operator === '-') {
+//                 getResult(firstNumber - secondNumber)
+//             }
+//         } else {
+//                 firstNumber = Number(getResult());
+//                 setResult=('');
+//                 operator = op;
+//             }
+//     }
 
     // 很多時候都會用到 result 這個東西，所以可以把它改成 function
-    function setResult(str) {
-        document.querySelector('.result').innerText = str;
-    }
-    function appendResult(str) {
-        // document.querySelector('.result').innerText = '';
-        document.querySelector('.result').innerText += str;
-    }
-    function getResult(str) { //可以把上面的數字給拿出來
-        return document.querySelector('.result').innerText
-    }
-
-</script>
+    // function setResult(str) {
+    //     document.querySelector('.result').innerText = '';
+    // }
+    // function appendResult(str) {
+    //     // document.querySelector('.result').innerText = '';
+    //     document.querySelector('.result').innerText += str;
+    // }
+    // function getResult(str) { //可以把上面的數字給拿出來
+    //     return document.querySelector('.result').innerText
+    // } 
+ </script>
 </html>
