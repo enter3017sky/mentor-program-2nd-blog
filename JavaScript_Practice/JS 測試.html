@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>事件物件 Event Object 取得以及使用</title>
+    <style>
+        #box {
+            width: 300px;
+            height: 300px;
+            background: orange;
+        }
+    </style>
+    <script type="text/javascript">
+    // 用 JavaScript 的程式，動態的註冊事件處理器。
+
+    function init(){
+        // var btn = document.getElementById("btn");
+        // var handler = function(e){
+        //     alert(e.clientX + ", " + e.clientY);
+        // };
+        // btn.addEventListener("click", handler);
+
+        // var box = document.getElementById('box');
+        var box = document.querySelector('#box')
+        box.style.background = 'red';
+        box.style.borderRadius = '25%';
+        // var clickBox = document.querySelector("box")
+
+        box.addEventListener("click", function(e){
+            // box.style.display = 'none';
+            box.toggle
+        });
+
+
+        /*
+            1. 使用者點擊了按鈕，觸發 click 事件。
+            2. 瀏覽器主動收集和事件有關的資訊，並製造出 Event Object 事件物件。
+            var eventObj = 事件物件; 
+            3. 呼叫已經註冊的事件處理器(事件處理函式)
+                handler(eventObj);
+        */
+    //    document.addEventListener("keydown", function(e){ // 匿名函式：用來直接當事件處理器
+    //         alert(e.keyCode); //可以取得按鍵盤的 code
+    //    })
+    }
+
+    </script>
+</head>
+<body onload="init();">
+    <button id="btn">Click</button>
+    <div id="box"></div>
+</html>

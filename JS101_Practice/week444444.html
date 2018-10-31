@@ -117,104 +117,7 @@
         }
         
     </style>
-<script type="text/javascript">
-document.addEventListener('DOMContentLoaded', function() {
-    var myForm = document.querySelector('.form__body')
-    myForm.addEventListener('click', function(e) {
 
-        var wranItems = document.querySelectorAll('.hidden');
-        var reqRadio = document.querySelectorAll('input.radio');
-        var otherText = document.querySelector('.other');
-        var reqItems = document.querySelectorAll('input.req');
-        
-        console.log(reqItems[0].value)
-        function checkForm() {
-            if(reqItems[0].value == ''){
-                console.log('123')
-                return false
-            }
-        }
-        
-        // 選取並利用迴圈遍歷所有必填的 input 
-        function checkReqItem (submit){
-            for(var i = 0; i < reqItems.length; i++) {
-                if(reqItems[i].value == ''){ // 如果該選項沒有輸入的話 
-                    //1.改變該 parentNode 的背景色 2.隱藏的提醒字樣顯示出來
-                    reqItems[i].parentNode.style.background = '#ffdde3';
-                    reqItems[i].nextElementSibling.classList.remove('hidden');
-                } else {
-                    // 如果有填上資料的話，把行內 CSS 設定為空(移除)
-                    reqItems[i].parentNode.style.background = '';
-                    // 把原本 remove 的 class 名稱增加回去
-                    reqItems[i].nextElementSibling.classList.add('hidden');
-                } if(reqItems[i].value !== '') 
-                return true
-            }
-        }
-        
-        
-
-        var reqRadio = document.querySelectorAll('.radio')
-        for(var i = 0; i < reqRadio.length; i++){
-            var result =''
-            if(!reqRadio[0].checked && !reqRadio[1].checked) {
-                reqRadio[i].parentNode.style.background = '#ffdde3';
-                reqRadio[i].nextElementSibling.nextElementSibling.classList.remove('hidden');
-                
-            } else {
-                reqRadio[i].parentNode.style.background = '';
-                reqRadio[1].nextElementSibling.nextElementSibling.classList.add('hidden');
-                if(reqRadio[0].checked == true){
-                    result = reqRadio[0].value
-                    // console.log(result)
-                } else if(reqRadio[1].checked == true) {
-                    result = reqRadio[1].value
-                }
-            } 
-        }
-
-
-        // alert(`
-        // 您輸入的 e-mail: ${reqItems[0].value}。
-        // 暱稱: ${reqItems[1].value}。
-        // 報名類型: ${result}
-        // 是否有程式相關背景: ${reqItems[2].value}。
-        // 其他: ${otherText.value}
-        // `)
-        console.log(`
-        您輸入的 e-mail: ${reqItems[0].value}。
-        暱稱: ${reqItems[1].value}。
-        報名類型: ${result}
-        是否有程式相關背景: ${reqItems[2].value}。
-        其他: ${otherText.value}
-        `)
-    }, false)
-    
-})
-    
-    //     var reqRadio = document.querySelectorAll('.radio')
-    //     // for(var i = 0; i < reqRadio.length; i++){
-    //     //     if(reqRadio.length > 0){
-    //             if(reqRadio[0].checked || reqRadio[1].checked){
-    //                 alert('!!!')
-    //             }
-    //     //     }
-    //     // }
-    //     console.log(reqRadio[0].value)
-    // })
-    // var reqRadio = document.querySelectorAll('input.radio');
-    // document.querySelectorAll('.radio').addEventListener('submit', function(){
-    //     for(var i = 0; i < reqRadio.length; i++) {
-    //         console.log(reqRadio[i].value)
-    //         if(reqRadio[i].checked){
-    //         // console.log(reqRadio[i].value)
-    //         alert(reqRadio[i].value)
-    //         }
-    //     }
-    // })
-            
-
-</script>
 </head>
 <body>
     <div class="container">
@@ -230,16 +133,16 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 </div>
                 <div class="form__main">
-                    <form class='form__body' name='form__body' onsubmit="checkForm()">
+                    <form id="form" class='form__body' name='form__body'>
                         <div class="form__part form__email">
                             <div>電子郵件<span class="remind"> ＊</span></div>
-                            <input type="email" class="req" name="email" id="email" placeholder="您的電子郵件" />
+                            <input type="email" class="req" name="email" id="email" placeholder="您的電子郵件" onblur="myFunctionBlur();"/>
                             <div class='hidden warning'>這是必填問題</div>
                         </div>
                         <div class="form__part form__name">
                             <div>暱稱<span class="remind"> ＊</span></div>
                             <small>該如何稱呼您</small><br>
-                            <input type="text"  class="req"name="name" id="name" placeholder="您的回答" />
+                            <input type="text"  class="req" name="name" id="name" placeholder="您的回答" />
                             <div class='hidden warning'>這是必填問題</div>
                         </div>
                         <div class="form__part form__type">
@@ -271,5 +174,187 @@ document.addEventListener('DOMContentLoaded', function() {
             <footer class="foo"><small class="foo__small">Google 並未認可或建立這項內容。 檢舉濫用情形 - 服務條款 - 其他條款</small></footer>
         </div>
     </div>
+<script type="text/javascript">
+
+// document.addEventListener('DOMContentLoaded', function() {
+//     var myForm = document.querySelector('.form__body')
+//     myForm.addEventListener('submit', function(e) {
+
+    var form = document.getElementById('form');
+    // form.onsubmit = function() {
+    //     return false;
+    // }
+
+
+form.onsubmit = function() {
+
+    var inputs = document.querySelectorAll('input.req');
+    var radio = document.querySelectorAll('input.radio');
+    var data = '你輸入的資訊: \n\n';
+    var error_message = '您也許忘了填寫什麼？\n\n';
+    var email, name, code;
+        emial = inputs[0].value;
+        name = inputs[1].value;
+        code = inputs[2].value;
+
+    for(var i = 0; i < radio.length; i++) {
+        // console.log(radio[i].checked)
+        if(radio[i].checked){
+            data += '報名類型' + radio[i].value + '\n';
+        } else {
+            error_message += '還記得報名的類型嗎？\n';
+        }
+    }
+
+    for (var i = 0; i < inputs.length; i++) {
+        console.log(typeof inputs[i].innerText.lengh)
+        if(!inputs[i] == ''){
+            // console.log(inputs[i].value + 'empty')
+            inputs[i].addEventListener('blur', hideWarnOnBlur);
+        } else {
+            inputs[i].addEventListener('blur', showWarnOnBlur);
+        }
+    }
+    data += '名字: ' + name + '\n';
+    data += '電子郵件: ' + emial + '\n';
+    data += '是否有無相關背景: ' + code + '\n';
+    // console.log(data)
+    // console.log(typeof inputs[0].value)
+    // console.log(typeof data)
+    return false;
+}
+
+    function showWarnOnBlur() {
+        this.parentNode.style.background = '#ffdde3';
+        this.nextElementSibling.classList.remove('hidden');
+    }
+    function hideWarnOnBlur() {
+        this.parentNode.style.background = '';
+        this.nextElementSibling.classList.add('hidden');
+    }
+        // let x = document.querySelectorAll('.req');
+        // let index = 0;
+        // for(index=0; index < x.length; index++) {
+        //     console.log(x[index].value);
+        // }
+        // console.log(`
+        // email: ${inputs[0].value}
+        // name: ${inputs[1].value}
+        // code: ${inputs[2].value}
+        // `)
+    // }
+
+    // onBlurStr.onclick = function() {
+    //     var onBlurStr = document.querySelectorAll('input').value;
+    //     if (onBlurStr.length === 0) {
+    //         alert('Plaease enter a value !');
+    //     }
+    // }
+
+    // var inputBlur = document.querySelectorAll('.req');
+    // inputBlur.onblur = function() {
+    //     alert('Plaease enter a value !');
+    //     inputBlur[0].parentNode.style.background = '#ffdde3';
+    //     inputBlur[0].nextElementSibling.classList.remove('hidden');
+    //     // console.log(inputBlur)
+    // }
+
+
+    // function showWarnOnBlur() {
+    //     this.parentNode.style.background = '#ffdde3';
+    //     this.nextElementSibling.classList.remove('hidden');
+    // }
+    // function hideWarnOnBlur() {
+    //     this.parentNode.style.background = '';
+    //     this.nextElementSibling.classList.add('hidden');
+    // }
+
+function myFunctionBlur() {
+//   var onBlurStr = document.querySelectorAll('input.req').value;
+//   console.log(onBlurStr[0])
+//   if (onBlurStr[0] === '') {
+//     alert('Plaease enter a value !');
+//   }
+}
+
+
+    // console.log(inputBlur)
+
+    // var getRadio = document.querySelectorAll('input.radio');
+    // var otherText = document.querySelector('.other').value;
+    // var reqItems = document.querySelectorAll('input.req');
+    // var allInput = document.querySelectorAll('input')
+    // var email = reqItems[0].value
+    // var name = reqItems[1].value
+    // var code = reqItems[2].value
+
+    // var data = '您填寫的資訊： \n\n';
+    // var error_message = '你或許忘了什麼？ \n\n';
+    // var error_flag = false;
+
+    // // 選取並利用迴圈遍歷所有必填的 input 
+    // for(var i = 0; i < reqItems.length; i++) {
+    //     if(reqItems[i].value == ''){
+    //         reqItems[i].parentNode.style.background = '#ffdde3';
+    //         reqItems[i].nextElementSibling.classList.remove('hidden');
+    //         if(i=0) {
+    //             error_message += '也許是電子郵件忘記了\n'
+    //         }
+    //         if(i=1) {
+    //             error_message += '該不會連名字忘了吧\n'
+    //         } 
+    //         if(i=2) {
+    //             error_message += '相關背景呢？\n'
+    //         }
+
+    //         error_flag = true;
+    //     } else {
+    //         reqItems[i].parentNode.style.background = '';
+    //         reqItems[i].nextElementSibling.classList.add('hidden');
+    //         // data += reqItems[i].value + '\n';
+
+    //     } 
+    // }
+
+    // for(var i = 0; i < getRadio.length; i++){
+    //     if(getRadio[0].checked || getRadio[1].checked){
+    //         getRadio[i].parentNode.style.background = '';
+    //         getRadio[1].nextElementSibling.nextElementSibling.classList.add('hidden');
+    //         if(getRadio[i].checked){
+    //             var radioType = getRadio[i].value
+    //         }
+    //     } else {
+    //         getRadio[i].parentNode.style.background = '#ffdde3';
+    //         getRadio[1].nextElementSibling.nextElementSibling.classList.remove('hidden');
+    //         error_message += '報名什麼類型呢？？'
+    //         error_flag = true;
+    //     }
+    // }
+
+
+    // if(reqItems[0].value && reqItems[1].value && reqItems[2].value && (getRadio[0].value|| getRadio[1].value)) {
+
+    //     // data += otherText.value 
+    //     // console.log(data)
+    //     console.log(`
+
+    //     ${name} 先生/小姐，您好～ \n
+    //     你輸入的資訊：\n
+    //     電子郵件: ${email} 
+    //     是否有無相關背景: ${code} 
+    //     報名類型: ${radioType}
+    //     您想說的: ${otherText}
+    //     `)
+    //     alert('提交成功')
+    //     e.preventDefault(submit);
+    // } else if(error_flag) {
+    //     alert(error_message)
+    //     e.preventDefault(submit);
+    // }
+
+//     }, false)
+// })
+
+</script>
 </body>
 </html>

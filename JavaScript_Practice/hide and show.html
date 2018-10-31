@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Hide & Show</title>
+    <style>
+        body {
+            /* margin: 0 auto; */
+        }
+        #box {
+            display: flex;
+            flex-direction: column;
+            width: 200px;
+            height: 200px;
+            background: orangered;
+            border-radius: 10%;
+            margin: 10% auto;
+        }
+        #visible{
+            margin-left: 30px;
+        }
+        .btns {
+            position: absolute;
+            left: 38%;
+            bottom: 30px;
+            /* display: block; */
+            margin: 20px auto;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div class='test' id="box"></div>
+
+    <div class="btns">
+        <button id="swicth" class="hs">Swicth</button>
+        <button id="visible" class="hs">Show</button>
+        <button id="hidden" class="hs">Hide</button>
+    </div>
+</body>
+<script type="text/javascript">
+
+document.addEventListener("DOMContentLoaded" , function(){
+    const q = function(selector){
+        return {
+            hide: function(){
+                document.querySelector(selector).style.display = "none";
+            },
+            show: function(){
+                document.querySelector(selector).style.display = "";
+            }
+        }
+    }
+
+    var el = q(".test");
+    document.querySelector("#hidden").addEventListener('click', function(){
+        el.hide();
+    })
+    document.querySelector("#visible").addEventListener('click', function(){
+        el.show();
+    })
+
+    document.querySelector("#swicth").addEventListener('click', function(){
+        if(document.querySelector('#box').style.display == 'none'){
+            el.show();
+        } else {
+            el.hide();
+        }
+    }) 
+})
+
+       // var q = document.querySelector('#box')
+        // document.querySelector('#swicth').addEventListener('click', function(){
+        //     if(q.style.display == "none"){
+        //         q.style.display = '';
+        //     } else {
+        //         q.style.display = "none";
+        //     }
+        // })
+
+    // const q = function(selector){
+    //     return {
+    //         hide: function(){
+    //             document.querySelector(selector).style.visibility = "hidden"
+    //         },
+    //         show: function(){
+    //             document.querySelector(selector).style.visibility = "visible"
+    //         }
+    //     }
+    // }
+
+    // var el = q(".test");
+    // document.querySelector("#hidden").addEventListener('click', function(){
+    //     el.hide();
+    // })
+    // document.querySelector("#visible").addEventListener('click', function(){
+    //     el.show();
+    // })
+
+</script>
+</html>

@@ -1,0 +1,60 @@
+<!-- 
+教學影片
+    
+https://www.youtube.com/watch?v=SWhNYC6QYDc&list=PL-g0fdC5RMbpqZ0bmvJTgVTS4tS3txRVp&index=19 -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Hide & Show</title>
+    <style>
+        div {
+            cursor: pointer;
+        }
+        .hide {
+            display: none;
+        }
+    </style>
+    <script type="text/javascript">
+    // alert(window.screen.width + "x" + window.screen.height); // 取得螢幕解析度
+
+    function toggleMenu(number){
+        var menu = document.getElementById("menu-" + number);
+        // 方法2 切換物件的類別的設定
+        menu.classList.toggle("hide"); 
+
+        /* 方法1
+        if(menu.style.display === "none"){
+            menu.style.display = "block";
+        } else{ 
+            menu.style.display = "none";
+        } 
+        */
+    };
+
+
+    </script>
+</head>
+<body>
+    <div onclick="toggleMenu(1);">選單的標題一</div>
+    <ul id="menu-1" class="hide">
+        <li>項目1</li>
+        <li>項目2</li>
+        <li>項目3</li>
+    </ul>
+    <div onclick="toggleMenu(2);">選單的標題二</div>
+    <ul id="menu-2" class="hide">
+        <li>項目1</li>
+        <li>項目2</li>
+        <li>項目3</li>
+    </ul>
+    <div onclick="toggleMenu(3);">選單的標題三</div>
+    <ul id="menu-3" class="hide">
+        <li>項目1</li>
+        <li>項目2</li>
+        <li>項目3</li>
+    </ul>
+</body>
+</html>

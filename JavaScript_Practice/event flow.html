@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>event flow 事件流</title>
+</head>
+<body>
+    <div>click me to start event flow</div>
+</body>
+<script>
+    // 在 addEventListener() 傳入一個布林參數 true 來觸發捕捉事件，而不是只有泡泡事件。
+    
+    // 1. 捕捉階段
+    window.addEventListener('click', function(){
+        console.log(1);
+    }, true);
+    
+    // 2. 捕捉階段
+    document.addEventListener('click', function(){
+        console.log(2);
+    }, true);
+
+    // 3. 捕捉階段
+    document.documentElement.addEventListener('click', function(){
+        console.log(3);
+    }, true);
+
+    // 4. 捕捉階段
+    document.body.addEventListener('click', function(){
+        console.log(4);
+    }, true);
+
+    // 5. 在捕捉階段期間出現目標階段
+    document.querySelector('div').addEventListener('click', function(){
+        console.log(5);
+    }, true);
+
+    // 6. 在泡泡階段期間出現目標階段
+    document.querySelector('div').addEventListener('click', function(){
+        console.log(6);
+    }, false);
+
+    // 7. 泡泡階段
+    document.body.addEventListener('click', function(){
+        console.log(7);
+    }, false);
+
+    // 8. 泡泡階段
+    document.documentElement.addEventListener('click', function(){
+        console.log(8);
+    }, false);
+    
+    // 9. 泡泡階段
+    document.addEventListener('click', function(){
+        console.log(9);
+    }, false);
+
+    // 10. 泡泡階段
+    window.addEventListener('click', function(){
+        console.log(10);
+    }, false);
+
+</script>
+</html>

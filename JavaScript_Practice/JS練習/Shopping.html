@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Calculate</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+      
+    body {
+        color: #5D6063;
+        background-color: #EAEDF0;
+        font-family: "Helvetica", "Arial", sans-serif;
+        font-size: 16px;
+        line-height: 1.3;
+    
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .form-wrap {
+        background-color: #F6F7F8;
+        border: 1px solid #D6D9DC;
+        border-radius: 3px;
+
+        width: 50%;
+        padding: 10px 30px;
+        margin: 20px 0;
+    }
+        .form-row {
+        margin-bottom: 40px;
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    </style>
+    <script src="shopping.js"></script>
+    <!-- <script type="text/javascript"> -->
+   
+</head>
+<body>
+    <div class="form-wrap">
+        <form id="theForm" action="">
+            <div class="form-row">
+                <label for="quantity">Quantity 數量</label>
+                <input type="number" name="quantity" id="quantity" min="1" required /> 
+            </div>
+            <div class="form-row">
+                <label for="price">Price Per Unit 每單位的價格</label>
+                <input type="text" name="price" id="price"  required /> 
+            </div>
+            <div class="form-row">
+                <label for="tax">Tax Rate(%) 稅率</label>
+                <input type="text" name="tax" id="tax" value="0.0" required /> 
+            </div>
+            <div class="form-row">
+                <label for="discount">Discount 折扣</label>
+                <input type="text" name="discount" id="discount" value="0.0" required /> 
+            </div>
+            <div class="form-row">
+                <label for="total">Total 總</label>
+                <input type="text" name="total" id="total" value="0.00" /> 
+            </div>
+            <div class="form-row">
+                <input type="submit" id="submit" value="Calculate" /> 
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,4 +1,8 @@
+
 留言板切版
+
+
+
 
 - 創資料庫和資料表之後，我們可以開始在其中添加數據。
 
@@ -9,10 +13,13 @@
     - 不得引用數字值
     - 不得引用單詞NULL
 
-- INSERT INTO語句用於向MySQL表添加新記錄：
+- __`INSERT INTO`__ 語句用於向 MySQL __資料表(table)__ 添加新記錄：
 
-`INSERT INTO table_name (column1, column2, column3,...)VALUES (value1, value2, value3,...)`
- 
+```javascript
+INSERT INTO table_name (column1, column2, column3,...)
+VALUES (value1, value2, value3,...)
+ ```
+
 1. `<form method="POST" action="add_comment.php">`
     - 負責插入留言
 2. `<input type='hidden' name='parent_id' value="0" />` 
@@ -52,9 +59,118 @@
 Array ( [nickname] => nickname [content] => text [parent_id] => 0 )
 ```
 
+---
+
+## 登入的範例
+
+```php
+
+
+<?
+    // 使用這個檔案
+    require_once('conn.php');
+
+    $username = '';
+    if(isset($_POST['username']) && isset($_POST['password']) ){
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+    $sql = "SELECT * FROM users where username='" . $username . "' and password='" . $password . "'";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        // echo '登入成功';
+        header('Location: week5_index.php');
+    } else {
+        echo '登入失敗';
+        header('Location: loginfail.php');
+        // 轉址：登入失敗的頁面
+    }
+}
+
+    // $username = '';
+    // $username = $_POST['username'];
+    // $password = $_POST['password'];
+
+    // $sql = "SECLET * from users where username='" . $username . "' and password='" . $password . "'";
+
+    // $result = $conn->query($sql);
+
+    // if($result->num_rows > 0) {
+    //     echo '登入成功';
+    // } else {
+    //     header('localhost: week5_index.php');
+    // }
+?>
+
+<?php
+//     $username = '';
+//     if(isset($_POST['username']) && isset($_POST['password']) ){
+//         $username = $_POST['username'];
+//         $password = $_POST['password'];
+//     if ($username === 'admin' && $password === 'admin') {
+//         echo '登入成功';
+//     } else {
+//         header('Location: http://google.com');
+//     }
+// }
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="week5_index.css" />
+</head>
+<body class='body__set'>
+    <header class='head__main'>
+        <div class='head__title'>留言版</div>
+    </header>
+    <div class='login__mian'>
+        <form class='login__form' action='/enter3017sky/week5_login.php' method='POST'>
+        <!-- required="required" 提交之前填寫輸入字段的提示 -->
+            <label class='input__user input' name='username'>
+                username: <input name='username' type="username" required="required" />
+            </label>
+            <label class='input__pass input' name='password'>
+                password: <input name='password' type='password' required="required" />
+            </label>
+            <label class='input__nickname input' name='nickname'>
+                nickname: <input name='username' required="required" />
+            </label>
+            <div id='btn'>
+                <button class='btn' name='submit' type='submit' action='/enter3017sky/week5_signup.php'>註冊</button>
+                <button class='btn' name='submit' type='submit'>登入</button>
+            </div>
+        </form>
+    </div>
+    <footer class='bottom__footer'>
+        <div class='bottom__title'>enter3017sky MTR02 Homework Week5</div>
+    </footer>
+</body>
+</html>
+
+
+```
 
 ---
 
+### PHP7 與 MySQL 網頁資料庫程式設計：
+
+#### HTML 表單
+
+- id/name: 表單識別和名稱
+- method: 設定資料傳送到伺服器端的方法。
+  - 值是 GET 是使用 URL 網址的 URL 參數來傳遞。
+  - POST 是使用 HTTP 通訊協定的標頭資料傳遞。
+  - action: 設定伺服器執行表單處理程式。例如:CGI、ASP、PHP、ASP.NET 等程式的 URL 網址。
+- HTTP 請求的 GET、POST 方法
+  - GET 當使用者第一次請求網頁時，就是使用 GET 傳遞 URL 參數至 Web 伺服器。
+    - PHP 使用 `$_GET` 預定變數來取得欄位值。
+  - HTTP 的 POST 方法是送出表單，通常是使用者輸入表單欄位值且按下「送出」鈕後，瀏覽器建立 POST 請求送至伺服器端，傳遞的資料包含使用者輸入的表單欄位值。
+    - PHP 使用 `$_POST` 預定變數來取得欄位值。
+
+---
 > 以下參考 PHP MySQL JavaScript 與 CSS 學習手冊 Page.270
 
 # 表單處理
@@ -66,6 +182,8 @@ Array ( [nickname] => nickname [content] => text [parent_id] => 0 )
   - 一個提交類型，可指定 GET 與 POST 方法。
   - 一個以上的 `input` 欄位。
   - 表單數據的傳送目標 URL。
+
+ 
 
 -  __定界符：echo <<<\_END ... \_END;__
 
@@ -193,6 +311,7 @@ Noon-4pm: <input type="radio" name="time" value="2" checked="checked" />
 ```html
 <label>8am-Noon: <input type="radio" name="time" value="1" /></label>
 
+<label for="name">What is your name?<input type="text" id="name" /></label>
 ```
 
 ## 提交按鈕
@@ -229,3 +348,40 @@ function sanitizeMySQL() {
 }
 ?>
 ```
+
+
+- `htmlspecialchars( $string , $quote_flags , $encoding , $double_encode )`
+> PHP htmlspecialchars 函數有四個可以使用的參數，第一個參數 $string 是原始字串，必填，第二個參數 $quote_flags 是選用項目，功能是用來設定對引號的轉換，以下是可用的設定方式。
+- ENT_COMPAT：預設，只轉換雙引號，不轉換單引號。
+- ENT_QUOTES：雙引號與單引號都要轉換。
+- ENT_NOQUOTES：單引號與雙引號都不轉換。
+
+```php
+
+<!-- 使用 htmlspecialchars() 函式轉換字元 -->
+<? echo htmlspecialchars($row['content'], ENT_QUOTES, 'UTF-8') ?>
+
+```
+
+
+
+
+if (!empty($_POST['username'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $nickname = $_POST['nickname'];
+
+
+
+   
+本來是寫好一個 query 
+    $sql = "INSERT INTO users (username, password, nickname)
+    VALUES ('$username', '$password', '$nickname')";
+    
+然後 連接 query
+$result = $conn->query($sql);
+
+然後就可以 result 這個東西
+
+
+首先宣告 stmt

@@ -1,0 +1,45 @@
+<!--忍者：JavaScript開發技巧探秘：
+ 單元測試框架的核心是它所提供的斷言的方法，該方法通常接受某值，也就是斷言保證某運算式的值會是多少 -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Test Suite</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script>
+        
+        // 1. 定義 assert() 方法
+        function assert(value, desc) {
+            var li = document.createElement("li");
+            li.className = value ? "pass" : "fail";
+            li.appendChild(document.createTextNode(desc));
+            document.getElementById("results").appendChild(li);
+        }
+
+        window.onload = function(){
+            // 2. 使用斷言 assert 測試
+            assert(true, "The test suite is running.");
+            assert(false, "Fail!");
+        };
+
+
+    </script>
+    <style>
+
+        /* 3. 定義結果的樣式 */
+        #results li.pass {
+            color: green;
+        }
+        #results li.fail {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- 4. 儲存測試結果 -->
+    <ul class="results"></ul>
+</body>
+</html>

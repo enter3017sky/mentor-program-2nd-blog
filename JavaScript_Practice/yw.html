@@ -1,0 +1,81 @@
+<!-- <!DOCTYPE html>
+<head>
+  <style type="text/css">
+  .block {
+    margin: 10px;
+    padding: 10px;
+    width: 100px;
+    border-style: solid;
+    text-align: center;
+  }
+  .test {
+    margin: 10px;
+    padding: 10px;
+    width: 100px;
+    border-style: solid;
+    text-align: center;
+    color: red;
+  }
+  </style>
+</head>
+<body>
+  <div class="block">Hello</div>
+  <div class="test">XD</div>
+  <div class="block">world</div>
+  <div class="btns">
+    <input type="button" id="hidden" value="hide">
+    <input type="button" id="visible" value="show">
+  </div>
+  <script>
+    const q = (selecror) => {
+      return {
+        hide: () => document.querySelector(selecror).style.visibility = "hidden",
+        show: () => document.querySelector(selecror).style.visibility = "visible"
+      }
+    }
+    document.querySelector('#hidden').addEventListener('click', () => q('.test').hide())
+    document.querySelector('#visible').addEventListener('click', () => q('.test').show())
+  </script>
+</body> -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+        <style>
+        #box {
+            width: 300px;
+            height: 300px;
+            background: red;
+        }    
+        </style>
+</head>
+
+<body>
+    <button id="show">show</button>
+    <button id='hidden'>hide</button>
+    <div id="box"></div>
+</body>
+<script>
+
+    function  q(elName){
+        return {
+            hide: function() {
+                document.querySelector(elName).style.display = "none";
+            },
+            show: function() {
+                document.querySelector(elName).style.display = "";
+            }
+        }
+    }
+    
+    el = q('#box')
+    document.getElementById('show').addEventListener('click', function(){
+        el.show();
+    })
+    document.getElementById('hidden').addEventListener('click', ()=>{
+        el.hide();
+    })
+    
+</script>
+</html>

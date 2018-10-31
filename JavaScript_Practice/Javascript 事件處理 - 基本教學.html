@@ -1,0 +1,40 @@
+<!-- https://www.youtube.com/watch?v=BPdQ-C5jP74&index=20&list=PL-g0fdC5RMbpqZ0bmvJTgVTS4tS3txRVp -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Event 事件處理</title>
+    <!-- <style>
+        div {
+            cursor: pointer;
+        }
+        .hide {
+            display: none;
+        }
+    </style> -->
+    <script type="text/javascript">
+
+
+        function over(element){
+            element.style.color = "red";
+        }
+        function out(element){
+            element.style.color = "black";
+        }
+
+    </script>
+</head>
+<body>
+
+
+    <button onclick="alert('Clicked')">Click</button>
+
+    <span onmousemove="over(this);" onmouseout="out(this);">Test</span>
+
+    <div onmousemove="over(this);" onmouseout="out(this);">Line 2</div>
+
+    <!-- <span onmousemove="this.style.color='red'" onmouseout="this.style.color='black'">Test</span> -->
+</body>
+</html>

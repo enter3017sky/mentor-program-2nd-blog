@@ -14,7 +14,7 @@
 // }
 
 // 練習七：回傳陣列裡面所有小於 n 的數的數量
-// 請寫出一個函式 findSmallCount，接收一個陣列跟一個數字 n，回傳有多少個數小於 n。
+// 請寫出一個函式 findSmallCount，接收一個陣列跟一個數字 n，回傳有多少個數小於 n。
 
 
 // 20181003
@@ -104,15 +104,15 @@
 // sum([-1, 1, 2, -2, 3, -3]) 預期回傳值：0
 
 
-// function sum(arr) {
-//     var result = 0
-//     for (var i = 0; i < arr.length; i++) {
-//         result += arr[i]
-//     }
-//     return result
-// }
-// console.log(sum([1, 2, 3]))
-// console.log(sum([-1, 1, 2, -2, 3, -3]))
+function sum(arr) {
+    var result = 0
+    for (var i = 0; i < arr.length; i++) {
+        result += arr[i]
+    }
+    return result
+}
+console.log(sum([1, 2, 3]))
+console.log(sum([-1, 1, 2, -2, 3, -3]))
 
 
 // function sum(arr) {
@@ -151,14 +151,14 @@
 
 
 
-console.log(
-    [2, 4, 6].reduce(function(obj, value) {
-        obj['a' + value] = value
-        // console.log(obj)
-        return obj
-        },{}   // 要放的值
-    )
-)
+// console.log(
+//     [2, 4, 6].reduce(function(obj, value) {
+//         obj['a' + value] = value
+//         // console.log(obj)
+//         return obj
+//         },{}   // 要放的值
+//     )
+// )
 
 
 // // < 10 的數字的加總

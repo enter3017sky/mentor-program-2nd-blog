@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>簡易計算機練習</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+        
+    body {
+        color: #5D6063;
+        background-color: #EAEDF0;
+        font-family: "Helvetica", "Arial", sans-serif;
+        font-size: 16px;
+        line-height: 1.3;
+    
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .form-wrap {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        flex-wrap: wrap;
+        background-color: #F6F7F8;
+        border: 1px solid #D6D9DC;
+        border-radius: 3px;
+
+        /* width: 40%; */
+        padding: 20px 40px 0;
+        margin: 20px 0;
+        /* max-width: 500px; */
+    }
+    #dis_num {
+        background-color: white;
+        border: 2px solid #D6D9DC;
+        border-radius: 3px;
+        height: 40px;
+        display: flex;
+        /* text-align: right; */
+        align-items: flex-end;
+        justify-content: flex-end;
+        font-size: 26px;
+    }
+    .form-row {
+        margin-bottom: 40px;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .input_wrap{
+        display: flex;
+    }
+    .form-wrap > div +div {
+        margin-top: 20px;
+    }
+    #text1 ~ #text2 {
+        margin-left: 20px;
+    }
+
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+
+        var result = document.getElementById("dis_num");
+
+        var input1 = document.getElementById("text1");
+        var input2 = document.getElementById("text2");
+
+        var plus = document.getElementById("btn1");
+        var minus = document.getElementById("btn2");
+        var multiply = document.getElementById("btn3");
+        var divided = document.getElementById("btn4");
+        var remainder = document.getElementById("btn5");
+        
+        // 加法
+        plus.onclick = function(){
+            var num1 = Number(input1.value);
+            var num2 = Number(input2.value);
+            var output = num1 + num2 ;
+            result.innerHTML = output;
+
+            // 這樣結果會一直是零
+            // output = result.innerHTML;
+        }
+
+        minus.onclick = function(){
+            var output = input1.value - input2.value;
+            result.innerHTML = output;
+        }
+        
+        multiply.onclick = function(){
+            result.innerHTML = input1.value * input2.value;
+        }
+        divided.onclick = function(){
+            result.innerHTML = input1.value / input2.value;
+        }
+
+        remainder.onclick = function(){
+            result.innerHTML = input1.value % input2.value;
+        }
+
+    })
+    </script>
+</head>
+
+<body>
+    <div class="form-wrap">
+        <div id="dis_num">0</div>
+        <div class="input_wrap">
+            <input type="text" id="text1" placeholder="Input-1"/>
+            <input type="text" id="text2" placeholder="Input-2"/>
+        </div>
+        <div class="form-row">
+            <input type="button" value="加法" id="btn1">
+            <input type="button" value="減法" id="btn2" />
+            <input type="button" value="乘法" id="btn3" />
+            <input type="button" value="除法" id="btn4" />
+            <input type="button" value="取餘數" id="btn5" />
+        </div>
+    </div>
+</body>
+
+</html>

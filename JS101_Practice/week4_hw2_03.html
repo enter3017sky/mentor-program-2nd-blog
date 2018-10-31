@@ -117,104 +117,6 @@
         }
         
     </style>
-<script type="text/javascript">
-document.addEventListener('DOMContentLoaded', function() {
-    var myForm = document.querySelector('.form__body')
-    myForm.addEventListener('click', function(e) {
-
-        var wranItems = document.querySelectorAll('.hidden');
-        var reqRadio = document.querySelectorAll('input.radio');
-        var otherText = document.querySelector('.other');
-        var reqItems = document.querySelectorAll('input.req');
-        
-        console.log(reqItems[0].value)
-        function checkForm() {
-            if(reqItems[0].value == ''){
-                console.log('123')
-                return false
-            }
-        }
-        
-        // 選取並利用迴圈遍歷所有必填的 input 
-        function checkReqItem (submit){
-            for(var i = 0; i < reqItems.length; i++) {
-                if(reqItems[i].value == ''){ // 如果該選項沒有輸入的話 
-                    //1.改變該 parentNode 的背景色 2.隱藏的提醒字樣顯示出來
-                    reqItems[i].parentNode.style.background = '#ffdde3';
-                    reqItems[i].nextElementSibling.classList.remove('hidden');
-                } else {
-                    // 如果有填上資料的話，把行內 CSS 設定為空(移除)
-                    reqItems[i].parentNode.style.background = '';
-                    // 把原本 remove 的 class 名稱增加回去
-                    reqItems[i].nextElementSibling.classList.add('hidden');
-                } if(reqItems[i].value !== '') 
-                return true
-            }
-        }
-        
-        
-
-        var reqRadio = document.querySelectorAll('.radio')
-        for(var i = 0; i < reqRadio.length; i++){
-            var result =''
-            if(!reqRadio[0].checked && !reqRadio[1].checked) {
-                reqRadio[i].parentNode.style.background = '#ffdde3';
-                reqRadio[i].nextElementSibling.nextElementSibling.classList.remove('hidden');
-                
-            } else {
-                reqRadio[i].parentNode.style.background = '';
-                reqRadio[1].nextElementSibling.nextElementSibling.classList.add('hidden');
-                if(reqRadio[0].checked == true){
-                    result = reqRadio[0].value
-                    // console.log(result)
-                } else if(reqRadio[1].checked == true) {
-                    result = reqRadio[1].value
-                }
-            } 
-        }
-
-
-        // alert(`
-        // 您輸入的 e-mail: ${reqItems[0].value}。
-        // 暱稱: ${reqItems[1].value}。
-        // 報名類型: ${result}
-        // 是否有程式相關背景: ${reqItems[2].value}。
-        // 其他: ${otherText.value}
-        // `)
-        console.log(`
-        您輸入的 e-mail: ${reqItems[0].value}。
-        暱稱: ${reqItems[1].value}。
-        報名類型: ${result}
-        是否有程式相關背景: ${reqItems[2].value}。
-        其他: ${otherText.value}
-        `)
-    }, false)
-    
-})
-    
-    //     var reqRadio = document.querySelectorAll('.radio')
-    //     // for(var i = 0; i < reqRadio.length; i++){
-    //     //     if(reqRadio.length > 0){
-    //             if(reqRadio[0].checked || reqRadio[1].checked){
-    //                 alert('!!!')
-    //             }
-    //     //     }
-    //     // }
-    //     console.log(reqRadio[0].value)
-    // })
-    // var reqRadio = document.querySelectorAll('input.radio');
-    // document.querySelectorAll('.radio').addEventListener('submit', function(){
-    //     for(var i = 0; i < reqRadio.length; i++) {
-    //         console.log(reqRadio[i].value)
-    //         if(reqRadio[i].checked){
-    //         // console.log(reqRadio[i].value)
-    //         alert(reqRadio[i].value)
-    //         }
-    //     }
-    // })
-            
-
-</script>
 </head>
 <body>
     <div class="container">
@@ -230,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 </div>
                 <div class="form__main">
-                    <form class='form__body' name='form__body' onsubmit="checkForm()">
+                    <form class='form__body' name='form__body' onsubmit="return checkInput();">
                         <div class="form__part form__email">
                             <div>電子郵件<span class="remind"> ＊</span></div>
                             <input type="email" class="req" name="email" id="email" placeholder="您的電子郵件" />
@@ -244,8 +146,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                         <div class="form__part form__type">
                             <div>報名類型<span class="remind"> ＊</span></div>
-                            <input type="radio" class="radio" name="type" value='從零到一基礎班' /><small>從零到一基礎班（一個月後開始收保證金 3000，淘汰不退還，結業後兩個月內找到工作付一個月半薪水，沒工作不用付）</small><br>
-                            <input type="radio" class="radio" name="type" value='在職工程師加強班' /><small>在職工程師加強班（一個月後開始收保證金 3000，兩個月時收學費 30000，被淘汰不退還）</small>
+                            <input type="radio" class="radio" name="type" id="radio1" value='從零到一基礎班' /><small>從零到一基礎班（一個月後開始收保證金 3000，淘汰不退還，結業後兩個月內找到工作付一個月半薪水，沒工作不用付）</small><br>
+                            <input type="radio" class="radio" name="type" id="radio2" value='在職工程師加強班' /><small>在職工程師加強班（一個月後開始收保證金 3000，兩個月時收學費 30000，被淘汰不退還）</small>
                             <div class='hidden warning'>這是必填問題</div>
                         </div>
                         <div class="form__part form__coding">
@@ -272,4 +174,87 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     </div>
 </body>
+<script type="text/javascript">
+
+function checkInput() {
+    var email_element = document.getElementById('email')
+    var name_element = document.getElementById('name')
+    var code_element = document.getElementById('coding')
+    var radio1 = document.getElementById('radio1')
+    var radio2 = document.getElementById('radio2')
+    var other_element = document.getElementById('other')
+
+    var email = email_element.value
+    var name = name_element.value
+    var code = code_element.value
+    var other = other_element.value
+
+    var error_message = '您也許忘了填寫什麼？\n\n';
+    var data = '你填寫的訊息如下：\n\n';
+    var error_flag = false;
+
+    if(name == '') {
+        name_element.parentNode.style.background = '#ffdde3';
+        name_element.nextElementSibling.classList.remove('hidden');
+        error_message += '或者是暱稱？\n';
+        error_flag = true;
+    } else {
+        name_element.parentElement.style.background = '';
+        name_element.nextElementSibling.classList.add('hidden');
+        data += name + ' 先生/小姐，您好\n';
+    }
+
+    if(email == '') {
+        email_element.parentNode.style.background = '#ffdde3';
+        email_element.nextElementSibling.classList.remove('hidden');
+        error_message += '也許是 email?\n';
+        error_flag = true;
+    } else {
+        email_element.parentNode.style.background = '';
+        email_element.nextElementSibling.classList.add('hidden');
+        data += '電子郵件: ' + email + '\n';
+    }
+
+    if(code =='') {
+        code_element.parentNode.style.background = '#ffdde3';
+        code_element.nextElementSibling.classList.remove('hidden');
+        error_message += '相關背景呢?\n';
+        error_flag = true;
+    } else {
+        code_element.parentNode.style.background = '';
+        code_element.nextElementSibling.classList.add('hidden');
+        data += '是否有無相關背景: ' + code + '\n';
+    }
+
+    if(!radio1.checked && !radio2.checked) {
+        radio2.parentNode.style.background = '#ffdde3';
+        radio2.nextElementSibling.nextElementSibling.classList.remove('hidden');
+        error_message += '還記得報名的類型嗎？\n';
+    } else if (radio1.checked || radio2.checked){
+        if(radio1.checked ){
+            data += '報名類型: ' + radio1.value + '\n';
+        } else{
+            data += '報名類型: ' + radio2.value + '\n';
+        }
+        radio2.parentNode.style.background = '';
+        radio2.nextElementSibling.nextElementSibling.classList.add('hidden');
+    }
+
+    if(other !== ''){
+        data += '您想說的: ' + other + '\n';
+    }
+
+    if(error_flag) {
+        alert(error_message);
+        // console.log(error_message);
+    } else {
+        // alert(data);
+        alert('提交成功！')
+        console.log(data + '\n\n');
+    }
+
+    return false
+}
+
+</script>
 </html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Hide & Show</title>
+    <style>
+    </style>
+    <script type="text/javascript">
+    // 用 JavaScript 的程式，動態的註冊事件處理器。
+
+    function init(){
+        var btn = document.getElementById("btn");
+        /* 以前的寫法
+        btn.onclick = function(){
+            alert('Clicked');
+        }
+        */  
+       //下面是近代的寫法
+        var handler = function(){ // 準備一個事件處理器(對應事件的函式)
+            alert("Clicked");
+        };
+        btn.addEventListener("click" /*事件的名稱*/ , handler);
+    }
+
+    </script>
+</head>
+<body onload="init();">
+    <button id="btn">Click</button>
+
+    
+    <!-- 第一種方式，靜態的事件處理
+    <span onclick="alert('');">Text</span> -->
+</html>

@@ -241,6 +241,7 @@ echo MentorProgramAPI::$version;
 ```
 
 - 如果今天放在 instance 裡面的時候。
+
 因為是分別存在不同的 instance 裡面，api 這個instance裡面有一個變數version，api2也有一個version，就會有兩個變數。
 
 ```php

@@ -17,7 +17,9 @@ console.log(arr.join(''))
 console.log(arr.join('!'))
 // result = 1!2!3!-1!-2!-3
 
-// arr.map() 會把每個元素帶到 function 去，用它的回傳值，取代原本的值
+
+
+// arr.map() 會把每個元素帶到 function(想讓它變怎樣) 去，用它的回傳值，取代原本的值
 function double (x) {
   return x * 2
 }
@@ -49,7 +51,8 @@ console.log(
 )
 // [ -2, -4, -6, 2, 4, 6 ]
 
-// arr.filter() 你可以把東西過濾掉，回傳ture的會留下來，回傳false的會不見，以下範例把負數過濾掉
+
+// arr.filter() 你可以把東西過濾掉，回傳ture的會留下來，回傳false的會不見，以下範例把負數過濾掉
 console.log(
   arr.map(function negtive (a) {
     return a * -1
@@ -59,6 +62,7 @@ console.log(
     })
 )
 // [ 1, 2, 3 ]
+
 
 // arr.slice([begin[, end]]) 從哪切到哪
 var arr2 = [0, 1, 2, 3, 4, 5, 6]
@@ -101,7 +105,8 @@ array1.sort(function (a, b) {
 console.log(array1)
 
 /*
-splice() 方法可以藉由刪除既有元素並／或加入新元素來改變一個陣列的內容。
+splice() 方法可以藉由刪除既有元素並／或加入新元素來改變一個陣列的內容。會改到原本的
+array。
 
 sort() 方法會原地（in place）對一個陣列的所有元素進行排序，並回傳此陣列。排序不一定是穩定的（stable）。預設的排序順序是根據字串的 Unicode 編碼位置（code points）而定。
 

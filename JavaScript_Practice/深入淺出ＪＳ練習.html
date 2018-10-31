@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>深入淺入 JavaSvript
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="cookie.js"></script>
+    <script>
+        var userName;
+        function greetUser() {
+            if (navigator.cookieEnabled) // 如果支援 cookie 則從 irock的cookie 裡讀取使用者名稱
+            // 從 cookie 裡讀取使用者名稱，而後儲存於變數 userName
+            userName = readCookie("irock_username");
+            if (userName) {
+                alert('Hello' + userName +  ', I missed you.');
+            } else {
+                alert ('Hello, I am your pet rock.');
+            }
+            
+        }
+        function touchRock() {
+            // 檢查有沒有輸入使用者名稱
+            if(userName) { 
+                // 找到名稱就以個人化方式問候他
+                alert("I like the attention," + userName + ". Thank you.");
+            } else {
+                userName = prompt("What is your name?", "Enter your name here.");
+                if (userName) {
+                    alert("Is is good to met you," + userName + ".");
+                    if(navigator.cookieEnabled) { // 如果支援cookie 就寫入記錄使用者名稱的cookie
+                        writeCookie("irock_username", userName, 5*365);
+                    /* 
+                    writeCookie(...): 拿到名稱之後問候使用者並把名稱寫入Cookie裡面
+                    ircok_username: 讀取這個cookie 亦使用此名稱
+                    userName: 使用者名稱的值來自變數
+                    5*365: cookie 保存五年
+                    
+                    點擊 圖片 觸發這個函式 onclick="touchRock();"
+                    */
+                    } else { // 告訴使用者,缺少cookie的功能
+                        alert("Sorry, Cookies aren't supported/enabled in your brower.")
+                    }
+                    
+
+                }
+            }
+            document.getElementById('rockImg').src = "https://i.imgur.com/Vyb0896.png"
+        }
+
+
+
+        function resizeRock() {
+            document.getElementById("rockImg").style.height = (document.body.clientHeight - 100) * 0.9;
+        }
+        setTimeout("document.getElementById('rockImg').src = 'https://i.imgur.com/xjSAi4K.png';", 3000)
+    </script>
+</head>
+<body onload="resizeRock(); greetUser();"  onresize="resizeRock();">
+    <div style="margin-top:100px; text-align:center">
+        <img src="irock.png" alt="iRock" id="rockImg" onclick="touchRock();"/>
+    </div>
+</body>
+</html>

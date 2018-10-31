@@ -148,7 +148,7 @@
                 <button id="operator" class="btn plus operator">+</button>
             </div>
             <div class="row">
-                <button id="num" class="btn number number0">0</button>
+                <button id="num" class="btn zero number0">0</button>
                 <button id="num" class="btn dot">.</button>
                 <button id='equal' class="btn equal operator">=</button>
             </div>
@@ -170,8 +170,9 @@ document.addEventListener('DOMContentLoaded',function(){
             if(eTar === 'number'){
                 // input1 += e.target.innerText;
                 // result.innerText += input1;
+                getNum(number);
                 // console.log(result.innerText);
-                result.innerText = input1(str);
+                // result.innerText = input1;
 
             }
             if(eTar === 'plus'){
@@ -179,7 +180,7 @@ document.addEventListener('DOMContentLoaded',function(){
                 input2 +=  e.target.innerText
                     // result.innerText = input1;
                     // plus();
-                    console.log(input1)
+                    // console.log(input1)
                     // console.log(input2)
                     // console.log(result.innerText)
                     // console.log(eTar)
@@ -208,6 +209,16 @@ document.addEventListener('DOMContentLoaded',function(){
         function input1(str) {
             result += Number(eTar.innerText)
         }
+
+        function clickNumber(num) {
+            appendAnwser(num);
+        }
+
+        function getNum(number){
+            num += e.target.innerText;
+        }
+
+
     })
 });
 
@@ -285,7 +296,4 @@ document.addEventListener('DOMContentLoaded',function(){
 
 // })
  </script>
-
- 
-<div></div>
 </html>

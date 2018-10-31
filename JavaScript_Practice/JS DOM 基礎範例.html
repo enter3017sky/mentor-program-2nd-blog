@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <style>
+    </style>
+    <script type="text/javascript">
+    // alert(window.screen.width + "x" + window.screen.height); // 取得螢幕解析度
+
+    function change(){
+        var spanObj = document.getElementById("emotion");
+        spanObj.innerText = "bad";
+        spanObj.style.color = "red";
+        spanObj.style.fontWeight = "bold";
+        // spanObj.style.display = "none";
+    };
+
+
+    </script>
+</head>
+<body>
+    <button onclick="change();">change</button>
+    <div>
+        Today is a <span id="emotion">good</span> day. Let's go to movie.
+    </div>
+</body>
+</html>

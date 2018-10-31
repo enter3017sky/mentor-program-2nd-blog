@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Form Practice</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .form__warp {
+            width: 50%;
+            margin: 0 auto;
+            /* background: gray; */
+        }
+        .question {
+            display:flex;
+            flex-direction: column;
+            margin: 100px;
+            border: 1px solid black;
+            padding: 30px;
+            justify-content: center;
+        }
+        label{
+            display: flex;
+            justify-content: center;
+        }
+        label + label {
+            display:flex;
+            margin-top: 20px;
+        }
+        .btn {
+            width: 20%;
+            display: flex;
+            justify-content: center;
+            margin: 20px auto 0;
+        }
+    </style>
+    <script>
+    document.addEventListener('DOMContentLoaded', function(){
+        var elUsername = document.getElementById('name')
+        elUsername.addEventListener('blur', checkUserName, false)
+        function checkUserName() {
+            var elMsg = document.getElementById('feedback');
+            if(this.value.length < 5) {
+                elMsg.textContent = 'Username must be 5 characters or more';
+            } else {
+                elMsg.textContent = '';
+            }
+        }
+        
+
+
+        document.querySelector('.form__warp').addEventListener('click', function(e){
+            let elName = document.getElementById('name'),
+                elAge = document.getElementById('age'),
+                elPhone = document.getElementById('phone'),
+                elBtn = document.getElementById('btn')
+            //     console.log(e.target)
+            // console.log(elAge.value)
+            // ||elAge.value ==''||elPhone == ''
+                 elBtn.onclick = function(){
+                    var result = true;
+                    var msg ='';
+                    if(elName.value == '') {
+                        // alert('你的名字忘了填');
+                        msg = '你的名字忘了填';
+                        result = false;
+                    } if(elAge.value == '') {
+                        // alert('你的年齡忘了填');
+                        msg += '\n你的年齡忘了填';
+                        result = false;
+                        
+                    } if(elPhone.value == ''){
+                        // alert('你的電話勒');
+                        msg += '\n你的電話勒';
+                        result = false;
+                    }
+                    if(msg != ''){
+                        alert(msg);
+                    }
+                    return result
+                }
+
+        })
+    })
+    </script>
+</head>
+<body>
+    <div class="form__warp">
+        <form class="question" onsubmit="return false">
+            <label class="name">名字：<input type="text" id="name" placeholder="請輸入您的名字" name="name" class="name" /></label>
+
+            <div id="feedback"></div>
+            <label class="age">年齡：<input type="text" id="age" placeholder="請輸入您的年齡" name="age" class="age" /></label>
+            <label class="phone">電話：<input type="text" id="phone" placeholder="請輸入您的電話" name="phone" class="phone" /></label>
+            <input type="submit" class="btn" id="btn" value="Submit">
+        </form>
+    </div>
+</body>
+</html>
