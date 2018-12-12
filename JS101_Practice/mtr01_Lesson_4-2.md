@@ -33,7 +33,13 @@
 
 1. GET: GET 方法請求展示指定資源。使用 GET 的請求只應用於取得資料。
 2. POST: POST 方法用於提交指定資源的實體，通常會改變伺服器的狀態或副作用（side effect）。
-3. PATCH: 更改資料。
+  - 建立新資源。
+3. PATCH: 更改資料的特定內容。
+  ex. 本來 id 是 80972 的 user 內容是：`name=susam, Age=30`，現在需要把 Age 改成 31 , 所以
+    - URL = /v1/users/89072
+    - Method = PATCH
+    - Request Body = {"Age": 31}
+
 4. PUT: PUT 方法會取代指定資源所酬載請求（request payload）的所有表現。
 5. DELETE: DELETE 方法會刪除指定資源。
 6. OPTIONS: OPTIONS 方法描述指定資源的溝通方法（communication option）。
@@ -41,10 +47,12 @@
 
 ## HTTP Status Code (Response)
 
+
 - 200 OK: 沒問題
 - 301 Moved Permanently: 永久轉址（瀏覽器會記住）
 - 302 Found: 暫時轉址（瀏覽器不會記住）
-- 400 Bad Request: 通常是 Client 端有錯誤
+- 400 Bad Request: 通常是 Client 端有錯誤。
+    - 例如：有東西壞掉，參數沒弄好。
 - 403 Forbidden: 沒有權限看這個檔案
 - 404 Not Found: 沒有這個頁面
 - 500 Internal Server Error
@@ -52,6 +60,10 @@
 
 ## HTTP return codes cheat sheet
 
+> 2 開頭沒問題
+> 3 開頭轉址
+> 4 Client 客戶端
+> 5 Server 伺服器端
 - 1** Hold on
 - 2** Here you go
 - 3** Go away
@@ -62,7 +74,7 @@
 
 1. `<script src='...' />`:
   - 有串過 GA 嗎？ 廣告追蹤的原理之一。
-  - Google Analytics 就是利用在網頁上放一個 <script>，發送 request 給 Google 後，他們就能追蹤到一些使用者的資訊，這也是廣告追蹤的原理之一，利用埋一段 <script> 來取得資料。
+  - Google Analytics 就是利用在網頁上放一個 `<script>`，發送 request 給 Google 後，他們就能追蹤到一些使用者的資訊，這也是廣告追蹤的原理之一，利用埋一段 `<script>` 來取得資料。
 
 2. `<link href='...' />`
 
@@ -79,7 +91,7 @@
   - `<form method="GET" action="http://google.com">`
   > 連結到 Google 搜尋的畫面。
 
-#### \<form method="GET">
+#### <form method="GET">
 
 - 資訊帶在網址後面，
 - GET 沒有 request body，所以會把資料帶到網址後面，例如：http://a.com?q=test&name=123
@@ -99,7 +111,7 @@
 - Requset 的 Body 那裡，有地方可以讓他帶資料。
 
 ```html
-<form method="POST"> 
+<form method="POST">
 <!-- POST: 資訊在DevTools的 Network 裡面 東西就可以帶到server 上面去
     ，server 就可以對帳號密碼進行驗證。-->
     username:<input type="text" name="name" />
@@ -124,7 +136,7 @@
     > a.com?q=test
     > a.com/buy
 
-### GET vs POST
+### GET vs POST 差別
 
 #### GET
 
@@ -145,14 +157,16 @@
 
 ---
 
-# Asynchronous JavaScript and XML
+## Asynchronous JavaScript and XML
 
 ## AJAX
+
+- Ajax 使用一種非同步處理的模型，這是表示使用者可以在瀏覽器等待資料載入的時候，仍然可以進行其他操作，讓操作更順暢。
 
 - 簡單來說就是透過瀏覽器提供的 API，可以不換頁就跟 Server 溝通
 - 應用：輸入帳號就能確認有沒有重複、留言之後不會換頁
 
-# Application Programming Interface
+## Application Programming Interface
 
 - 重點：Interface，就是一個介接的東西
 - 舉例：
@@ -164,7 +178,7 @@
     5. 這 API 有點問題，可能要修改一下
 - __你__ 要提供一個 API 給 __我__，__我__ 才可以用這個 API 去執行 __你__ 那邊的功能
 
-# 該怎麼使用 AJAX
+## 該怎麼使用 AJAX
 
 1. 找到你想要串接的 Web API
 2. 利用瀏覽器提供的 API 發送 Request 並且接收 Response

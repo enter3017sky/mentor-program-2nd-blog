@@ -1,8 +1,5 @@
 
-留言板切版
-
-
-
+# 留言板切版
 
 - 創資料庫和資料表之後，我們可以開始在其中添加數據。
 
@@ -15,7 +12,7 @@
 
 - __`INSERT INTO`__ 語句用於向 MySQL __資料表(table)__ 添加新記錄：
 
-```javascript
+```js
 INSERT INTO table_name (column1, column2, column3,...)
 VALUES (value1, value2, value3,...)
  ```
@@ -40,11 +37,11 @@ VALUES (value1, value2, value3,...)
 
 # PHP include 和 require 語句
 
-- 通過include 或require 語句，可以將PHP 文件的內容插入另一個PHP 文件（在服務器執行它之前）。
+- 通過 include 或 require 語句，可以將PHP 文件的內容插入另一個PHP 文件（在服務器執行它之前）。
 
 - include 和 require 語句是相同的，除了錯誤處理方面：
-    - require 會生成致命錯誤（E_COMPILE_ERROR）並停止執行檔案
-    - include 只生成警告（E_WARNING），並且檔案會繼續執行
+   - require 會生成致命錯誤（E_COMPILE_ERROR）並停止執行檔案
+   - include 只生成警告（E_WARNING），並且檔案會繼續執行
 
 - PHP 可以使用 `print_r` 函數顯示陣列元素
 
@@ -58,6 +55,36 @@ VALUES (value1, value2, value3,...)
 // 成功會顯示
 Array ( [nickname] => nickname [content] => text [parent_id] => 0 )
 ```
+
+---
+## 密碼的安全性。
+
+ 1. 在註冊的頁面使用 password_hash
+    - 註冊時，使用者輸入的密碼 hash 後存入資料庫。
+    - `$password = password_hash($_POST['password'],
+PASSWORD_DEFAULT);`
+
+2. 在登入的頁面使用 password_verify
+```php
+// 用 password_verify 的話 SELECT username 就好
+$sql = "SELECT * FROM enter3017sky_users
+        WHERE username = '$username'";
+        // AND password = '$password'";
+
+if (password_verify($password, $hash_password)) {
+    setcookie("username", $username, time()+3600*24);
+    printMessage('登入成功', './index.php');
+} else {
+    printMessage('帳號或密碼錯誤!!', './login.php');
+    exit();
+}
+```
+
+## SESSION  機制
+
+1. 首先第一行輸入 session_start();
+2. 在登入之後 $_SESSION['username'] = $username
+
 
 ---
 
@@ -182,8 +209,6 @@ Array ( [nickname] => nickname [content] => text [parent_id] => 0 )
   - 一個提交類型，可指定 GET 與 POST 方法。
   - 一個以上的 `input` 欄位。
   - 表單數據的傳送目標 URL。
-
- 
 
 -  __定界符：echo <<<\_END ... \_END;__
 
@@ -373,15 +398,32 @@ if (!empty($_POST['username'])) {
 
 
 
-   
-本來是寫好一個 query 
+###   Lesson 6-2 之 Web Security
+
+本來是寫好一個 query
     $sql = "INSERT INTO users (username, password, nickname)
     VALUES ('$username', '$password', '$nickname')";
-    
 然後 連接 query
+
 $result = $conn->query($sql);
 
 然後就可以 result 這個東西
 
 
-首先宣告 stmt
+```js
+// 1.首先宣告 stmt，準備好 query
+$stmt = $conn->prepare("SELECT * FROM users WHERE username=? AND password=?");
+
+// 2. 用 bind_param，去將我們的變數，與「?」做結合，而s: string、i:整數、b:blob、d:浮點數
+$stmt->bind_param("ss", $username, $password);
+
+// 3. 執行
+$stmt->execute();
+
+// 4.用 get_result 取得資料
+$result = $stmt->get_result();
+
+if ($result->num_rows > 0)
+
+
+```

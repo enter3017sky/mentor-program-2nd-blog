@@ -32,28 +32,42 @@
 </head>
 <body>
     
-    <div class='test' id="box"></div>
+    <div class='test' id="box">123</div>
 
     <div class="btns">
         <button id="swicth" class="hs">Swicth</button>
         <button id="visible" class="hs">Show</button>
         <button id="hidden" class="hs">Hide</button>
+        <button id="big" class="hs">big</button>
+        <button id="small" class="hs">small</button>
     </div>
 </body>
 <script type="text/javascript">
 
 document.addEventListener("DOMContentLoaded" , function(){
     const q = function(selector){
+        var x = 100;
         return {
             hide: function(){
                 document.querySelector(selector).style.display = "none";
             },
             show: function(){
                 document.querySelector(selector).style.display = "";
+            },
+            larger: function() {
+                x *= 1.2
+                document.querySelector(selector).style.fontSize = x + '%';
+            },
+            smaller: function() {
+                x /= 1.2
+                document.querySelector(selector).style.fontSize = x + '%';
+
             }
         }
     }
 
+    console.log(q(".test"))
+   
     var el = q(".test");
     document.querySelector("#hidden").addEventListener('click', function(){
         el.hide();
@@ -61,6 +75,13 @@ document.addEventListener("DOMContentLoaded" , function(){
     document.querySelector("#visible").addEventListener('click', function(){
         el.show();
     })
+    document.querySelector("#big").addEventListener('click', function(){
+        el.larger();
+    })
+    document.querySelector("#small").addEventListener('click', function(){
+        el.smaller();
+    })
+     console.log(el.hide())
 
     document.querySelector("#swicth").addEventListener('click', function(){
         if(document.querySelector('#box').style.display == 'none'){

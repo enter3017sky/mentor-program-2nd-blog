@@ -29,8 +29,9 @@ JONS 現在是主流
     POST 帶在 request 的body 裡面
 
 5. 什麼是 RESTful API？跟第三題有關聯
+
     符合這個規範就可以說是RESTful API
-    重點是以資源為中心，
+    重點是以資源為中心
 
     CRUD
     GET     /posts        所有文章
@@ -43,16 +44,17 @@ JONS 現在是主流
     一種資料格式
 
 7. JSONP 是什麼？
-    出現在CORS 
+    出現在CORS
     SOP Same origin policy
     透過script 的 src 沒有跨網域的限制
 
 8. 要如何存取跨網域的 API？
     1. JONSP
-    2. 
+    2. 開啟跨來源請求：若要開啟跨來源請求，必須在伺服器端做一些設定，像是在 Response Header 加上 Access-Control-Allow-Origin：
+    [[JS] 同源政策與跨來源資源共用（CORS）](https://pjchender.github.io/2018/08/20/%E5%90%8C%E6%BA%90%E6%94%BF%E7%AD%96%E8%88%87%E8%B7%A8%E4%BE%86%E6%BA%90%E8%B3%87%E6%BA%90%E5%85%B1%E7%94%A8%EF%BC%88cors%EF%BC%89/)
 
 
-## Week5 重點總結 
+## Week5 重點總結
 
 1. 後端基本概念（知道前端跟後端的差異） 很重要
 2. 熟悉 PHP 語法

@@ -42,11 +42,24 @@ console.log(result)
 
 
 
-var x = 3;
-function test() {
-    var y = 5;
-    var x = 9;
-    console.log(x+y)
+// var x = 3;
+// function test() {
+//     var y = 5;
+//     var x = 9;
+//     console.log(x+y)
+// }
+// // test()
+// console.log(x)
+
+
+function stars(n) {
+	let newArr =[]
+	let newStr ='' 
+	for (let i=1; i<=n; i++) {
+		newStr += '*'
+		newArr.push(newStr)
+	}
+	return newArr
 }
-// test()
-console.log(x)
+
+console.log(stars(5))

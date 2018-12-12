@@ -15,15 +15,23 @@
 
         document.querySelector('button').addEventListener('click', () => {
             var q = document.querySelector('input[name=id]').value
+            // new: 創建 XMLHttpRequest 物件
             var request = new XMLHttpRequest();
             request.open('GET', 'https://jsonplaceholder.typicode.com/posts/' + q, true);
-            
-            request.onload = function() { // load好之後 後面接 什麼事件 (cb function )
+            // request.open('GET', 'https://jsonplaceholder.typicode.com/posts?_limit=10', true);
+
+
+            // load好之後 後面接 什麼事件 (cb function )
+            request.onload = function() { 
                 if (request.status >= 200 && request.status < 400) {
+                    // Success!
                     var resp = request.responseText;
                     document.querySelector('.response').innerText = resp
                 } else {
-                    document.querySelector('.response').innerText = 'error'
+                    // error
+                    document.querySelector('.response').innerHTML = `
+                    <div style="font-size:60px; ">error</div>
+                    `
                 }
             };
         request.send();

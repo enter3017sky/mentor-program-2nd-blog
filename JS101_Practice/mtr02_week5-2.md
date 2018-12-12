@@ -331,8 +331,8 @@ echo MentorProgramAPI::$version;
 class Db {
     public function __construct($server, $user, $password, $database) {
         $this->sevverName = $s;
-    $this->userName = $u;
-    $this->init()
+        $this->userName = $u;
+        $this->init()
     }
 
     private function init() {

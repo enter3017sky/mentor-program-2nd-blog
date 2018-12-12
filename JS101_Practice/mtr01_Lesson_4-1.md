@@ -267,7 +267,7 @@ length: 3
 
 #### __document.querySelectorAll(‘.btn’)__ 的範例。
 
-- 在 DevTools 查看 console ，就會多了跟 HTMLCollection 一樣的東西。NodeList(3) [p, p, p]。
+- 在 DevTools 查看 console ，就會多了跟 HTMLCollection 一樣的東西。NodeList(3) [p, p, p]。
 - 跟陣列很像的東西。
 - 用一樣的方法選取：`variable[index]`
 
