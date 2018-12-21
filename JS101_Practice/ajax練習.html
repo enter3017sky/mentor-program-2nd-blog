@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            //先建立一個空的bbs.js檔案，並修改其屬性為utf-8，才能儲存中文。
+            var xmlHttp;      //用於儲存XMLHttpRequest物件的全域性變數
+            var username;      //用於儲存姓名
+            var title;       //用於儲存標題
+            var content;      //用於儲存內容
+            var threadid;      //用於儲存主題編號
+            //用於建立XMLHttpRequest物件
+            function createXmlHttp() {
+                //根據window.XMLHttpRequest物件是否存在使用不同的建立方式
+                if (window.XMLHttpRequest) {
+                xmlHttp = new XMLHttpRequest();     //FireFox、Opera等瀏覽器支援的建立方式
+                } else {
+                xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");//IE瀏覽器支援的建立方式
+                }
+            }
+
+
+            //提交回帖到伺服器
+            function submitPost() {
+            //獲取帖子中姓名、標題、內容、主題編號四部分資訊
+                username = document.getElementById("username").value;
+                title = document.getElementById("post_title").value;
+                content = document.getElementById("post_content").value;
+                threadid = document.getElementById("threadid").value;
+                if (checkForm()) {
+                    createXmlHttp();         //建立XMLHttpRequest物件
+                    xmlHttp.onreadystatechange = submitPostCallBack; //設定回撥函式
+                    xmlHttp.open("POST", "bbspost.php", true);   //傳送POST請求
+                    //設定POST請求體型別
+                    xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+                    xmlHttp.send("username="   encodeURI(username)  
+                    "&title="   encodeURI(title)  
+                    "&content="   encodeURI(content)  
+                    "&threadid="   threadid);    //傳送包含四個引數的請求體
+                }
+            }
+            //檢查表單是否內容已填寫完畢
+            function checkForm() {
+                if (username == "") {
+                    alert("請填寫姓名");
+                    return false;
+                } else if (title == "") {
+                    alert("請填寫標題");
+                    return false;
+                } else if (content == "") {
+                    alert("請填寫內容");
+                    return false;
+                }
+                return true;
+            }
+
+
+            //獲取查詢選項的回撥函式
+            function submitPostCallBack() {
+                if (xmlHttp.readyState == 4) {
+                    alert(xmlHttp.responseText);
+                    createNewPost(xmlHttp.responseText);
+                }
+            }
+            //建立新的回帖
+            function createNewPost(postId) {
+            //清空當前表單中各部分資訊
+                document.getElementById("post_title").value = "";
+                document.getElementById("post_content").value = "";
+                document.getElementById("username").value = "";
+                var postDiv = createDiv("post", ""); //建立回帖的外層div
+                postDiv.id = "post"   postId;   //給新div賦id值
+                var postTitleDiv = createDiv("post_title", title"["username"]"); //建立標題div
+                var postContentDiv = createDiv("post_content", "<pre>"content"</pre>"); //建立內容div
+                postDiv.appendChild(postTitleDiv);       //在外層div追加標題
+                postDiv.appendChild(postContentDiv);      //在外層div追加內容
+                document.getElementById("thread").appendChild(postDiv);  //將外層div追加到主題div中
+            }
+            //根據className和text建立新的div
+            function createDiv(className, text) {
+                var newDiv = document.createElement("div");
+                newDiv.className = className;
+                newDiv.innerHTML = text;
+                return newDiv;
+            } 
+        })
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

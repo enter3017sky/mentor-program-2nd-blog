@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>dom practice</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    /* div {
+        width: 100%;
+        height: 200px;
+    } */
+    body {
+        margin: 0 auto;
+    }
+    .wrap {
+        /* display: flex; */
+    }
+    .btn {
+        /* background: red; */
+        width: 60px;
+        height: 30px;
+    }
+    /* .form-btn + .form-btn {
+        margin-left: 5px;
+    } */
+    .btnList {
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        width: 100vw;
+        display: flex;
+        background: rgba(200, 160, 120, 0.5);
+        padding: 5px;
+    }
+    .container {
+        display: flex;
+
+    }
+    .disBox {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        font-size: 100%;
+        max-width: 100%;
+        text-align: center;
+        /* background: #909090; */
+        border: 1px solid rgb(191, 191, 191);
+        padding: 5px;
+    }
+    .input__box {
+        margin-bottom: 10px;
+    }
+    li:hover {
+        cursor: pointer;
+    }
+    .test {
+        width: 200px;
+        background: red;
+    }
+    .topDiv {
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        // $(document).ready(function() {
+        $(function() {
+
+            var $divBox = $('<div>',     // step1 建立基本的 img 元素。
+                {       // step2 指定各個屬性
+                    class: 'test',
+                    title: 'I woof in your general direction',
+                    style: 'background: gray; height:200px',
+                    click: function() {    // 3.建立 click 處理器
+                        alert($(this).attr('title'));
+                        console.log('goodJob')
+                    }
+                })
+                .text('123') // 沒有內容文字 div 出不來
+                .appendTo('body');  // 將之附加到 body 元素，使元素加入到 DOM 之中
+                
+                // 建立一個 input
+                var $inputBox = $('<input>', 
+                    {
+                        class: 'inputBox',
+                        type: 'text',
+                        click: function() {
+                            console.log('input gb')
+                        }
+                    }).appendTo('.test') // 附加到上面那個div
+                    .attr({ // 添加屬性
+                        value: '',
+                        title:'Please enter a value'
+                    })
+                    
+                // 依傳入物件上指定的屬性與值，設定符合集合中的所有元素對應的屬性
+                $('input.btn').attr({
+                    title:'Please Click Me!!'
+                })
+
+
+
+
+/*
+4.2.2 設定屬性值：attr
+attr(name, value)：已指定的名稱及傳入的值，設定 jQuery 物件中所有元素對應的屬性
+    name: (字串)要設定的屬性名稱。
+    value: (字串|數字|布林|函式)指定屬性值。若是函式，集合的各元素都會呼叫該函式，且傳入的元素索引以及被指定屬性的目前值。函式回傳值會成為屬性的值。
+
+                下面範例。走訪頁面中具有 title 屬性的所有元素，在既有的 title 附加字串，字串由元素在 DOM 中的索引以及個元素的 id 屬性組成(若有的話)，否者使用 'unset'。
+*/
+                $('[title]').attr('title', function(index, previousValue) {
+                    return previousValue + ' I am element ' + index + ' and my name is ' + (this.id || 'unset');
+                })
+
+                // $('[title]').attr('title', function(index, previousValue) {
+                //     return previousValue + ' I am element ' + index + ' and my name is ' + (this.className || 'unset');
+                // })
+
+
+
+
+
+            
+            $('.submitBtn').on('click', function() {
+                let parentElement = $(this).parents()
+                $('.disBox').html('')
+                $('.disBox').html('在 console.log 中，查看 parents() 的所有父元素。')
+
+                // 依序例舉物件的屬性 這個範例把 .submitBtn 的父元素都 log 出來了
+                for (const i in parentElement) {
+                    if (parentElement.hasOwnProperty(i)) {
+                        const element = parentElement[i];
+                        console.log(element)
+                    }
+                }
+                // console.log(parentElement)
+            })
+
+            // .parents().remove()
+
+
+            // $('').on('click', function() {alert('List Item Clicked!!')})
+            //     .parent()
+            //         .clone(true)
+            //             .find('li')
+            //                 .appendTo('#b')
+            //     .end()
+            // .end()
+            // .remove()
+        })
+
+
+        document.addEventListener("DOMContentLoaded", function(){
+            const q = function(selector){
+                var size = 100;
+                return {
+                    hide: function(){
+                        document.querySelector(selector).style.display = "none";
+                    },
+                    show: function(){
+                        document.querySelector(selector).style.display = "";
+                    },
+                    larger: function() {
+                        size *= 1.2
+                        document.querySelector(selector).style.fontSize = size + '%';
+                    },
+                    smaller: function() {
+                        size /= 1.2
+                        document.querySelector(selector).style.fontSize = size + '%';
+                    }
+                }
+            }
+
+            var element = q('.disBox')
+            // console.log(element.larger)
+
+
+            // 取得所有表單元素
+            let forms = document.forms
+
+            // 執行 el，可幫所有表單加上事件監聽
+
+            var getEl = function(el){
+                for (let i = 0; i < el.length; i++) {
+                    const elem = el[i];
+                    elem.addEventListener('click', function(e){
+                        const target = e.target
+                        // console.log(target.value)
+                        if(target.value === 'hide') {
+                            element.hide()
+                        } else if(target.value === 'show') {
+                            element.show()
+                        } else if(target.value === 'larger') {
+                            element.larger()
+                        } else if(target.value === 'smaller') {
+                            element.smaller()
+                        } 
+                        if(target.value === 'Submit'){
+                            var input = e.target.previousSibling.previousSibling
+                            var box = document.querySelector('.disBox')
+                            // console.log(input.value)
+                            box.innerHTML = input.value
+                            input.value = '';
+                        }
+                    })
+                }
+            }
+            // 只能在後面呼叫函式
+            getEl(forms)
+
+            // 可以在前面呼叫函式
+            // el(forms)
+            // function el(el) {
+            //     for (let i = 0; i < el.length; i++) {
+            //         const elem = el[i];
+            //         elem.addEventListener('click', function(e){
+            //             console.log(e.target)
+            //         })
+            //     }
+            // }
+        })
+        
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="btnList">
+            <div class="input__box">
+                <form class="form-btn" onsubmit="return false;">
+                    <input class="input" type="input" placeholder="你想說的">
+                    <input class="btn" type="submit" value="Submit">
+                </form>
+            </div>
+            <form class="form-btn">
+                <input class="btn" type="button" value="hide">
+            </form>
+            <form class="form-btn">
+                <input class="btn" type="button" value="show">
+            </form>
+            <form class="form-btn">
+                <input class="btn" type="button" value="larger">
+            </form>
+            <form class="form-btn">
+                <input class="btn" type="button" value="smaller">
+            </form>
+            <div>
+                <form class="form-btn">
+                    <label>
+                        <input class="btn submitBtn" type="button" value="parents()">
+                    </label>
+                </form>
+            </div>
+            
+            <form class="form-btn">
+                <input class="btn" type="button" value="6">
+            </form>
+            <form class="form-btn">
+                <input class="btn" type="button" value="7">
+            </form>
+            <form class="form-btn">
+                <input class="btn" type="button" value="8">
+            </form>
+            <form class="form-btn">
+                <input class="btn" type="button" value="9">
+            </form>
+            <form class="form-btn">
+                <input class="btn" type="button" value="10">
+            </form>
+
+        </div>
+
+        <div class="container">
+            <div class="disBox">123123</div>
+        </div>
+
+        <div class="topDiv">
+            <div class="topBox1">
+                box1
+                <ul id="a" class="box1Ul">
+                    box1 ul list
+                    <li class="li1">topBox1-item1</li>
+                    <li class="li2">topBox1-item2</li>
+                    <li class="li3">topBox1-item3</li>
+                    <li class="li4">topBox1-item4</li>
+                    <li class="li5">topBox1-item5</li>
+                </ul>
+            </div>
+            <div class="topBox2">box2</div>
+            <div class="topBox3">box3</div>
+            <ul id="b" class="ul2">
+                <li class="li2-1">1</li>
+                <li class="li2-2">2</li>
+                <li class="li2-3">3</li>
+                <li class="li2-4">4</li>
+                <li class="li2-5">5</li>
+            </ul>
+            <ul id="c">
+                <li class="li3-1">1</li>
+                <li class="li3-2">2</li>
+                <li class="li3-3">3</li>
+            </ul>
+        </div>
+
+        <input id="surname" tabindex="1" style="background-color:red; margin: 2px" />
+    </div>
+</body>
+</html>

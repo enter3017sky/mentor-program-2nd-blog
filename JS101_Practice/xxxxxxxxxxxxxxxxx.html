@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+
+
+xhr.open('POST', './add_comment.php', true);
+xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+let data = {
+    parent_id: parentId,
+    content: content
+}
+
+// 使用 非同步，需監聽 load 事件，讓回應完成時能執行相對應的函式 — 回調函式 (callback)
+xhr.onload = function() {
+    if (xhr.status >= 200 && xhr.status < 400) {
+        let resp = xhr.responseText;
+        let resJSON = JSON.parse(resp);
+        
+        let parent = document.querySelector('.container')
+        let firstMeg = document.querySelector('.comments__wrapper')
+
+        newMeg.innerHTML +=`
+
+    } else {
+        // We reached our target server, but it returned an error
+    }
+};
+xhr.onerror = function() {
+    console.log('There was a connection error of some sort')
+};
+xhr.send(JSON.stringify(data));
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</head>
+<body>
+    
+</body>
+</html>

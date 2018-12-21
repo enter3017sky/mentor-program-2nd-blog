@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>add btn</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        // $(document).ready(function(){
+        //     $(".container").on('click', '.addBtn', function(){
+        //         $(".container").append("<button class='addBtn'>Add Btn</button>")
+        //     })
+        // })
+
+        document.addEventListener("DOMContentLoaded", function(){
+            document.querySelector(".container").addEventListener('click',function(){
+                var btn = document.createElement('button')
+                // btn.className = "addBtn";
+                // btn.innerText = "Add Btn"
+                // document.querySelector('.container').appendChild(btn)
+
+
+
+                const text = document.createTextNode('continue reading... <h1>123</h1>')
+                const li = document.createElement('li')
+                li.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center')
+                const fragment = document.createDocumentFragment()
+                li.innerHTML = `
+                        泡溫泉
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-outline-success done">完成</button>
+                            <button type="button" class="btn btn-outline-danger delete">刪除</button>
+                        </div>
+                `
+                fragment.appendChild(li)
+                document.querySelector('.container').appendChild(fragment)
+
+                // var frag = document.createDocumentFragment(); 
+                // for (var i = 0; i < 1000; i++) { 
+                //     var el = document.createElement('p'); 
+                //     el.innerHTML = i;
+                //     frag.appendChild(el); 
+                // } 
+                // document.body.appendChild(frag); 
+
+                    // <li class="list-group-item d-flex justify-content-between align-items-center">
+                    //     泡溫泉
+                    //     <div class="btn-group" role="group" aria-label="Basic example">
+                    //         <button type="button" class="btn btn-outline-success done">完成</button>
+                    //         <button type="button" class="btn btn-outline-danger delete">刪除</button>
+                    //     </div>
+                    // </li>
+
+            })
+        })
+
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <button class="addBtn">Add Btn</button>
+    </div>
+</body>
+</html>

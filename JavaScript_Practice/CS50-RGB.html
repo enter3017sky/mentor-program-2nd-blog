@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>CS50 - RGB Background</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    .ex_text {
+        border: 1px solid black;
+    }
+    </style>
+</head>
+<body>
+    <!-- RGB 範例 2 -->
+    <button id="red">R</button>
+    <button id="green">G</button>
+    <button id="blue">B</button>
+
+    <!-- 
+        onsubmit="greet(); 點擊時執行 greet() 函式 
+        return false  阻止表單提交
+        autocomplete 自動完成
+        autofocus 自動聚焦到某個 input 框
+    -->
+    <!-- 打招呼範例 1 -->
+    <form onsubmit="greet(); return false">
+        <input type="text" id="name" autocomplete="off" autofocus>
+        <input type="submit" value="submit">
+    </form>
+
+    <div>
+        <p class="ex_text">
+            你可以透過選擇 
+            &#060;p
+            &#062;標籤的類型，來選取這個元素，幫他加上事件監聽器，來操縱它的文字大小
+        </p>
+        <select>
+            <option value="xx-arge">XX-Large</option>
+            <option value="x-large">X-Large</option>
+            <option value="large">Large</option>
+            <option selected value="initial">Initial</option>
+            <option value="small">Small</option>
+            <option value="x-small">X-Small</option>
+            <option value="xx-small">XX-Small</option>
+        </select>
+    </div>
+    
+
+</body>
+<script>
+        // 打招呼範例 1
+    function greet() {
+        let name = document.querySelector('#name').value
+        alert('Hello, ' + name)
+    }
+
+
+
+        //RGB 範例 2
+    // hey, Browser 給我一個叫做 Body 的變數，它儲存 body 這個標籤節點
+    let body = document.querySelector('body')
+    // 選擇這個 id="red" 的節點，的 onclick 事件，調用這個匿名函式
+    document.getElementById('red').onclick = function() {
+        body.style.background = 'red';
+    }
+    document.getElementById('green').onclick = function () {
+        body.style.background = 'green';
+    }
+    document.getElementById('blue').onclick = function() {
+        body.style.background = 'blue';
+    }
+        // 或者這樣選擇元素
+    // document.querySelector('#red').onclick = function() {
+    //     body.style.background = 'red';
+    // }
+    // document.querySelector('#green').onclick = function () {
+    //     body.style.background = 'green';
+    // }
+    // document.querySelector('#blue').onclick = function() {
+    //     body.style.background = 'blue';
+    // }
+
+
+    document.querySelector('select').onchange = function() {
+        document.querySelector('.ex_text').style.fontSize = this.value
+    }
+
+</script>
+</html>
