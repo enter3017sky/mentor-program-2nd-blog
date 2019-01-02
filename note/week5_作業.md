@@ -57,6 +57,7 @@ Array ( [nickname] => nickname [content] => text [parent_id] => 0 )
 ```
 
 ---
+
 ## 密碼的安全性。
 
  1. 在註冊的頁面使用 password_hash
@@ -65,6 +66,7 @@ Array ( [nickname] => nickname [content] => text [parent_id] => 0 )
 PASSWORD_DEFAULT);`
 
 2. 在登入的頁面使用 password_verify
+
 ```php
 // 用 password_verify 的話 SELECT username 就好
 $sql = "SELECT * FROM enter3017sky_users
@@ -395,7 +397,6 @@ if (!empty($_POST['username'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
     $nickname = $_POST['nickname'];
-
 
 
 ###   Lesson 6-2 之 Web Security

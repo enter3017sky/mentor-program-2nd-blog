@@ -1,6 +1,142 @@
 # PHP PDO 學習筆記
 
+- 參考資料: [用戶創建、權限、刪除操作](https://www.kancloud.cn/curder/mysql/355296)
+
+- PDO::exec() 不返回 SELECT 語句的結果，返回 DELETE、UPDATE、INSERT INTO 受影響的行數。
+> PDO::exec() does not return results from a SELECT statement.
+
+
+```php
+$result = $pdo->exec("UPDATE products SET amount = amount + 2 WHERE id >1")
+var_dump($result=$pdo->exec("UPDATE products SET amount = amount + 2 WHERE id >1"));
+echo $result ? 'work<br><br>':'fail<br><br>';
+
+// 與三元運算子混搭使用
+echo var_dump($pdo->exec("UPDATE products SET amount = amount + 2 WHERE id >1")) ? 'work<br><br>':'fail<br><br>';
+// => int(4) work
+
+$sql = "INSERT INTO orders(product_id, amount, price) values(1,2,3),(2,3,4),(3,4,5)";
+echo var_dump($pdo->exec($sql)) ? 'success': 'fail1212';
+// 以上這樣用會 fail
+echo print_r($pdo->exec($sql)) ? 'success': 'fail1212';
+
+```
+
+
+- [Difference between PDO->query() and PDO->exec()](https://stackoverflow.com/questions/16381365/difference-between-pdo-query-and-pdo-exec)
+
+- 對於在程序中只需要發出一次的SELECT語句，請考慮發出 PDO::query()。
+> For a SELECT statement that you only need to issue once during your program, consider issuing PDO::query().
+
+- 對於需要多次發出的語句，請使用 PDO::prepare()準備PDOStatement對象，並使用 PDOStatement::execute()發出語句。
+> For a statement that you need to issue multiple times, prepare a PDOStatement object with PDO::prepare() and issue the statement with PDOStatement::execute().
+
+```php
+$result = $pdo->query('SELECT column_name FROM table_name')->execute();
+var_dump($count_rows);//=> bool(true) 返回布林值
+echo $count_rows;//=> 1 返回 1or0
+
+
+$rows_1 = $pdo->query('SELECT amount FROM products')->fetchAll(PDO::FETCH_NUM);
+var_dump($rows_1);
+echo "<br/>";
+echo $rows_1[2][0];
+echo "<br/>";
+// 以上返回二維陣列
+// array(5) {
+//   [0]=> array(1) {
+//     [0]=> string(3) "123"
+//   }
+//   [1]=> array(1) {
+//     [0]=> string(3) "234"
+//   }
+//   [2]=> array(1) {
+//     [0]=> string(3) "345"
+//   }
+//   [3]=> array(1) {
+//     [0]=> string(3) "456"
+//   }
+//   [4]=> array(1) {
+//     [0]=> string(3) "567"
+//   }
+// }
+
+
+[PDOStatement::fetchAll](http://php.net/manual/zh/pdostatement.fetchall.php)
+$rows_2 = $pdo->query('SELECT amount FROM products')->fetchAll(PDO::FETCH_COLUMN);
+var_dump($rows_2);
+echo "<br/>";
+echo $rows_2[3];
+
+// 以上返回一維陣列
+// array(5) {
+//   [0]=> string(3) "123"
+//   [1]=> string(3) "234"
+//   [2]=> string(3) "345"
+//   [3]=> string(3) "456"
+//   [4]=> string(3) "567"
+// }
+
+// SELECT 某個欄位存不存在(這個實際上是查詢有沒有某個訂單)
+$q = "SELECT product_id FROM orders where product_id = 1";
+$result = $pdo->query($q)->fetchAll(PDO::FETCH_COLUMN);
+var_dump($result);
+if($result) {
+    echo "good ";
+} else {
+    echo "fail";
+}
+
+
+
+
+fetchColumn() 的用法
+
+// 用在 DELETE 會出錯？？
+$stmt = $pdo->prepare("DELETE FROM orders");
+$stmt->execute();
+$name = $stmt->fetchColumn();
+
+// 用在 DELETE 會出錯？？
+$count = $pdo->query("select count(*) from products")->fetchColumn();
+echo $count;
+
+$stmt = $pdo->prepare("select price from orders where product_id = 1");
+$stmt->execute();
+$name = $stmt->fetchColumn();
+echo "id=1的價格: $name <br>";
+
+$count = $pdo->query("select count(*) from orders")->fetchColumn();
+echo "訂單總數: $count <br>";
+
+```
+
+### 刪除資料並返回刪除的筆數
+
+1. 使用 __`exec()`__ 執行 SQL，返回受影響的行數。
+> 在使用PDO::exec() 執行INSERT, UPDATE, DELETE 語句時，該方法會返回受影響的行數。
+
+```php
+$delete_sql = "DELETE FROM orders";
+$deleted = $pdo->exec($delete_sql);
+$message = "刪除 $deleted 筆商品的訂單，重置庫存成功";
+
+```
+
+2. __`rowCount()`__;
+> 使用 PDOStatement::rowCount()
+
+```php
+// 使用 PDOStatement 類別的 rowCount() 的話，$pdo->query($delete_sql)顯示不出影響的筆數;
+$delete_sql = "DELETE FROM orders";
+$stmt = $pdo->prepare($delete_sql);
+$stmt->execute();
+$deleted = $stmt->rowCount();
+$message = "刪除 $deleted 筆商品的訂單，重置庫存成功";
+```
+
 ## 連結資料庫
+
 > 歐萊禮 PHP 學習手冊
 
 - 使用 PDO 第一件事，是連線到資料庫，並將連線狀態存於變數
@@ -73,7 +209,6 @@ if(false === $result) {
 }
 
 ```
-
 
 - 範例 8-9 藉由設定 `PDO::ATTR_ERRMODE` 為 `PDO::ERRMODE_WARNING` 啟動警告模式。
 - 在這個模式中，大部分的行為跟無聲模式一樣，不會丟出例外，遇到錯誤會回傳 false，不同之處是，警告模式會輸出警告層級的錯誤訊息，訊息可以被設定為輸出到畫面或記錄檔中。
@@ -158,15 +293,18 @@ $rows = $count->fetch();
 print_r($rows);
 
 => Array ( [COUNT(*)] => 7 [0] => 7 )
+
+<!-- 返回一個陣列：取得 products 這個 table 有幾個包含 amount(column)的 row  -->
+$count = $pdo->query('SELECT COUNT(amount) FROM products')->fetchAll(PDO::FETCH_COLUMN);
+
+<!-- 返回一個陣列：取得每個 amount(column)的數量 -->
+$count = $pdo->query('SELECT amount FROM products')->fetchAll(PDO::FETCH_COLUMN);
+
 ```
-
-
 
 ## 安全地取得資料
 
 - 在 SELECT 述句中，也跟使用 INSERT、UPDATE 或 DELETE 一樣，可利用？替換符，而不作直接 `query()` 的動作，使用 `prepare()`、`execute()`，我們只要把內容改成 SELECT 述句就可以了。
-
-
 
 ```php
 > 在 SELECT 中使用替換符
@@ -186,76 +324,3 @@ while ($row = $stmt->fetch()) {
 }
 
 ```
-
-
-
-
-
-
-
-
-
-// 一旦與資料庫連線後，便可以使用該連線發送 SQL 指令到伺服器，以 UPDATE 為例
-// $db->query("INSERT INTO jobs VALUE(null, 'test', 'description', '400k', '123')");
-// $result = $db->query("UPDATE jobs SET title='超級工程師', link='google.com' WHERE id=17");
-
-
-
-/** 
-PDO 與預先處理的指令：
-預先處理的指令會搭配 PDO 呼叫的個階段。
-
-程式碼先「準備」SQL 指令，然後「執行」，接下來使用 while 輸出所有結果。
-且最終把 $statement 指定為 null ，藉以釋放該物件。
-*/
-// $statement = $db->prepare("SELECT * FROM jobs");
-// $statement->execute();
-// while($row = $statement->fetch()) {
-//     print_r($row);
-// }
-// $statement = null;
-
-
-/**
-用更少的程式碼完成同樣的事情，這是因為 SQL 指令的 VALUES 並沒有命名元素，因此在 execute 指令中的陣列只需要按順序發送資料，不需要名稱。你只要確保送入育處先處理的指令的資料位置即可。
- */
-
-// $link = 'http://google.com';
-// $title = '工程師';
-// ReflectionClass::export('PDO');
-
-
-// $statement = $db->prepare("INSERT INTO jobs (title, description, salary, link)" . "VALUES (?,?,?,?)");
-// $statement->execute(array('ＣＥＯ','管理階層', '100kｕｐ', 'google.com'));
-
-// $sql = $db->prepare("SELECT * FROM jobs WHERE link=:link AND title=:title");
-
-// $sql->bindValue(":link", $link, PDO::PARAM_STRING);
-// $sql->bindValue(":title", $title, PDO::PARAM_STRING);
-
-
-
-
-
-
-
-
-
-
-
-try {
-    $db = new PDO($dsn, $db_username, $db_password);
-    // $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    print "<h1>Couldn't connect to the database: <br>" . $e->getMessage() . "</h1>";
-}
-$result = $db->exec("INSERT INTO jobs (title, salary123, description, link) VALUES('worker', '40k', '走路的人', 'work.com')");
-if(false === $result) {
-    $error = $db->errorInfo();
-    print "Couldn't insert!\n";
-    print "SQL Error={$error[0]}, DB Error={$error[1]}, Message={$error[2]}\n";
-    var_dump($error);
-}
-
-
-?>
