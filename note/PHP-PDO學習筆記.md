@@ -324,3 +324,33 @@ while ($row = $stmt->fetch()) {
 }
 
 ```
+
+
+
+
+
+## PHP Exceptions 種類與使用情境說明
+### 主要 Exception
+在 PHP 5，Exception 是最終端的主要類別，所有 PHP exception 類別都由此繼承出來。
+
+### Throwable
+- PHP7 以後，Throwable 是最上層所有可以被 throw 關鍵字丟出的 interface，它不能直接 new，也不能直接用 class implement，一定要另外從 Error 或 Exception 繼承出來才能使用。使用 Throwable 的好處是可以連同一般語法錯誤也當作 Exception 進行錯誤處理與顯示除錯訊息。
+
+![image](https://windspeaker.s3.amazonaws.com/post/asika/2018/03/19/c66c98c187d8823cc3b5cd1e601c87de.jpg)
+
+在 PHP5 中，可以用兩層 catch 來確保同時運作在 5 與 7 中所有錯誤都被捕獲:
+```php
+
+try {
+    // ...
+} catch (Exception $e) {
+    // ...
+} catch (Throwable $t) {
+    // ...
+}
+Throwable 與 Exception 的
+```
+
+![image](https://windspeaker.s3.amazonaws.com/post/asika/2018/03/20/8281e3673909c6794b21718b795d287a.jpg)
+
+參考資料: [PHP Exceptions 種類與使用情境說明](http://asika.windspeaker.co/post/3503-php-exceptions)

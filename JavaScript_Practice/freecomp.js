@@ -333,10 +333,349 @@ neko最近迷上了洛克人。但是他的技術很差，每次玩紅白機的�
     
     最後返回結果
  */
-function pc(An, Am) {
+// function pc(An, Am) {
     
-    for (let i = 1; i <= array.length; i++) {
-        const element = array[i];
+//     for (let i = 1; i <= array.length; i++) {
+//         const element = array[i];
         
-    }
-}
+//     }
+// }
+
+
+// function createTest() {
+//     var count = 0;
+//     return function add() {
+//         count++
+//         return count
+//     }
+// }
+// var test = createTest()
+// console.log(test())
+// console.log(test())
+
+
+
+// var count = 0;
+// function add() {
+//     count++
+//     return count
+// }
+// console.log('add:', add())
+// console.log('add:', add())
+
+
+
+// // 記憶體位址不同，所以不同
+// function arr() {
+//     return [1, 2, 3]
+// }
+// var a = arr()
+// var b = arr()
+// console.log(a === b)
+
+
+// // 記憶體位址相同，所以相同
+// var default_arr = [3, 2, 1]
+// function arr321() {
+//     return default_arr
+// }
+// var c = arr321()
+// var d = arr321()
+// console.log(c === d)
+
+
+
+// function Person(name) {
+//     this.name = name
+// }
+
+// Person.prototype.getName = function() {
+//     return this.name 
+// }
+
+// Person.prototype.__proto__.getName = function() {
+//     return this.name 
+// }
+
+// var nick = new Person('nick')
+// var peter = new Person('peter')
+
+// // prototype chain 原型鏈
+// // nick 找不到，會去 nick.__proto__(Person.prototype)
+// // 還是找不到，會去 nick.__proto__.__proto__(Person.prototype.__proto__)
+// console.log(nick.getName === peter.getName)
+
+// console.log(nick.getName === Person.prototype.getName)
+
+// console.log(nick.__proto__ === Person.prototype)
+
+// console.log(nick.__proto__.__proto__ === Person.prototype.__proto__)
+
+// console.log(Person.prototype.__proto__ === Object.prototype)
+
+// console.log(nick)
+// console.log(Person)
+// console.log(Person.prototype)
+// console.log(Object.prototype)
+// console.log(Object.prototype.__proto__)
+
+// console.log(nick.__proto__.__proto__)
+
+
+
+// function a() {
+//     b()
+//     console.log('here is a')
+// }
+
+// function b() {
+//     c()
+//     console.log('here is b')
+// }
+
+// function c() {
+//     console.log('hey, im c')
+// }
+// a()
+
+
+// console.log(b)
+// var b = 2;
+// function hello(e) {
+//     var c = 10;
+//     var d = 15;
+//     b = 3;
+//     function innerFunction() {
+//         var f = 5;
+//         c = 20
+//         console.log(c)
+//     }
+//     innerFunction();
+//     innerFunction();
+// }
+// hello(10)
+
+
+// function test(a, b, c) {
+//     console.log(this)
+//     console.log(a, b, c)
+// }
+// // test() 
+// // => 回傳 node.js 的大型物件
+
+// test.call('Hello',1 ,[1, 2 ,3] ,'world')
+// // .call() apply() 可以改變 this 的值，兩者基本上都一樣
+
+// // // apply() 第一個參數是改變 this 的值，第二個參數要傳陣列，沒有第三個參數
+// // test.apply('hello world', [1, 2, 3])
+
+// // /** 輸出
+// // [String: 'Hello']
+// // 1 2 3
+// // [String: 'world']
+// // 4 5 6
+// //  */
+
+
+
+// var obj = {
+//     name: 'hello world',
+//     getName: function() {
+//         // console.log(this.name)
+//         return this.name
+//     },
+//     ui: {
+//         name: 'ui-object',
+//         test: function() {
+//             // console.log(this.name)
+//             return this.name
+//         }
+//     }
+// }
+
+// var f= obj.getName
+
+// console.log(f())
+// console.log(obj.getName())
+// console.log(obj.ui.test())
+// console.log(obj.ui.test.call(obj.ui))
+
+// // { name: 'hello world',getName: [Function: getName], ui: { name: 'ui-object', test: [Function: test] } }
+
+// console.log(obj.ui.test())
+// // this 代表 { name: 'ui-object', test: [Function: test] }
+
+
+
+
+// var name = "Microsoft"; 
+// function funcA(){
+//     // console.log('name1: ', name)
+//     var name = "Google";
+//     // 在 function 裡面使用 var 宣告 name ，定義變數是 function 內的區域變數，也就是說，name 這個變數的作用域在這個 function 裡面。如果 function 裡面沒有宣告的話 name 這個變數會變成全域變數，因為function 裡面找不到宣告 會往外層找。
+//     console.log('name2: ', name)
+// }
+// console.log(funcA());
+// console.log(name);
+
+
+
+// var nameExample = "Microsoft"; 
+// function funcA(){
+//     // console.log('nameExample1: ', nameExample)
+//     // // nameExample = "Google";
+//     // console.log('nameExample2: ', nameExample)
+//     return nameExample
+// }
+// console.log('callFuncA:', funcA());
+// console.log('outside:', nameExample);
+
+
+// var name = "Microsoft";
+ 
+// function funcA(){
+//     var name = "Google";
+//     console.log(name);
+//     return function(){
+//         name = "Facebook";
+//         console.log(name)
+//     };
+// }
+
+
+// // funcA();
+// console.log(name); //Microsoft
+
+// var o = funcA(); //Google
+// o(); //Facebook
+
+
+// //JavaScript
+// var sum = 0;
+// for(var i = 1; i <= 10; i++){
+//     sum += i;
+// }
+// console.log(i); //11
+
+
+
+
+
+
+// function timeIsUp() {
+//     console.log('1')
+//     setTimeout(function() {
+//         console.log('3')
+//         setTimeout(() => {
+//             console.log('4')
+//         });
+//     })
+//     console.log('2')
+// }
+// console.log('5')
+// timeIsUp()
+
+
+// setTimeout(() => {
+//     console.log('6')
+//     setTimeout(() => {
+//         console.log('7')
+//     }, 0);
+// }, 0);
+
+
+
+
+
+// var f = function () {
+//     console.log(this.x);
+//   }
+  
+//   var x = 1;
+//   var obj = {
+//     f: f,
+//     x: 2,
+//   };
+  
+//   // 单独执行
+//   console.log(f()) // 1
+  
+//   // obj 环境执行
+//   obj.f() // 2
+
+
+// function aFunc(value, cb){
+//     setTimeout(cb, 1000, value)
+//   }
+  
+//   function bFunc(value, cb){
+//     setTimeout(cb, 0, value)
+//   }
+  
+//   function inCbB(value){
+//     console.log(value)
+//   }
+  
+//   function cbB(value){
+//     setTimeout(inCbB, 0, value)
+//   }
+  
+//   function cbA(value){
+//     console.log(value)
+//   }
+  
+//   aFunc('a', cbA)
+//   bFunc('b', cbB)
+
+
+
+
+// console.log(a)
+
+// if(a === undefined) {
+//     console.log('a is undefined!');
+// } else {
+//     console.log(' a is defined!');
+// }
+
+// var a = 'hello world';
+
+// function b() {
+//     console.log('Called b!');
+// }
+
+// b();
+// console.log(a);
+// var a = 'hello world!';
+// console.log(a);
+
+
+
+// function a() {
+//     var myVar
+//     console.log('a: ',myVar)
+//     b()
+// }
+// function b() {
+//     var myVar = 2
+//     console.log('b: ',myVar)
+// }
+// var myVar = 1
+// a()
+// console.log('outer var:', myVar)
+
+
+
+// function a() {
+//     function b() {
+//         console.log('1',myVar)
+//     }
+//     console.log('2', myVar)
+//     var myVar = 2;
+//     console.log('3', myVar)
+//     b()
+// }
+// console.log('4', myVar)
+// var myVar = 1
+// console.log('5', myVar)
+// a()
