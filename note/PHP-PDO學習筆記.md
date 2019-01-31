@@ -2,9 +2,10 @@
 
 - 參考資料: [用戶創建、權限、刪除操作](https://www.kancloud.cn/curder/mysql/355296)
 
+## exec() 方法
+
 - PDO::exec() 不返回 SELECT 語句的結果，返回 DELETE、UPDATE、INSERT INTO 受影響的行數。
 > PDO::exec() does not return results from a SELECT statement.
-
 
 ```php
 $result = $pdo->exec("UPDATE products SET amount = amount + 2 WHERE id >1")
@@ -22,8 +23,9 @@ echo print_r($pdo->exec($sql)) ? 'success': 'fail1212';
 
 ```
 
+延伸閱讀: [Difference between PDO->query() and PDO->exec()](https://stackoverflow.com/questions/16381365/difference-between-pdo-query-and-pdo-exec)
 
-- [Difference between PDO->query() and PDO->exec()](https://stackoverflow.com/questions/16381365/difference-between-pdo-query-and-pdo-exec)
+## query() 方法
 
 - 對於在程序中只需要發出一次的SELECT語句，請考慮發出 PDO::query()。
 > For a SELECT statement that you only need to issue once during your program, consider issuing PDO::query().
@@ -35,7 +37,6 @@ echo print_r($pdo->exec($sql)) ? 'success': 'fail1212';
 $result = $pdo->query('SELECT column_name FROM table_name')->execute();
 var_dump($count_rows);//=> bool(true) 返回布林值
 echo $count_rows;//=> 1 返回 1or0
-
 
 $rows_1 = $pdo->query('SELECT amount FROM products')->fetchAll(PDO::FETCH_NUM);
 var_dump($rows_1);
@@ -87,9 +88,6 @@ if($result) {
     echo "fail";
 }
 
-
-
-
 fetchColumn() 的用法
 
 // 用在 DELETE 會出錯？？
@@ -110,6 +108,41 @@ $count = $pdo->query("select count(*) from orders")->fetchColumn();
 echo "訂單總數: $count <br>";
 
 ```
+
+
+
+
+### fetchAll(PDO::FETCH_OBJ)
+
+```php
+// GET method 取得搜尋的條件
+$q = $_GET['q'];
+
+// sql 的指令，符合的 title、content
+$sql = "SELECT A.id, A.title, A.content FROM articles A WHERE title like ? OR content like ?";
+
+$stmt = $pdo->prepare($sql);
+
+// %$q: 以 $q 結尾的數據, $q%: 以 $q 開頭, %q% 包含 $q
+$stmt->execute(["%$q%", "%$q%"]);
+
+if($stmt->rowCount() > 0){
+    $count = $stmt->rowCount(); // 搜尋到的筆數
+    $row = $stmt->fetchAll(PDO::FETCH_OBJ);
+    for ($i=0; $i < $count ; $i++) {
+
+        print($row[$i]->id);
+        echo '<br><br><br>';
+        print($row[$i]->title);
+        echo '<br><br><br>';
+        print($row[$i]->content);
+    }
+```
+
+
+
+
+
 
 ### 刪除資料並返回刪除的筆數
 
@@ -134,6 +167,11 @@ $stmt->execute();
 $deleted = $stmt->rowCount();
 $message = "刪除 $deleted 筆商品的訂單，重置庫存成功";
 ```
+
+
+
+
+
 
 ## 連結資料庫
 
@@ -330,17 +368,20 @@ while ($row = $stmt->fetch()) {
 
 
 ## PHP Exceptions 種類與使用情境說明
+
 ### 主要 Exception
+
 在 PHP 5，Exception 是最終端的主要類別，所有 PHP exception 類別都由此繼承出來。
 
 ### Throwable
+
 - PHP7 以後，Throwable 是最上層所有可以被 throw 關鍵字丟出的 interface，它不能直接 new，也不能直接用 class implement，一定要另外從 Error 或 Exception 繼承出來才能使用。使用 Throwable 的好處是可以連同一般語法錯誤也當作 Exception 進行錯誤處理與顯示除錯訊息。
 
 ![image](https://windspeaker.s3.amazonaws.com/post/asika/2018/03/19/c66c98c187d8823cc3b5cd1e601c87de.jpg)
 
 在 PHP5 中，可以用兩層 catch 來確保同時運作在 5 與 7 中所有錯誤都被捕獲:
-```php
 
+```php
 try {
     // ...
 } catch (Exception $e) {

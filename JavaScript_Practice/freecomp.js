@@ -679,3 +679,422 @@ neko最近迷上了洛克人。但是他的技術很差，每次玩紅白機的�
 // var myVar = 1
 // console.log('5', myVar)
 // a()
+
+
+// console.log('1');
+// setTimeout(function() {
+//      console.log('Hello World')
+// }, 2000)
+// console.log(a)
+// var a = 10;
+
+
+// 我現在在想 應該會有幾種情況  
+// 1. 傳值-> 兩個都有，不做事
+// 2. 傳值-> checked 但資料庫沒 INSERT INTO
+// 3. 傳值->  uncheck 資料庫有  DELETE
+// 4. 傳值->  都沒有，不做事
+
+
+// 多做一個 taxonomy(table)裡面只有兩個欄位(article_id, category_id)，把本來的 articles(table) 的 category_id 的欄位移除。
+
+// 然後用 checkbox 選取多個分類，本來在想，先判斷有沒有資料再決定要 UPDATE 或 INSERT INTO ，今天嘗試了一天，後來想到這的要檢查的話，會有四種情況。然後突然想起來，像之前留言板存 session 一樣，先刪光在新增就好了XDDDD
+
+
+
+// console.log(1)
+
+// setTimeout(() => {
+//   console.log(2)
+// }, 0)
+
+// console.log(3)
+
+// setTimeout(() => {
+//   console.log(4)
+// }, 0)
+
+// console.log(5)
+
+
+// //JavaScript
+// var sum = 0;
+// for(var i = 1; i <= 10; i++){
+//     sum += i;
+// }
+// console.log(i); //11
+
+
+
+// setTimeout(function timeout() {
+// console.log('hi')
+// }, 1000)
+
+// setTimeout(function timeout() {
+// console.log('hi')
+// }, 1000)
+
+// setTimeout(function timeout() {
+// console.log('hi')
+// }, 1000)
+
+// setTimeout(function timeout() {
+// console.log('hi')
+// }, 1000)
+
+// for(let i=1;i<6;i++){
+//     setTimeout(function(){
+//         console.log('set1',i)
+//         setTimeout(() => {
+//             console.log('set2',i)
+//         }, 500);
+//     },0)
+    
+//     console.log(i)
+//  }
+
+//  for(var i=1;i<6;i++){
+//     setTimeout(function(){
+//         console.log(i);
+//     },1000);
+// }
+
+// for(var i=1;i<6;i++){
+//     (function(j){
+//         setTimeout(function(){
+//             console.log(j)
+//         },50)
+//     })(i);
+//  }
+
+// console.log(1);
+// setTimeout(function() {
+//   console.log(2);
+// }, 3000);
+// console.log(3);
+// setTimeout(function() {
+//   console.log(4);
+// }, 2000);
+// console.log(5);
+
+
+
+// // Synchronous
+// [1, 2, 3, 4].forEach(function (i) {
+// console.log(i)
+// })
+
+// // Asynchronous
+// function asyncForEach(array, cb) {
+//     array.forEach(function () {
+//         setTimeout(cb, 1000)
+//     })
+// }
+
+// asyncForEach([1, 2, 3, 4], function (i) {
+//     console.log(i)
+// })
+
+
+
+
+/** 模擬 Join: 迴圈第一圈 i = 0 的時候，str 不加 conn， */
+// function fakeJoin(arr, connector) {
+//     var str = '';
+//     for(var i = 0; i < arr.length; i++) {
+//         if(i > 0) {
+//             str += connector
+//         }
+//         if(arr[i] !== undefined) {
+//             str += arr[i]
+//         }
+//     }
+//     return str
+// }
+// console.log(fakeJoin([10, undefined, 3], ','))
+
+
+
+// var a = []
+// var b = a
+// console.log(a === b) // true
+// b = []
+// console.log(a === b) // false
+
+// // obj 指向這個物件的記憶體位址
+// var obj = {
+//     number: 10
+// }
+// // 將 obj 指向這個物件的記憶體位址給 obj2
+// var obj2 = obj
+// console.log(obj, obj2)
+// console.log(obj===obj2)
+// // => { number: 10 } { number: 10 }
+
+// // obj2 改變了它指向的物件上的數值
+// obj2.number = 20
+// console.log(obj, obj2)
+// console.log(obj===obj2)
+// // => { number: 20 } { number: 20 }
+
+// // 等號是賦值的意思。 { number: 30 } 先指向新的記憶體位址。
+// // 而 obj2 再指向了 { number: 30 } 的記憶體位址
+// obj2 = {
+//     number: 30
+// }
+// console.log(obj, obj2)
+// console.log(obj===obj2)
+// // => { number: 20 } { number: 30 }
+
+// var a = 20
+// console.log('1', a)
+// if(a = 10) {
+//     console.log(123)
+//     console.log('2', a)
+// }
+// console.log('3', a)
+
+
+
+
+// function foo() {
+//     var a = 0
+//     function bar() {
+//         console.log(a)
+//     }
+//     return bar()
+// }
+// foo()
+// foo()
+// foo()
+
+
+// // 閉包範例
+// function foo() {
+//     var a = 0
+//     function bar() {
+//         a++
+//         console.log(a)
+//     }
+//     return bar
+// }
+// var callFun = foo()
+// callFun()
+// callFun()
+
+// 'use strict';
+
+/** ES6 的做法 */
+// class Dog {
+//     // var hey = new Dog(name) 這裡的參數會傳來 constructor(name) {}
+//     constructor(name) {
+//         this.name = name
+//     }
+//     // setter
+//     setName(name) {
+//         this.name = name
+//     }
+//     // getter
+//     getName() {
+//         return this.name
+//     }
+//     sayHello() {
+//         if(this.name !== undefined) {
+//             console.log(this.name, 'say Hello!')
+//         } else {
+//             console.log('Hello~~')
+//         }
+//     }
+// }
+
+// var d = new Dog('123!')
+// d.sayHello()
+// var b = new Dog('456!')
+// b.sayHello()
+// console.log(d.sayHello === b.sayHello)
+// 共用 true
+
+// 繼承
+// class BlackDog extends Dog {
+//     showColor() {
+//         console.log('Black Dog, ',this.name)
+//     }
+// }
+
+// var e = new BlackDog('i am black Dog')
+// console.log(e)
+// e.showColor()
+
+
+/** ES5 的做法，但不建議，因為這種做法會消耗很多記憶體，因為 new 了幾個就 return 幾組新 getName function  */
+
+function Dog(name) {
+    var myName = name
+    return {
+        getName: function() {
+            return myName
+        },
+        sayHello: function() {
+            console.log('Hello, My name is :', myName)
+        }
+    }
+}
+
+var b = Dog('123')
+var d = Dog('456')
+b.sayHello()
+
+console.log(b.sayHello)
+console.log(b.sayHello === d.sayHello)
+// [Function: sayHello]
+// false 
+
+
+
+
+// /** ES5 的寫法，ES6 的底層。
+//  * 當你宣告的時候有加上 new 才會把這個 function 當作 constructor(建構式) 來用 */
+// function Dog(name) {
+//     this.name = name
+//     // console.log(this === global)
+//     // console.log(this instanceof Dog)
+// }
+
+// console.log('badDog: ', badDog,' dog: ', dog)
+// var badDog = Dog('123') 
+// var dog = new Dog('abc')
+
+// console.log(badDog)
+// console.log(name)
+// // console.log(badDog.name)
+
+
+
+// console.log(dog)
+// console.log(badDog.name)
+
+
+
+// Dog.prototype.getName = function() {
+//     return this.name
+// }
+
+// Object.prototype.sayHello = function() {
+//     console.log('Object', this.name)
+// }
+// /** 上下相同，但如果在 prototype 找到了，就不會往下層找了 */
+// Dog.prototype.sayHello = function() {
+//     console.log('Dog', this.name)
+// }
+// var b = new Dog('123')
+// var d = new Dog('abc') 
+// console.log(d.sayHello === b.sayHello)
+// console.log(d.__proto__ === Dog.prototype)
+// // => true 他們共用這些方法
+
+// 
+
+// function Dog(name) {
+//     this.name = name
+//     this.getName = function() {
+//         return this.name
+//     }
+//     this.sayHello = function() {
+//         console.log('Dog', this.name)
+//     }
+// }
+
+// var b = Dog('123')
+// console.log(b)
+// console.log(name)
+// console.log(d)
+
+// d.sayHello()
+// console.log(b)
+
+// console.log(Dog.__proto__ === Function.prototype)
+
+// Prototype chain 原型鍊
+
+// 1. d 本身有沒有 sayHello
+// 2. d.__proto__ 有沒有 sayHello
+// 3. d.__proto__.__proto__ 有沒有 sayHello
+// 4. d.__proto__.__proto__.__proto__ 有沒有 sayHello
+// 5. null 找到頂了
+
+// d.__proto__ = Dog.prototype
+// d.__proto__.__proto__ = Object.prototype
+// 上下相同
+// Dog.prototype.__proto__ = Object.prototype
+
+
+
+// function createNewPerson(name) {
+//     var obj = {};
+//     obj.name = name;
+//     obj.greeting = function () {
+//       console.log('Hi! I\'m ' + this.name + '.');
+//     }
+//     return obj;
+//   }
+
+// var plusOne = createNewPerson('plusOne')
+// var plusTwo = createNewPerson('plusTwo')
+// console.log(plusOne.name)
+// console.log(plusTwo.name)
+// plusOne.greeting()
+// plusTwo.greeting()
+
+// console.log(plusTwo.name === console.log(plusTwo.name))
+
+// function Person(name) {
+//     this.name = name;
+//     this.greeting = function() {
+//         console.log('Hi! I\'m ' + this.name + '.');
+//     };
+//     this.work = function() {
+//         console.log(this.name + 'is walking');
+//     };
+//     Person.prototype.salHello = function() {
+//         console.log('Hello! I\'m ' + this.name + '.');
+//     }
+// }
+
+// var one = new Person('one')
+// var two = new Person('two')
+// console.log(one.name)
+// console.log(two.name)
+// console.log(one.salHello === two.salHello)
+
+/** 現在你應該能在頁面上看到兩組新物件，且各自以不同的命名空間儲存。若要存取其屬性與函式，就要以 person1 或 person2 開始呼叫。這些物件均完整封包，不致與其他功能衝突；但仍具備相同的 name 屬性與 greeting() 函式。另請注意，物件均使用當初建立時所各自指派的 name 值；這也是「this」如此重要的原因之一，以確保物件可使用自己的值而不致混淆其他數值。 */
+// console.log(one.greeting === two.greeting)
+// one.greeting()
+// two.greeting()
+
+// console.log(one)
+// console.log(two)
+
+
+
+
+// greeting()
+// function greeting() {
+//     console.log('hi')
+// }
+// greeting.language = 'english'
+// console.log(greeting)
+
+
+// var anonymousGreet = function() {
+//     console.log('hi')
+// }
+// console.log(anonymousGreet)
+// anonymousGreet()
+
+// function log(a) {
+//     a();
+// }
+// console.log(log)
+// log(function() {
+//     console.log('Hi')
+// })

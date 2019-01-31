@@ -5,7 +5,7 @@
 
 > 著重在用跨瀏覽器支援的部分
 
-### CSS 預處理器 (proprocessor)
+### CSS 預處理器 (processor)
 
 > 著重在用程式化的方法寫 CSS
 
@@ -81,11 +81,7 @@ $font-stack: Helvetica, sans-serif;
 
 4. Mixin (就像 function)
 
-
-
-
-
-CACHE 機制 
+CACHE 機制
 [循序漸進理解 HTTP Cache 機制 | TechBridge 技術共筆部落格](https://blog.techbridge.cc/2017/06/17/cache-introduction/)
 
 - `Expires` 方法1: 要達成上述的功能，可以在 HTTP Response Header 裡面加上一個 Expires 的字段，裡面就是這個 Cache 到期的時間，例如說：
@@ -112,12 +108,8 @@ echo "現在時間： " . date("y/m/d , h:i:sa") . "<br/>";
 
 ```
 
-
 - `Last-Modified`、`Last-Modified-Since`
 - 在 Server 傳送 Response 的時候，可以多加一個Last-Modified的 Header，表示這個檔案上一次更改是什麼時候。而當快取過期，瀏覽器下次再發送 Request 的時候，就可以利用這個資訊，改用If-Modified-Since來跟 Server 指定拿取：某個時間點以後有更改的資料。
-
-
-
 
 
 

@@ -10,6 +10,7 @@
     - Library 裡面有很多 JavaScript 或 CSS 的函式
 
 ## JQuery
+
 - 就只是一個 JavsScript 的 Library(函式庫)
 - 幫你把跨瀏覽器的支援都做好了，這是最大的優點，比原生 vanilla js 方便許多
 

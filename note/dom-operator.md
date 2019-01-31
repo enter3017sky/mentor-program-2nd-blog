@@ -70,6 +70,7 @@ $(document).ready(function(){
 ```
 
 - 我的實作練習
+
 ```js
 // 我的實作練習
 document.addEventListener("DOMContentLoaded", function() {

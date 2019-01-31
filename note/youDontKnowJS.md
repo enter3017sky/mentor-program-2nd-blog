@@ -75,4 +75,13 @@
 
 
 
+```js
+var myObject = {
+    a: 2
+}
+myObject.a;  // 2
+myObject["a"]; //2
+```
 
+myObject.a: 特性存取(property access)
+myObject["a"]: 鍵值存取(key access)

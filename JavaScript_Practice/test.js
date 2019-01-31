@@ -282,11 +282,45 @@ let resultNum = 0
 // console.log(b)
 
 
-function convertHolesToUndefined(arr) {
-    let result = [];
-    for (let i = 0; i < arr.length; i++) {
-        result[i] = arr[i]
+// function convertHolesToUndefined(arr) {
+//     let result = [];
+//     for (let i = 0; i < arr.length; i++) {
+//         result[i] = arr[i]
+//     }
+//     return result
+// }
+// console.log(convertHolesToUndefined(['a', , 'b']))
+
+
+function Dog(name) {
+
+    if(this instanceof Dog) {
+        console.log(this)
+        console.log('1')
+    } else {
+        console.log(this)
+        console.log(2)
     }
-    return result
+
+    this.name = name
+    this.getName = function() {
+        return this.name
+    }
+    this.sayHello = function() {
+        console.log('Dog', this.name)
+    }
 }
-console.log(convertHolesToUndefined(['a', , 'b']))
+
+var b = Dog('123')
+
+var d = new Dog('456')
+
+
+// console.log(name)
+
+// console.log(name)
+
+
+
+// console.log(this instanceof Dog)
+// console.log(this)

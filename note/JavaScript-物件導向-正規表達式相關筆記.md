@@ -17,6 +17,7 @@ var ani = new Animal('德次郎');
 console.log(ani.name)  //result => 德次郎
 console.log(ani.toString()) //reuslt => Animal: 德次郎
 ```
+
 > NOTE: 原型基礎的物件導向
 >
 >JavaScript 雖然是物件導向的語言，但是其語法是以原型這項概念為基礎，一提到這種語言的特殊性，就會提到「以原型為基礎」的特徵（相對於一般以 __類別基礎的__ 物件導向而言，也有人會稱 JavaScript 是以為 __原型基礎的__ 物件導向。）
@@ -47,7 +48,7 @@ console.log(ani.name)     // result=> 錯誤（Cannot read property 'name' of un
 
 ```js
 var Animal = function() {
-    if( !(this instanceof Animal)){
+    if(!(this instanceof Animal)){
         return new Animal(name);
     }
     this.name = name;
@@ -192,7 +193,6 @@ console.log(p.getName())    // result=> 王小明
 console.log(p.get.toString())  // result=> Person: 王小明 Mon Jun 25 1900...略
 console.log(p._name) // undefined
 ```
-
 
 #### 判斷物件的型態
 

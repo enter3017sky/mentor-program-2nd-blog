@@ -43,6 +43,11 @@ Unique Index
 
 ## MySQL 語法
 
+- `SELECT value, count(value) FROM TABLE GROUP BY value`
+[https://www.ptt.cc/bbs/Database/M.1273847657.A.C5B.html](分組 總數)
+
+
+
 ![image](https://i.imgur.com/KJPWbUi.png)
 
 - 查詢
