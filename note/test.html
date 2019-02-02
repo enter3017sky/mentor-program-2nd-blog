@@ -1,0 +1,69 @@
+<head>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function(){
+            var test = document.getElementById('test')
+            test.innerHTML = '<ul><li>1</li><li>2</li></ul>'
+            test.style.background = 'red'
+            test.style.margin = '20px'
+
+
+            var col = document.querySelectorAll('.col')
+            for (let i = 0; i < col.length; i++) {
+                const el = col[i];
+                // el.innerHTML += mult(i+2)
+            }
+
+
+
+// function mult(n) {
+//   var result = ''
+//   result += `<div class="content">
+//   <div class="col__title">${n}</div>`
+//   for (let i = 3; i <= 9; i++) {
+//     if (i < 2) {
+//       result += `
+//           <div class="items">${n} × ${i} = ${n * i}</div>`
+//     } else if (i < 4) {
+//       result += `
+//             <div class="content">
+//             <div class="items">${n} × ${i} = ${n * i}</div>
+//           `
+//     } else if (i < 9) {
+//       result += `
+//           </div>
+//           `
+//     }
+//   }
+//   return result
+// }
+
+for (let i = 1; i <= 9; i++) {
+    var result = ''
+
+    result = 'Start'
+
+    if(i < 4) {
+        result += i
+    } else if (i < 9) {
+        result += i
+    } else {
+        result += 'this 9'
+    }
+    console.log( result)
+}
+
+})
+    </script>
+    </head>
+    <body>
+        <div id="test">
+            <div style="color:yellow">hello</div>
+        </div>
+        <div id="hey">
+            <div class="col">1</div>
+            <div class="col">2</div>
+            <div class="col">3</div>
+            <div class="col">4</div>
+            <div class="col">5</div>
+        </div>
+    </body>
