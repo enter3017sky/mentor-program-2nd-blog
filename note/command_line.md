@@ -13,8 +13,8 @@
     - `cd ..`: 回上一個目錄。
     - `cd /`: 跳去根目錄。
     - `cd ~`: 跳去使用者之家。
-    -  `cd ~/資料夾名稱/資料夾名稱/...`: 跳去某個資料夾。
-	`~/`: 代表 __/User/帳號名稱/__
+    - `cd ~/資料夾名稱/資料夾名稱/...`: 跳去某個資料夾。
+    - `~/`: 代表 __/User/帳號名稱/__
 
   
 - `touch <file>`: 更改最後修改檔案時間，如果檔案不存在，會以默認的權限創建該檔案。
@@ -24,6 +24,8 @@
     -  `cp <Source_file> <Target_file>`。[更多說明及用法範例](https://ss64.com/osx/cp.html)
 - `mv`: __“Move”__ ，移動 __文件(files)/目錄(folders)__ 或更改其名稱。 
 - `rm`: __“Remove”__ ，刪除 __文件(files)__ 或 __目錄(folders)__ 。
+    `-r`: 
+    `-f`:
 - `srm`: 如果希望安全地刪除 __文件(files)__ 或 __目錄(folders)__ 。
 - `man`: __“Manual”__ ，Help 手冊。example: `man ls`、`man rm`...
 
@@ -36,7 +38,6 @@
 - `node <檔案名稱>`: 在終端機下用 node.js 執行該檔案。
    - `node` : 可以直接在終端機上面執行 __console.log__ 或做邏輯運算。 按 __control + C__ 離開。
 
-
 - `clear`: 清理畫面。 __( 組合鍵：⌘ + r )__
 - `sudo`: 取得 root 權限。
 - `open .`: 可以用Finder打開當前的位置。
@@ -48,7 +49,9 @@
 ---
 
 ## 指令組合技
+
 > CS101_2-4 的內容。
+
 - `|`:__“Pipe”__ ，串接指令。把前面的輸出變成後面的輸入。
     - example: `cat <file> | grep <keyword>`，印出文件並搜尋某個關鍵字。
 - `>`:__“Redirect”__ ，重新導向。
@@ -79,3 +82,17 @@
    - 可以先使用 `updatedb`，更新資料庫檔案。根據 /etc/updatedb.conf 的設定去搜尋系統硬碟內的檔名，並更新 /var/lib/mlocate 內的資料庫檔案；
    locate：依據 /var/lib/mlocate 內的資料庫記載，找出使用者輸入的關鍵字檔名。
 
+- `find <path> <action> <file_name>`: 搜尋檔案
+    `find / -name httpd`
+
+### Mac 上「終端機」的鍵盤快速鍵
+
+[Mac 上「終端機」的鍵盤快速鍵 - Apple 支援](https://support.apple.com/zh-tw/guide/terminal/trmlshtcts/mac)
+
+   動作 | 指令
+-------|-------
+將插入點移至該行起始處 | Control + A
+將插入點移至該行結尾處 | Control + E
+刪除至文字行起始處 | Control + U
+刪除至文字行結尾處 | Control + K
+將文字輸出為 | Command + S

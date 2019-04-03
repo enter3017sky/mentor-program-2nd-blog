@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Alphcamp API Dog random</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+     img {
+         width: 100px;
+         height: 100px;
+     }
+    </style>
+</head>
+<body>
+    <h1>API Exercise</h1>
+    <button class="get1photo">get Dog image random</button>
+    <div id="show">
+        <!-- shop random image ici -->
+    </div>
+    <button class="get3photo">get Dog 3 image random</button>
+    <div id="show3">
+        <!-- shop random 3 image ici -->
+    </div>
+
+
+<script>
+    let button1 = document.querySelector('.get1photo')
+    let show = document.querySelector('#show')
+    button1.addEventListener('click', function(){
+        axios.get('https://dog.ceo/api/breeds/image/random')
+        .then(response => {
+            console.log('data: ', response.data)
+            let imgUrl = response.data.message
+            let message = response.data.status
+            show.innerHTML = `
+            <h3>${message}</h3>
+            <img src="${imgUrl}">`
+        }).catch(error => {
+            console.log(error)
+        })
+    })
+
+    // 待完成 試著取三個就要用 obj的方式?
+    // https://dog.ceo/dog-api/documentation/random
+    let button3 = document.querySelector('.get3photo')
+    let show3 = document.querySelector('#show3')
+
+    button3.addEventListener('click', function(){
+        axios.get('https://dog.ceo/api/breeds/image/random/3')
+        .then(response => {
+        // 試著取三個就要用 obj的方式?
+        let myArray = response.data.message
+            for (let i = 0; i < myArray.length; i++) {
+                const element = myArray[i];
+                show3.innerHTML += `<img src="${element}">`
+            }
+        }).catch(error => {
+            console.log(error)
+        })
+    })
+
+</script>
+</body>

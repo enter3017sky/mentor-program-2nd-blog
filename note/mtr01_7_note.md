@@ -35,7 +35,7 @@ $('a').attr('href', 'https://google.com')
 
 
 
-## Ajax 
+## Ajax
 
 <script href="https://code.jquery.com/jquery-3.3.1.js"></script>
 1. 首先要阻止表單的發送，然後取得應該會送出的資訊(留言內容、parent_id)

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dom Operator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+    <h1>Dom - Document Object Model</h1>
+
+    <button id="change-background1">Click here to change the background</button>
+
+    <button id="change-background2">dblclick here to change the background</button>
+
+    <button id="change-background3">mouseenter here to change the background</button>
+
+    <button id="change-background4">mouseout here to change the background</button>
+
+    <script>
+
+        /**
+         * dblclick: 在單個元素上單擊兩次鼠標的指針設備按鈕(通常是小鼠的主按鈕)時,將觸發 dblclick 事件。
+         * mouseenter: 当定点设备（通常指鼠标）移动到元素上時就會觸發 mouseenter 事件
+         * 类似 mouseover，它们两者之间的差别是 mouseenter 不会冒泡（bubble），也就是说当指针从它的子层物理空间移到它的物理空间上时不会触发
+         * 
+         * 指点设备（通常是鼠标）的指针移出某个元素时，会触发mouseleave事件。
+            mouseleave  和 mouseout 是相似的，但是两者的不同在于mouseleave 不会冒泡而mouseout 会冒泡。
+            这意味着当指针离开元素及其所有后代时，会触发mouseleave，而当指针离开元素或离开元素的后代（即使指针仍在元素内）时，会触发mouseout。
+         * 
+        */
+
+
+        var button = document.getElementById('change-background1')
+        button.addEventListener('click', function() {
+            // action will go here
+            document.body.style.backgroundColor = 'tomato';
+        })
+
+        var button2 = document.getElementById('change-background2')
+        var button3 = document.getElementById('change-background3')
+        var button4 = document.getElementById('change-background4')
+
+        button2.addEventListener('dblclick', function() {
+            document.body.style.backgroundColor = 'blue';
+        })
+
+        button3.addEventListener('mouseenter', function() {
+            document.body.style.backgroundColor = 'yellow'
+        })
+
+        button4.addEventListener('mouseout', function() {
+            document.body.style.backgroundColor = 'orange'
+        })
+
+    </script>
+</body>
+</html>

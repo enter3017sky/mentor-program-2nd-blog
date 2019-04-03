@@ -1,0 +1,133 @@
+.post__container:first-of-type {
+    border-top: 1px solid rgb(234, 234, 234);
+}
+.post__container {
+    border-bottom: 1px solid rgb(234, 234, 234);
+    padding: 30px 0px 30px;
+    transition: background 200ms ease 0s;
+}
+.post__container:hover {
+    background: #f8f9fa;
+}
+.container-fluid {
+    padding: 0;
+}
+.navbar {
+    z-index: 9999;
+
+}
+.jumbotron {
+    margin-bottom: 0px;
+}
+
+/* 截短按鈕內的文字，並且靠左 */
+.truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: left;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+
+article > .post__content > p {
+    white-space: pre-line;
+}
+/* .post__title {
+    margin-top: 20px;
+} */
+.post__time {
+    color: rgb(153, 153, 153);
+    font-size: 12px;
+}
+
+.post__title {
+    margin-bottom: 2rem;
+}
+
+.box_shadow {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.more__link {
+    padding: .4rem .8rem;
+    background-color: rgb(235, 235, 235);
+    color: #666;
+    transition: background-color 0.5s;
+    border-radius: .2rem;
+}
+.more__link:hover {
+    text-decoration: none;
+    background: #0181eb;
+    text-shadow: none;
+    color: #f8f8f8;
+}
+
+.list_group {
+    border: 1px solid rgba(0,0,0,.125);
+}
+
+.badge.badge-outline {
+    background-color: transparent;
+}
+
+
+/* .admin__title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+} */
+
+.datetime {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    color: #aaa;
+}
+
+pre {
+    background: rgba(0, 0, 0, 0.04);
+    padding: 16px;
+}
+
+.draft {
+    display: inline-table;
+    margin-right: 5px;
+}
+
+input[type=submit] {
+    padding: 0 2rem;
+}
+
+.btn__draft:active {
+    border-bottom-color: rgb(108, 117, 125);
+}
+
+.search__result {
+    color: rgb(89, 89, 89);
+}
+
+
+
+
+mark {
+    padding: 1px 2px;
+    background-color: gold!important;
+}
+
+@media screen and (max-width: 575.98px) {
+    .jumbotron {
+        /* margin-top: 30px; */
+        padding: 64px 0;
+        background: black;
+    }
+}
+
+/* @media (min-width: 992px) {
+    .navbar {
+        background: rgba(255,255,255,0.0)!important;
+    }
+} */
+
+

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Http GAME - 圖書館小弟筆記</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            width: 70vw;
+            margin: 0 auto;
+        }
+        .lv3 {
+            padding: 10px;
+        }
+    </style>
+</head>
+
+
+
+<body>
+    <div class="container">
+
+        <article></article>
+
+
+        <article class="content">
+            <h2>
+                <a href="https://lidemy-http-challenge.herokuapp.com/start">遊戲開始</a>
+            </h2>
+        </article>
+
+        <article class="note">
+            <h2>Note</h2>
+        </article>
+
+            <ol>
+                <li>根據提示把網址改成 https://lidemy-http-challenge.herokuapp.com/lv1?token={GOGOGO} 進去第一關</li>
+                <li>在網址後面補上 &name=YOUR_name 進去第二關</li>
+                <li>第二關：https://lidemy-http-challenge.herokuapp.com/lv2?token={HellOWOrld}</li>
+                <li>https://lidemy-http-challenge.herokuapp.com/books 進去提示中的 GitHub，搜尋需要的 id
+                </li>
+                <li>https://lidemy-http-challenge.herokuapp.com/lv2?token={HellOWOrld}&id=56</li>
+                <li>第三關：https://lidemy-http-challenge.herokuapp.com/lv3?token={5566NO1}</li>
+
+                <li>第三關本來想說用 fetch 的 POST傳資料看看，後來似乎不行，所以還是弄了一個表單 </li>
+                <!-- <form action="https://lidemy-http-challenge.herokuapp.com/books/" method="post">
+                    <fieldset class="lv3">
+                        <legend>lv3 POST 新增書籍</legend>
+                            <label for="name">書名:</label>
+                            <input type="text" id="name" name="name" value="大腦喜歡這樣學">
+                            <label for="isbn">ISBN:</label>
+                            <input type="text" id="isbn" name="ISBN" value="9789863594475">
+                            <input type="submit" value="提交">
+                    </fieldset>
+                </form> -->
+                <li>第四關：https://lidemy-http-challenge.herokuapp.com/lv4?token={LEarnHOWtoLeArn}</li>
+                <li>第五關：https://lidemy-http-challenge.herokuapp.com/lv5?token={HarukiMurakami}</li>
+                <li>
+                        http://blog.kent-chiu.com/2013/08/14/testing-rest-with-curl-command.html
+                利用 curl -X DELETE "https://lidemy-http-challenge.herokuapp.com/books/23"
+                </li>
+                <li>
+                    {"message":"\n咦...是刪掉了沒錯，但總覺得哪裡怪怪的，算了，先這樣吧！下一關的 token 為 {CHICKENCUTLET}\n"}%
+                </li>
+
+                <li>https://lidemy-http-challenge.herokuapp.com/lv6?token={CHICKENCUTLET}</li>
+                <li>在 Chrome 用 btoa('str')，將得到的帳號密碼轉換成 base64 的編碼，atob 是解碼</li>
+                <li></li>
+                <li></li>
+                <li>curl -X GET -H 'Authorization: Basic YWRtaW46YWRtaW4xMjM='  https://lidemy-http-challenge.herokuapp.com/v2/me</li>
+                <li>{"username":"admin","email":"lib@lidemy.com"}</li>
+                <li>https://lidemy-http-challenge.herokuapp.com/lv6?token=%7BCHICKENCUTLET%7D&email=lib@lidemy.com</li>
+                <li>第七關：https://lidemy-http-challenge.herokuapp.com/lv7?token={SECurityIsImPORTant}</li>
+                <li>
+                        那邊的工程師說系統整個修復完成了，剛好昨天我們發現有一本書被偷走了...
+                        這本書我們已經買第五次了，每次都被偷走，看來這本書很熱門啊。
+                        我們要把這本書從系統裡面刪掉，就拜託你了。
+                        對了！記得要用新的系統喔，舊的已經完全廢棄不用了。
+                        
+                        書的 id 是 89。</li>
+                <li>
+                    第七關的需求跟之前的一樣，利用 curl 以及 http 認證的參數去刪除 id 89 的書
+                </li>
+                <li>curl -X DELETE -H 'Authorization: Basic YWRtaW46YWRtaW4xMjM=' https://lidemy-http-challenge.herokuapp.com/v2/books/89
+            
+                {"message":"\n希望下一次進這本書的時候不會再被偷走了。下一關的 token 為 {HsifnAerok}\n"}</li>
+                <li>第八關： https://lidemy-http-challenge.herokuapp.com/lv8?token={HsifnAerok}</li>
+                <li>一樣利用這個，獲取 
+                curl -X GET -H 'Authorization: Basic YWRtaW46YWRtaW4xMjM='  https://lidemy-http-challenge.herokuapp.com/v2/books</li>
+                <li>或者用 fetch</li>
+                <li>71: {id: 72, name: "日日好日：茶道教我的幸福15味【電影書腰版】", author: "森下典子", ISBN: "9981835427"}</li>
+                <li>
+                
+ curl -d "ISBN=9981835423" -H 'Authorization: Basic YWRtaW46YWRtaW4xMjM=' -H "Content-Type: application/x-www-form-urlencoded" -X PATCH https://lidemy-http-challenge.herokuapp.com/v2/books/72
+
+ 經過了一些嘗試，爬了很多文，以上終於成功了，最後是看了這篇改了一下 https://gist.github.com/subfuzion/08c5d85437d5d4f00e58，也熟悉了一下， curl 的操作，但是用 curl 轉換 fetch 無法 CORS ，應該是瀏覽器擋住了。
+ 傳送過去的 data 不確定要不要 urlencoded 也是蠻困擾的，這方面的資訊應該好好惡補一下。
+
+curl 
+-X request
+-H header
+-i include: 顯示 response 的 header
+-d data: 設定 http parameters
+                </li>
+                <li>第九關： https://lidemy-http-challenge.herokuapp.com/lv9?token={NeuN}</li>
+                <li>
+                curl -X GET -H 'Authorization: Basic YWRtaW46YWRtaW4xMjM=' -H 'X-Library-Number: 20' https://lidemy-http-challenge.herokuapp.com/v2/sys_info -> Invalid Browser%
+                不能使用，所以我想到的方式是用 fecth 然後用 safari 打開 html
+                </li>
+                <li>獲得下一關的 token
+                    https://lidemy-http-challenge.herokuapp.com/lv9?token={NeuN}&version=1A4938Jl7</li>
+                <li>
+                        https://lidemy-http-challenge.herokuapp.com/lv10?token={duZDsG3tvoA}&num=1256
+                </li>
+                <li></li>
+            </ol>
+
+    </div>
+
+    <!-- curl -X GET -H 'Authorization: Basic YWRtaW46YWRtaW4xMjM=' -H 'X-Library-Number: 20' https://lidemy-http-challenge.herokuapp.com/v2/sys_info
+     -->
+
+
+    <!-- 更改書籍資訊	PATCH	/books/:id	name: 書名, ISBN: 書籍編號	無 
+    71: {id: 72, name: "日日好日：茶道教我的幸福15味【電影書腰版】", author: "森下典子", ISBN: "9981835427"}-->
+
+    <!-- curl -d "ISBN=9981835423" -H 'Authorization: Basic YWRtaW46YWRtaW4xMjM=' -H "Content-Type: application/x-www-form-urlencoded" -X PATCH https://lidemy-http-challenge.herokuapp.com/v2/books/72 -->
+
+
+<!-- curl -X GET -H 'Authorization: Basic YWRtaW46YWRtaW4xMjM='  https://lidemy-http-challenge.herokuapp.com/v2/me -->
+
+<script crossorigin="anonymous">
+
+
+
+// name: 大腦喜歡這樣學
+
+// async function fetchGank() {
+//     let res = await fetch('https://lidemy-http-challenge.herokuapp.com/books', {
+//         body: 'name=大腦喜歡這樣學&ISBN=9789863594475',
+//         headers: {
+//             'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+//         },
+//         method: 'POST',
+//     })
+//         // .then(data => {
+//         //     console.log(data)
+//         //     return data
+//         // }).catch(err => console.log(err.message))
+//     // 等待 parse json
+//     let data = await res;
+//     console.log(data)
+// }
+// fetchGank()
+
+
+
+
+
+
+
+// fetch("https://lidemy-http-challenge.herokuapp.com/v2/me", {
+//   headers: {
+//     Authorization: "Basic YWRtaW46YWRtaW4xMjM=",
+//     'Content-Type': 'text/plain',
+//   },
+//   node: "no-cors"
+// }).then(data => {
+//     console.log(data)
+//     return data.text()
+// }).then(result => {
+//     parsePrice(result)
+// }).then(final => console.log(final)).catch(err => console.log(err))
+
+
+
+
+
+
+
+// /lv3 回應內容沒有答案？
+// const url = 'https://lidemy-http-challenge.herokuapp.com/books'
+// fetch(url, {
+//     body: 'name=%E5%A4%A7%E8%85%A6%E5%96%9C%E6%AD%A1%E9%80%99%E6%A8%A3%E5%AD%B8&ISBN=9789863594475',
+//     headers: {
+//         'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+//     },
+//     method: 'POST',
+// })
+//     .then(data => {
+//         console.log(data)
+//         return data
+//     }).catch(err => console.log(err.message))
+
+    // fetch( url , { 
+    //         method: 'POST' , 
+    //         headers: { 
+    //             'Content-Type' : 'application/x-www-form-urlencoded;charset=UTF-8'
+    //         },
+    //         body: Object.keys( { 
+    //             name: '大腦喜歡這樣學',
+    //             ISBN: 9789863594475
+    //         }).map( ( key ) => { 
+    //             return encodeURIComponent(key) + '=' + encodeURIComponent(params[key]);
+    //         }).join( '&' ) 
+    //     }).then(d
+
+
+// 第九關：用 safari 打開
+// Response => {"message":"success","version":"1A4938Jl7","owner":"lib","createdAt":"121290329301"}
+
+fetch("https://lidemy-http-challenge.herokuapp.com/v2/sys_info", {
+  headers: {
+    Authorization: "Basic YWRtaW46YWRtaW4xMjM=",
+    "X-Library-Number": "20"
+  }
+}).then(data => {
+    console.log(data)
+    return data
+}).then(result => {
+    console.log(result.json())
+}).catch(err => console.log(err))
+
+想請問 AWS EC2 之 nginx 省略掉 .php 的配置方式
+
+1. 我在做什麼
+
+假如我設定某一個配置是給 PHP 用的，後來找了一個方法，讓每個頁面的 `.php` 可以忽略。
+```
+location /login {
+    rewrite ^/login?$ /login.php;
+}
+location /register {
+    rewrite ^/register?$ /register.php;
+}
+...略
+```
+
+2. 我預期它發生什麼？
+
+像是以上的配置，省略掉 `.php` 是可以的 `http://forum.enter3017sky.tw/login`
+但原本的連結、或按鈕，後面名稱都有 `.php` 結尾，本來想從檔案改掉，但是後來想想覺得這樣不對勁，不知道有沒有更有效率的辦法呢？
+
+
+
+
+
+
+
+
+
+
+// fetch("https://lidemy-http-challenge.herokuapp.com/v2/books/72", {
+//     method: "PATCH",
+//     body: "ISBN=9981835423",
+//     headers: {
+//         Authorization: "Basic YWRtaW46YWRtaW4xMjM=",
+//         "Content-Type": "application/x-www-form-urlencoded"
+//     },
+// }).then(data => data.json())
+// .then(result => console.log(result))
+// .catch(err => console.log(err))
+
+
+
+
+
+
+
+
+
+
+
+/** lv8: 或者是用 fetch，原本一直失敗(Invalid Authorization token)是因為
+ *  'Authorization': 'Basic YWRtaW46YWRtaW4xMjM=', 這串少打 Basic
+ *  沒有打的情況下用 data.json() 會跳 Unexpected token I in JSON at position 0
+ *  curl->fetch https://kigiri.github.io/fetch/
+ */
+// const url = 'https://lidemy-http-challenge.herokuapp.com/v2/books';
+// fetch(url, {
+//     headers: {
+//         'Authorization': 'Basic YWRtaW46YWRtaW4xMjM=',
+//         'Content-Type': 'application/x-www-form-urlencoded'
+//     },
+//     method: 'GET',
+// }).then(data => {
+//     // 這裡會 log Response 出來
+//     console.log(data)
+//     return data
+// }).then(result => {
+//     // Promise {<resolved>: Array(100)}
+//     // __proto__: Promise
+//     // [[PromiseStatus]]: "resolved"
+//     // [[PromiseValue]]: Array(100)
+//     console.log(result.json())
+// }).catch(err => console.log('error message:', err.message))
+
+
+
+
+
+        // const url = 'https://lidemy-http-challenge.herokuapp.com/books/23';
+
+// //         chrome.extension.getURL(url+'/23')
+// // chrome.extension.getURL(url+'/23')
+//         var xhr = new XMLHttpRequest();
+//         xhr.open("DELETE", url+'/23', true);
+//         xhr.withCredentials = true
+//         xhr.onload = function () {
+//             var data = JSON.parse(xhr.responseText);
+//             if (xhr.readyState == 4 && xhr.status == "200") {
+//                 console.table(data);
+//             } else {
+//                 console.error(data);
+//             }
+//         }
+//         xhr.send(null);
+
+
+
+
+
+
+
+
+        // const data = {
+        //     name:'大腦喜歡這樣學',
+        //     id: '9789863594475'
+        // }
+
+        // let formData = Object.keys(data).map(function (keyName) {
+        //     return encodeURIComponent(keyName) + '=' + encodeURIComponent(data[keyName])
+        // }).join('&');
+
+        // // var http = new XMLHttpRequest();
+        // // var url = 'get_data.php';
+        // // http.open('POST', URL, true);
+        // // //Send the proper header information along with the request
+        // // http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        // // http.setRequestHeader('Access-Control-Allow-Origin', '*');
+
+        // // http.onreadystatechange = function() {//Call a function when the state changes.
+        // //     if(http.readyState == 4 && http.status == 200) {
+        // //         alert(http.responseText);
+        // //         console.log(http.responseText)
+        // //     }
+        // // }
+        // // http.send(formData);
+
+
+
+        // // var requestOptions = { method: 'GET',
+        // //        headers: headers,
+        // //        mode: 'cors',
+        // //        cache: 'default' };
+
+
+        // fetch(url, {
+        //     method: 'DELETE',
+        //     // mode: 'no-cors',
+        //     cache: 'default',
+        //     headers: {
+        //         "Content-type": "application/x-www-form-urlencoded"
+        //     }
+        // }).then(data => data.text()).then( result => {
+        //     console.log(result)
+
+        // }).catch(err => {
+        //     console.log('有什麼事情發生了:', err.message)
+        // })
+
+
+        // function deleteData(item, url) {
+        //     return fetch(url + '/' + item, {
+        //         method: 'delete'
+        //     }).then(response =>
+        //         response.json().then(json => {
+        //         return json;
+        //         })
+        //     );
+        // }
+        // deleteData(23, url)
+
+
+
+    </script>
+</body>
+</html>

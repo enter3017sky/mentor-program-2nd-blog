@@ -928,26 +928,26 @@ neko最近迷上了洛克人。但是他的技術很差，每次玩紅白機的�
 
 /** ES5 的做法，但不建議，因為這種做法會消耗很多記憶體，因為 new 了幾個就 return 幾組新 getName function  */
 
-function Dog(name) {
-    var myName = name
-    return {
-        getName: function() {
-            return myName
-        },
-        sayHello: function() {
-            console.log('Hello, My name is :', myName)
-        }
-    }
-}
+// function Dog(name) {
+//     var myName = name
+//     return {
+//         getName: function() {
+//             return myName
+//         },
+//         sayHello: function() {
+//             console.log('Hello, My name is :', myName)
+//         }
+//     }
+// }
 
-var b = Dog('123')
-var d = Dog('456')
-b.sayHello()
+// var b = Dog('123')
+// var d = Dog('456')
+// b.sayHello()
 
-console.log(b.sayHello)
-console.log(b.sayHello === d.sayHello)
-// [Function: sayHello]
-// false 
+// console.log(b.sayHello)
+// console.log(b.sayHello === d.sayHello)
+// // [Function: sayHello]
+// // false 
 
 
 
@@ -1098,3 +1098,46 @@ console.log(b.sayHello === d.sayHello)
 // log(function() {
 //     console.log('Hi')
 // })
+
+
+
+// var a = {
+//     b: 'love',
+//     c: function() {
+//         var self = this;
+//         console.log(this.b);
+//         console.log(self.b);
+        
+//         (function() {
+//             console.log(this.b)
+//             console.log(self.b)
+//         })()
+//     }
+// }
+// a.c()
+
+// (function(){
+//     console.log('123')
+// })()
+
+
+/** 
+ * array 以數值作為索引，所以 `d.length == 3`
+ * 但你也可以用物件的方式新增 key/properties 給陣列，但是長度不會改變
+ * 所以用 for 迴圈是印出 123。
+ * 用 forin 就全部都印出來。
+ */
+
+var d = [1, 2, 3]
+d.x = "x"
+d.y = "y"
+console.log(d)
+console.log(d.length)
+
+for (let i = 0; i < d.length; i++) {
+    console.log(d[i])
+}
+
+for (const i in d) {
+    console.log(d[i])
+}

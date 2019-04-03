@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>JA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    
+    </style>
+</head>
+<body>
+    <header id="main-header" class="bg-success">
+        <div class="container">
+            <h1 id="header-title">Item Lister</h1>
+        </div>
+    </header>
+
+    <h1>Japan Good!!!</h1>
+
+    <div class="container">
+        <div class="main">
+            <h2 class="title">Add Items</h2>
+            <form action="" class="form-inline">
+                <select>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+                <input type="text" class="form-control">
+                <input type="submit" value="Submit" class="button">
+            </form>
+            <h2 class="title">Items</h2>
+            <ul class="list-group" id="items">
+                <li class="list-group-item">Item 1</li>
+                <li class="list-group-item">Item 2</li>
+                <li class="list-group-item">Item 3</li>
+                <li class="list-group-item">Item 4</li>
+            </ul>
+            <button type="submit" class="btn">Submit</button>
+            <span></span>
+        </div>
+        <div class="output"></div>
+        <div class="board" style="width:400px; height:300px; background:gray">
+            <div style="width:50px; height:50px; background:white">Hello</div>
+        </div>
+    </div>
+<!--  -->
+<script>
+
+    /** JavaScript DOM Crash Course - Part 3
+ https://www.youtube.com/watch?v=wK2cBMcDTss */
+
+    /** 第一種方式： 行內，onclick 事件執行函式 */
+//  <button type="submit" class="btn" onclick="buttonClick()">Submit</button>
+//  function buttonClick() {
+//      console.log('Button Clicked')
+//  }
+
+    // /** 第二種方式： 增加事件監聽，點擊時執行匿名函式 */
+    // let button = document.querySelector('.btn').addEventListener('click', function() {
+    //     console.log('click button!!!')
+    // })
+
+    /** 第三種方式： 增加事件監聽，點擊時執行具名函式 */
+    // document.querySelector('.btn').addEventListener('click', buttonClick)
+
+    // EVENT
+    // function buttonClick(e) {
+    //     // console.log('Button Clicked')
+    //     console.log(e.target)
+    //     console.log(e.clientX, e.clientY)
+    //     console.log(e.offsetX, e.offsetY)
+    //     // 判斷有沒有按下 alt, ctrl, shift 鍵
+    //     console.log(e.altKey, e.ctrlKey, e.shiftKey)
+    // }
+
+
+    // let button = document.querySelector('.btn')
+    //     // 點擊事件
+    // button.addEventListener('click', runEvent)
+    //     // double 點擊事件
+    // button.addEventListener('dblclick', runEvent)
+    //     // 滑鼠按下的事件
+    // button.addEventListener('mousedown', runEvent)
+    //     // 滑鼠放開的事件
+    // button.addEventListener('mouseup', runEvent)
+
+    let board = document.querySelector('.board')
+    // // 滑鼠在該元素移入的事件
+    // board.addEventListener('mouseenter', runEvent)
+    // // 滑鼠在該元素移出的事件
+    // board.addEventListener('mouseleave', runEvent)
+    // // 滑鼠在該元素以及其子元素移入的事件
+    // board.addEventListener('mouseover', runEvent)
+    // // 滑鼠在該元素以及其子元素移出的事件
+    // board.addEventListener('mouseout', runEvent)
+    // 滑鼠移動的事件
+    board.addEventListener('mousemove', runEvent)
+
+    let itemInput = document.querySelector('input[type="text"]')
+    let form = document.querySelector('form')
+    let select = document.querySelector('select')
+
+    select.addEventListener('change', runEvent)
+
+    // itemInput.addEventListener('keydown', runEvent)
+    // itemInput.addEventListener('keyup', runEvent)
+    // itemInput.addEventListener('keypress', runEvent)
+
+    itemInput.addEventListener('focus', runEvent)
+    itemInput.addEventListener('blur', runEvent)
+
+    itemInput.addEventListener('cut', runEvent)
+    itemInput.addEventListener('paste', runEvent)
+    itemInput.addEventListener('input', runEvent)
+
+    let output = document.querySelector('.output')
+    function runEvent(e) {
+        console.log('EVENT TYPE: ', e.type)
+        output.innerHTML = '<h3>mouseX: ' + e.offsetX + '</h3><h3>mouseY: ' + e.offsetY + '</h3>'
+    }
+
+    /** JavaScript DOM Crash Course - Part 1~2
+ https://www.youtube.com/watch?v=0ik6X4DJKCc */
+
+    let container = document.querySelector('.container')
+    container.style.border = "1px solid gray"
+    container.style.display = "flex"
+    container.style.justifyContent = "center"
+    container.style.alignItems = "center"
+    container.style.flexDirection = "column"
+    container.style.maxWidth = "100%"
+
+    let main = document.querySelector('.main')
+    main.style.border = "1px solid #000"
+    main.style.padding = "3rem"
+    main.style.margin = "2rem"
+
+    // let title = document.getElementsByClassName('title')
+    // let newDelBtn = document.createElement('input')
+    // Object.assign(newDelBtn, {
+    //     type: 'button',
+    //     value: 'DeleteAll'
+    // })
+    // console.log('newDelBtn', newDelBtn)
+    // main.prepend(newDelBtn)
+    // console.log('title', title)
+
+    /** querySelectorAll */
+    // let items = document.querySelectorAll('.list-group-item')
+    // items[0].style.color = "red"
+    // items[1].style.color = "green"
+    // items[2].style.color = "blue"
+    // for(let i = 0; i < items.length; i++) {
+    //     items[i].style.background = "#ccc"
+    // }
+    // let odd = document.querySelectorAll('li:nth-child(odd)')
+    // let even = document.querySelectorAll('li:nth-child(even)')
+    // for(let i = 0; i < odd.length; i++) {
+    //     odd[i].style.background = "#f4f4f4"
+    //     even[i].style.background = "#ccc"
+    // }
+
+    /** querySelector */
+    // let item = document.querySelector('.list-group-item')
+    // item.style.background = "white"
+    // let secondItem = document.querySelector('.list-group-item:nth-child(2)')
+    // secondItem.style.background = "orange"
+    // let listItem = document.querySelector('.list-group-item:last-child')
+    // listItem.style.background = "#8e1"
+    // let input = document.querySelector('input')
+    // input.value = "Hello world"
+    // let btn = document.querySelector('input[type=submit]')
+    // btn.value = "SEND"
+
+    /** 遍歷 DOM - Traversing the DOM */
+    let itemList = document.querySelector('#items')
+    // parentNode 這兩者基本上相同
+    // itemList.parentNode.style.background = "#ffff22"
+    // itemList.parentNode.parentNode.style.background = "#ff2f22"
+    // parentElement
+    // itemList.parentElement.style.background = "#ffff22"
+    // itemList.parentElement.parentElement.style.background = "#ff2f22"
+
+    // childNodes 子節點(包括空白的文字節點，不實用)
+    // console.log(itemList.childNodes)
+
+    // children 探訪 itemList 的子節點(這個不包括空白的文字節點，較實用)
+    // console.log(itemList.children)
+    // console.log(itemList.children[2])
+    itemList.children[2].style.background = "red"
+
+    // firstChild 第一個子節點(包括空白的文字節點，根本沒屁用)
+    // console.log(itemList.firstChild)
+    // firstElementChild 第一個元素子節點
+    // console.log(itemList.firstElementChild)
+    // itemList.firstElementChild.textContent = "Hello"
+
+    // // lastChild 最後一個子節點(包括空白的文字節點，根本沒屁用)
+    // console.log(itemList.lastChild)
+    // // lastElementChild 最後一個子節點
+    // console.log(itemList.lastElementChild)
+
+    // // nextSibling 下一個兄弟節點(包括空白文字節點，這個也沒啥用)
+    // console.log(itemList.nextSibling)
+    // // nextElementSibling 下一個兄弟節點
+    // console.log(itemList.nextElementSibling)
+
+    // // previousSibling 上一個兄弟節點(包括空白文字節點，這個也沒啥用)
+    // console.log(itemList.previousSibling)
+    // // previousElementSibling 上一個兄弟節點
+    // console.log(itemList.previousElementSibling)
+
+    /** createElement */
+
+    // Create a div
+    let newDiv = document.createElement('div')
+    // Add class 新增 class
+    newDiv.className = "hello"
+    // Add id 新增 id
+    newDiv.id = "hello world"
+    // Add attr 新增屬性
+    newDiv.setAttribute('title', 'hello Div')
+
+    // Create text node 建立文字節點
+    let newDivText = document.createTextNode('Hello World')
+    let newDivText2 = document.createTextNode('Hello World123')
+    // 將文字節點
+    newDiv.appendChild(newDivText)
+    // console.log(newDiv)
+    let headerContainer = document.querySelector('header .container')
+    let h1 = document.querySelector('header h1')
+    headerContainer.insertBefore(newDiv, h1)
+    
+    // Object.assign(newDiv, {
+    //     class: 'test',
+    //     id: 'testDiv'
+    // })
+
+    // div.className = "title"
+    // div.innerHTML = "Hello World!"
+    // div.value = "123123123"
+    // document.body.insertBefore(div, container)
+
+</script>
+</body>
+</html>

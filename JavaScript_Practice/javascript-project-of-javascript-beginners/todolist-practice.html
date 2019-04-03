@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Todo Tracker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
+</head>
+<body>
+    <div class="container">
+        <!--  -->
+        <!--  -->
+        <div class="card mt-5">
+            <div class="card-header">
+                <h1 id='title'>Todo Tracker</h1>
+            </div>
+            <div class="card-body">
+                <form action="" class="input-group mb-3">
+                    <input type="text" id="user-todo" class="form-control" placeholder="New Todo">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button">Submit</button>
+                    </div>
+                </form>
+                <h5 class="card-title todo-header">Todos</h5>
+                <!-- list group -->
+                <ul class="list-group list-group-flush mb-3">
+                    <!-- <li class="list-group-item">List Item1</li> -->
+                    <!-- <li class="list-group-item">List Item2</li> -->
+                </ul>
+                <!--  -->
+                <button class="clean btn btn-outline-danger">Clean All</button>
+            </div>
+        </div>
+    
+    <script>
+
+        'https://gist.github.com/robgmerrill/3e67a7e0e09acb5b77648f32bff0568f'
+
+        var title = document.querySelector('#title')
+            title.textContent = 'Todo Tracker'
+        /* 用 textContent 更改指定節點的文本內容，以及他的後代 */
+
+        // 預設的 title
+        var defaultTitle = 'My Todo Tracker'
+
+        /* 
+            appendChild(): 在子節點的後面添加一個節點
+            removeChild(): 移除一個子節點
+            createElement(): 透過標籤名稱建立一個 HTML 的元素
+            firstChild(): read-only property，返回一個第一個子節點
+        */
+
+        // '1. 建立一個 li 元素'
+        // var todoItem = document.createElement('li');
+
+        // '2. 用 textContent 添加文字到元素上'
+        // todoItem.textContent = 'Go to sleep.';
+
+        // '3. 將準備好的 li 元素，添加到 ul 之中'
+        // var todoList = document.querySelector('ul');
+        // todoList.appendChild(todoItem)
+
+        '將以上的步驟做成一個 function todoMaker'
+
+        var todoList = document.querySelector('ul');
+        
+        function todoMaker(text) {
+            var todoItem = document.createElement('li');
+            var att = document.createAttribute('class');
+            att.value = 'list-group-item';
+            todoItem.setAttributeNode(att)
+            todoItem.textContent = text;
+            todoList.appendChild(todoItem)
+        }
+
+        // var todoMaker = function() {
+        //     var todoItem = document.createElement('li');
+        //     todoItem.textContent = text;
+        //     todoList = document.querySelector('ul');
+        //     todoList.appendChild(todoItem)
+        // }
+
+        '4. 移除第一個元素，但是空白的文字節點也是一個節點'
+        // todoList.removeChild(todoList.firstChild) // 移除到空白的文字節點
+        // todoList.removeChild(todoList.firstChild) // 第二個才移除到第一個 li
+
+        // 利用 while 來過濾掉空白，但是這樣會變成 todo list 全部都被刪除了。
+        // while(todoList.firstChild) {
+        //     todoList.removeChild(todoList.firstChild);
+        // }
+
+        /* clean all button */
+        '宣告變數 button 是選取 .clean 這個 button，添加一個點擊的事件，然後用剛剛的迴圈來達到 clean all 的效果'
+        var button = document.querySelector('.clean');
+        button.addEventListener('click', function() {
+
+            // 清除 localStorage
+            localStorage.clear()
+
+            // 清除 li
+            while(todoList.firstChild) {
+                todoList.removeChild(todoList.firstChild);
+            }
+        })
+
+        '也可以用這種方式達到一樣的效果。'
+        // button.addEventListener('click', cleanAll)
+        // function cleanAll() {
+        //     while(todoList.firstChild) {
+        //         todoList.removeChild(todoList.firstChild);
+        //     }
+        // }
+
+        
+        'form 的相關處理'
+        
+        '選取表單及輸入框，添加 submit 事件，阻止表單預設 submit 時會刷新頁面這個行為'
+        var formFiled = document.querySelector('form')
+        var input = document.querySelector('#user-todo')
+
+        // var todosArray = []
+        /* 判斷 localStorage.getItem('todos') 是否有值，有的話將存入 localStorage 的 JSON 轉成 js，頁面刷新後 localStorage 才會有值 */
+        var todosArray = localStorage.getItem('todos') ? JSON.parse(localStorage.getItem('todos')) : [];
+
+
+        // e 代表當用戶點擊提交並提交表單時發生的'事件(event)'，e.preventDefault() 防止發生預設的行為
+        formFiled.addEventListener('submit', function(e) {
+            e.preventDefault()
+
+            // 如果沒有輸入內容就 submit 的話，顯示提醒文字，並 return (程式將不會繼續執行下去)
+            if(input.value === '') {
+                title.textContent = '忘記輸入拉~~~';
+                return
+            } 
+
+            // 將輸入的值 push 到 todosArray，然後轉成 JSON 格式後存入 localStorage
+            todosArray.push(input.value)
+            localStorage.setItem('todos', JSON.stringify(todosArray))
+
+            // 提交成功的話，恢復預測的 title，然後將輸入的 todo 新增到 list 中，最後將 input 中的文字清空
+            title.textContent = defaultTitle
+            todoMaker(input.value)
+            input.value = ''
+        })
+
+        /* 把存入 localStorage 的 JSON 格式的資料解析為 js 並取出來 */
+        var storage = JSON.parse(localStorage.getItem('todos'));
+        if(storage) {
+            for(let i = 0; i < storage.length; i++) {
+                todoMaker(storage[i])
+            }
+        }
+
+        'localStorage: web storage that stores data with no expiration date'
+        /* 範例及使用的教學
+            Methods -> setItem(), getItem(), removeItems(), clear()
+            setItem(): add a key and value to local storage
+
+            在 console 輸入以下
+            localStorage -> 返回儲存在電腦的資訊
+            localStorage.setItem('todos', 'Make Breakfast') -> 儲存一筆
+            localStorage.setItem('doNotdo', 'sleep') -> 儲存第二筆
+
+            透過 key 取得 value
+            localStorage.getItem('todos')
+
+            透過 key 移除一個 key/value pairs
+            localStorage.removeItem('doNotdo')
+
+            移除全部的 localStorage 的所有內容
+            localStorage.clear()
+        */
+
+
+
+
+
+    </script>
+</body>
+</html>

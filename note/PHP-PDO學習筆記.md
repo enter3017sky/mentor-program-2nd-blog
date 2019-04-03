@@ -5,6 +5,7 @@
 ## exec() 方法
 
 - PDO::exec() 不返回 SELECT 語句的結果，返回 DELETE、UPDATE、INSERT INTO 受影響的行數。
+
 > PDO::exec() does not return results from a SELECT statement.
 
 ```php
@@ -28,9 +29,11 @@ echo print_r($pdo->exec($sql)) ? 'success': 'fail1212';
 ## query() 方法
 
 - 對於在程序中只需要發出一次的SELECT語句，請考慮發出 PDO::query()。
+
 > For a SELECT statement that you only need to issue once during your program, consider issuing PDO::query().
 
 - 對於需要多次發出的語句，請使用 PDO::prepare()準備PDOStatement對象，並使用 PDOStatement::execute()發出語句。
+
 > For a statement that you need to issue multiple times, prepare a PDOStatement object with PDO::prepare() and issue the statement with PDOStatement::execute().
 
 ```php
@@ -109,9 +112,6 @@ echo "訂單總數: $count <br>";
 
 ```
 
-
-
-
 ### fetchAll(PDO::FETCH_OBJ)
 
 ```php
@@ -139,14 +139,10 @@ if($stmt->rowCount() > 0){
     }
 ```
 
-
-
-
-
-
 ### 刪除資料並返回刪除的筆數
 
 1. 使用 __`exec()`__ 執行 SQL，返回受影響的行數。
+
 > 在使用PDO::exec() 執行INSERT, UPDATE, DELETE 語句時，該方法會返回受影響的行數。
 
 ```php
@@ -157,6 +153,7 @@ $message = "刪除 $deleted 筆商品的訂單，重置庫存成功";
 ```
 
 2. __`rowCount()`__;
+
 > 使用 PDOStatement::rowCount()
 
 ```php
@@ -167,11 +164,6 @@ $stmt->execute();
 $deleted = $stmt->rowCount();
 $message = "刪除 $deleted 筆商品的訂單，重置庫存成功";
 ```
-
-
-
-
-
 
 ## 連結資料庫
 

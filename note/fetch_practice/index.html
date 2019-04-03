@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Node Practice - Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <div>
+            <h1>Fetch</h1>
+            <div class="box">
+            </div>
+
+            <div class="list">
+                
+            </div>
+
+            <input type='button' value='Submit' class='btn'>
+            
+
+            <form action="https://lidemy-http-challenge.herokuapp.com/books" method="post">
+                <!-- <input type="text" name="name" value="">
+                <input type="text" name="ISBN"> -->
+                <input type="text" name="id">
+                <input type="submit" value="提交">
+            </form>
+        </div>
+    </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', (e) => {
+
+
+        // fetch('https://lidemy-http-challenge.herokuapp.com/books', {
+        //     method: 'POST',
+        //     header:{
+        //         name: '大腦喜歡這樣學',
+        //         ISBN: 9789863594475
+        //     },
+        //     mode: 'cors'
+        // }).then(data => data.json()).then(result => {
+        //     console.log(result)
+        // }).catch(err => console.log(err))
+
+
+            // function createNode(element) {
+            //     return document.createElement(element)
+            // }
+
+            // function append(parent, el) {
+            //     return parent.appendChild(el)
+            // }
+
+            // const box = document.querySelector('.box')
+
+            // var clientId = 'eq990vt85o5dquacakpy5u32ofrmmt';
+            // var limit = 5;
+            // var apiUrl = 'https://api.twitch.tv/kraken/streams/?client_id=' + clientId + '&game=League%20of%20Legends&limit=' + limit;
+
+
+            // let list = document.querySelector('.list')
+            // list.innerHTML = '...Loading...'
+
+            // fetch(apiUrl)
+            //     .then(function(Response) {
+            //         // 把伺服器回應的 Response 物件印出來看看
+            //         // console.log(Response)
+            //         // 轉成 JSON 的格式，再由下一個 .then 打印出來(也可以轉換成 .text())
+            //         return Response.json()
+            //     // }).then(function(result) {
+            //     //     // 最終的資料
+            //     //     console.log('最終的資料：', result)
+            //     //     let streams = result.streams
+            //     //     list.innerHTML = ''
+
+            //     //     for(let i = 0, max = streams.length; i < max; i++) {
+            //     //         let games = streams[i]
+            //     //         console.log(games)
+            //     //         list.innerHTML += games.game + ' - ' + '<img src="' + games.preview.medium + '">' + '<hr>'
+            //     //     }
+                
+            // })
+            // .then(data => {
+            //     let streams = data.streams
+            //     console.log(streams)
+
+            //     return streams.map(function(stream) {
+
+            //         // console.log(stream.preview.medium)
+            //         let li = createNode('li'),
+            //         ul = createNode('ul')
+            //         img = createNode('img'),
+            //         span = createNode('span');
+            //         img.src = stream.preview.medium
+            //         span.innerHTML = `Name: ${stream.game}  Viewer: ${stream.viewers}`
+
+            //         append(li, img)
+            //         append(li, span)
+            //         append(ul, li)
+            //         append(box, li)
+            //     })
+            // }).catch(err => console.log(JSON.stringify(err)))
+
+
+                // https://api.twitch.tv/helix/games/top 只能透過 header 傳入 Client-ID ，不能用 url qerys tring 的方式
+                // let url = "https://api.twitch.tv/helix/games/top"
+                // fetch(url, {
+                //     headers: {
+                //         'Client-ID': 'eq990vt85o5dquacakpy5u32ofrmmt'
+                //     }
+                // })
+                // .then(response => {
+                //     console.log(response)
+                //     return response.json()
+                // })
+                // .then(result => {
+                //     console.log('Result:', result)
+
+                //     let streams = result.data
+
+                //     for(let i = 0; i < streams.length; i++) {
+
+                //         let stream = streams[i]
+                        
+                //         list.innerHTML += `<div class='col'>
+                //             <div class='preview'>
+                //                 <img src='${stream.box_art_url}'>
+                //             </div>
+                //             <div class='bottom'>
+                //                 <div class='bottom__avatar'></div>
+                //                 <div class='bottom__intro'>
+                //                     <div class='owner__name'>實況主名稱</div>
+                //                     <div class='channel__name'>頻道名稱</div>
+                //                     <span class='viewers'>Viewers: ${stream.name}</span>
+                //                 </div>
+                //             </div>
+                //         </div>`
+                //     }
+
+                // }).catch(err=>console.log(err))
+
+    })
+
+    // https://api.twitch.tv/helix/streams?game_id=33214&client_id=eq990vt85o5dquacakpy5u32ofrmmt
+    // eq990vt85o5dquacakpy5u32ofrmmt&game=League%20of%20Legends&limit=20
+
+//     curl -H 'Client-ID: eq990vt85o5dquacakpy5u32ofrmmt' \
+// -X GET 'https://api.twitch.tv/helix/games/top'
+
+    </script>
+</body>
+</html>
