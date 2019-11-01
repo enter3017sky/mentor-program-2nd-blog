@@ -1,8 +1,8 @@
 # 部署 AWS EC2 虛擬主機 + Ubuntu LAMP 環境 + phpmyadmin
 
 > 主要參考這兩個同學的筆記
-[一小時完成 VPS (Virtual Private Server) 部署](https://github.com/Lidemy/mentor-program-2nd-yuchun33/issues/15)
-[部署 AWS EC2 遠端主機 + Ubuntu LAMP 環境 + phpmyadmin](https://github.com/Lidemy/mentor-program-2nd-futianshen/issues/21)
+- [一小時完成 VPS (Virtual Private Server) 部署](https://github.com/Lidemy/mentor-program-2nd-yuchun33/issues/15)
+- [部署 AWS EC2 遠端主機 + Ubuntu LAMP 環境 + phpmyadmin](https://github.com/Lidemy/mentor-program-2nd-futianshen/issues/21)
 
 AWS EC2 跟 ubuntu 環境都建立好了之後。
 
